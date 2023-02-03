@@ -48,3 +48,23 @@ services:
     ports:
       - "3306:3306"
 
+
+ # ========================
+  # Front-React
+  # ========================
+  react:
+    image: node:14-buster-slim
+    volumes: ["./front:/usr/src/app"]
+    working_dir: /usr/src/app
+    ports:
+      - "127.0.0.1:3001:3000"
+    depends_on:
+      - php
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_API_URL=http://localhost:3200
+      - HOST=0.0.0.0
+      - BROWSER=none
+    command: sh -c "yarn install && yarn run start"
+    stdin_open: true
+
