@@ -1,13 +1,86 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Montserrat+Alternates:wght@300;400;500&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --color-bg: #FFFBF6;
+  --color-bg-btn-light: #DDBEA8;
+  --color-bg-btn-dark: #246a73;
+  --color-font-dark: #160F29;
+  --color-font-medium: #05668D;
+}
+
+body {
+  font-family: 'Montserrat Alternates', sans-serif;
+  background:var(--color-bg);
+  color:var(--color-font-dark);
+  line-height: 1.7;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+h1 {
+font-weight: 300;
+font-family: 'Montserrat Alternates', sans-serif;
+font-size: 20px;
+--color-font-medium: #05668D;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 16px;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 14px;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.btn-dark {
+  width: max-content;
+  display: inline-block;
+  color : var(--color-bg);
+  background-color: var(--color-bg-btn-dark);
+  padding: 0.49rem 1rem;
+  text-align: center;
+  width: 120px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid var(--color-font-dark);
+}
+
+.btn-dark:hover {
+  background-color: var(--color-bg-btn-light);
+  color: var(--color-font-dark);
+  border-color: transparent;
+}
+
+.btn-light {
+  width: max-content;
+  display: inline-block;
+  color : var(--color-font-dark);
+  background-color: var(--color-bg-btn-light);
+  padding: 0.49rem 1rem;
+  width: 120px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  border-color: transparent;
+}
+
+.btn-light:hover {
+  background-color: var(--color-bg-btn-dark);
+  color: var(--color-bg);
+  border: 1px solid var(--color-font-dark);
 }
