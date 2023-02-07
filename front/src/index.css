@@ -57,13 +57,11 @@ h3 {
   height: 40px;
   border-radius: 10px;
   cursor: pointer;
-  border: 1px solid var(--color-font-dark);
 }
 
 .btn-dark:hover {
-  background-color: var(--color-bg-btn-light);
-  color: var(--color-font-dark);
-  border-color: transparent;
+  width: 125px;
+  height: 41px;
 }
 
 .btn-light {
@@ -80,7 +78,6 @@ h3 {
 }
 
 .btn-light:hover {
-  background-color: var(--color-bg-btn-dark);
-  color: var(--color-bg);
-  border: 1px solid var(--color-font-dark);
+  width: 125px;
+  height: 41px;
 }
