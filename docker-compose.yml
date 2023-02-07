@@ -18,7 +18,7 @@ services:
       - "3200:80"
     depends_on:
       - php
-    volumes: ["./:/var/www/web:cached"]
+    volumes: ["./api:/var/www/web:cached"]
     networks: ["triplink"]
 
 
@@ -26,7 +26,7 @@ services:
     container_name: php_triplink
     build: ./.docker/php
     restart: on-failure
-    volumes: ["./:/var/www/web:cached"]
+    volumes: ["./api:/var/www/web:cached"]
     networks: ["triplink"]
    
 
@@ -35,13 +35,8 @@ services:
   # ========================
   mysql:
     image: mysql:5.7
-    platform: linux/x86_64
     container_name: mysql_triplink
-    networks: 
-      default:
-        aliases: 
-          - mysql
-          - triplink
+    networks: ["triplink"]
     env_file:
       - ./.docker/mysql/mysql.env
     volumes:
@@ -62,10 +57,11 @@ services:
     depends_on:
       - php
     environment:
-      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
       - REACT_APP_API_URL=http://localhost:3200
       - HOST=0.0.0.0
       - BROWSER=none
     command: sh -c "yarn install && yarn run start"
     stdin_open: true
+    networks: ["triplink"]
 
