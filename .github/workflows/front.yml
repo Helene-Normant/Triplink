@@ -19,7 +19,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x, 20.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v3
@@ -31,5 +31,4 @@ jobs:
         cache-dependency-path: 'front/yarn.lock'
     - run: yarn install
     - run: yarn run build
-    #TODO remove the --passWithNoTests option
-    - run: yarn test --passWithNoTests
+    - run: yarn test
