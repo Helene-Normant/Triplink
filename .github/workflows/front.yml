@@ -29,5 +29,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
         cache-dependency-path: 'front/yarn.lock'
+    - run: yarn install
     - run: yarn run build
     - run: yarn test
