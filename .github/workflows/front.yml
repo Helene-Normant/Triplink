@@ -5,7 +5,6 @@ name: Front CI
 
 on:
   push:
-    branches: [ "feature/github-actions" ]
   pull_request:
     branches: [ "master" ]
 
