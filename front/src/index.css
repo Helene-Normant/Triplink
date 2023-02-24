@@ -25,7 +25,11 @@ body {
   line-height: 1.7;
   font-weight: 400;
   font-size: 13px;
+  margin-left: 70px;
+  margin-top: 15px;
+  margin-right: 70px;
 }
+
 
 h1 {
 font-weight: 300;
@@ -60,7 +64,7 @@ h3 {
 }
 
 .btn-dark:hover {
-  
+  background-color: #1F545B;
 }
 
 .btn-light {
@@ -78,5 +82,5 @@ h3 {
 }
 
 .btn-light:hover {
- 
+ background-color: #BFA694;
 }
