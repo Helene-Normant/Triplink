@@ -5,7 +5,8 @@ function Header() {
   return (
   <div className='container-header'>
     <div className='logo-header'>
-      <img className='logo-triplink' src={logo} alt={'Logo Triplink'}/></div>
+      <img className='logo-triplink' src={logo} alt={'Logo Triplink'}/>
+      </div>
     <div className='header-title'>
       <h1 className='main-title'>Triplink</h1>
       </div>
