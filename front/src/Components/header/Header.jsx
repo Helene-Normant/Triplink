@@ -1,4 +1,5 @@
-import logo from '../assets/LOGO_min.png';
+import logo from '../../assets/Triplink_min.png';
+import './header.css';
 
 function Header() {
   return (
