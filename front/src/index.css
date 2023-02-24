@@ -53,15 +53,14 @@ h3 {
   background-color: var(--color-bg-btn-dark);
   padding: 0.49rem 1rem;
   text-align: center;
-  width: 120px;
+  width: 135px;
   height: 40px;
   border-radius: 10px;
   cursor: pointer;
 }
 
 .btn-dark:hover {
-  width: 125px;
-  height: 41px;
+  
 }
 
 .btn-light {
@@ -70,7 +69,8 @@ h3 {
   color : var(--color-font-dark);
   background-color: var(--color-bg-btn-light);
   padding: 0.49rem 1rem;
-  width: 120px;
+  text-align: center;
+  width: 135px;
   height: 40px;
   border-radius: 10px;
   cursor: pointer;
@@ -78,6 +78,5 @@ h3 {
 }
 
 .btn-light:hover {
-  width: 125px;
-  height: 41px;
+ 
 }
