@@ -1,0 +1,45 @@
+.container_travel-cards {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+grid-gap: 20px;
+grid-auto-rows: minmax(100px, auto)
+}
+
+.travel-image {
+width: 332px;
+height: 280px;
+border-radius: 10px;
+}
+
+.card-title {
+display: flex;
+justify-content: space-between
+}
+
+.card-localisation {
+text-align: left;
+margin-top: 3px;
+}
+
+.card_travel-profil {
+display: flex;
+justify-content: flex-start;
+}
+
+.travel-profil {
+width: 25px;
+height: 25px;
+border-radius: 50px;
+}
+
+.line-profil {
+border: 0.75px solid var(--color-font-medium);
+transform: rotate(0deg);
+margin: 0 5px 0 5px;
+}
+
+.profil-logo {
+margin-left: 165px;
+font-size: 16px;
+color: var(--color-bg-btn-dark);
+}
