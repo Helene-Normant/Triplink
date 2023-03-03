@@ -1,14 +1,22 @@
 .search-bar {
+    background-color: var(--color-bg);
     display: flex;
     justify-content: center;
     margin-top: 15px;
-    border: 1px solid #160F29;
-   width: 700px;
-  border-radius: 10px;
+    /* border: 1px solid var( --color-font-dark);
+    border-radius: 10px; 
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto; */
 }
 
 .search-bar1 {
     width: 225px;
+    border-top: 1px solid var( --color-font-dark);
+    border-bottom: 1px solid var( --color-font-dark);
+    border-left: 1px solid var( --color-font-dark);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
     background-color: var(--color-bg);
     font-weight: 300;
     font-family: 'Montserrat Alternates', sans-serif;
@@ -18,6 +26,8 @@
 
 .search-bar2 {
     width: 225px;
+    border-top: 1px solid var( --color-font-dark);
+    border-bottom: 1px solid var( --color-font-dark);
     background-color: var(--color-bg);
     font-weight: 300;
     font-family: 'Montserrat Alternates', sans-serif;
@@ -27,6 +37,11 @@
 
 .search-bar3 {
     width: 225px;
+    border-top: 1px solid var( --color-font-dark);
+    border-bottom: 1px solid var( --color-font-dark);
+    border-right: 1px solid var( --color-font-dark);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: var(--color-bg);
     font-weight: 300;
     font-family: 'Montserrat Alternates', sans-serif;
@@ -35,8 +50,8 @@
 }
 
 .line-search-bar {
-border: 0.75px solid var(--color-font-medium);
-transform: rotate(0deg);
-height: 39px;
-margin-top: 5px;
+   border: 0.75px solid var(--color-font-medium);
+   height: 30px;
+   margin-top: 10px;
 }
+

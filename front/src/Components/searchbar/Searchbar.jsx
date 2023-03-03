@@ -24,14 +24,14 @@ function Searchbar() {
         className="search-bar2"
         options={options2}
         value={defaultOption2}
-        placeholder="Catégories"
+        placeholder="Catégorie"
       />
       <hr className="line-search-bar"/>
       <Dropdown
         className="search-bar3"
         options={options3}
         value={defaultOption3}
-        placeholder="Profils"
+        placeholder="Profil"
       />
     </div>
   );
