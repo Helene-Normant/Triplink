@@ -17,7 +17,7 @@ function Searchbar() {
         className="search-bar1"
         options={options}
         value={defaultOption}
-        placeholder="Destination"
+        placeholder="Destinations"
       />
       <hr className="line-search-bar"/>
       <Dropdown
