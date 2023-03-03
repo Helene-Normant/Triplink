@@ -4,9 +4,6 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin-left: 70px;
-    margin-top: 15px;
-    margin-right: 70px;
 }
 
 .logo-header {
@@ -22,7 +19,7 @@
     text-align: center;
     font-family: 'Solitreo', cursive;
     font-size: 48px;
-    color: var(--color-bg-btn-dark);
+    color: var(--color-font-dark);
 }
 
 .line-buttons {
