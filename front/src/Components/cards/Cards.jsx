@@ -73,6 +73,7 @@ const data = [
     suivre: "Suivre",
     commentaire: "Commentaires",
   },
+
   {
     card: "travel_7",
     id: 7,
@@ -139,6 +140,7 @@ const data = [
     suivre: "Suivre",
     commentaire: "Commentaires",
   },
+
 ];
 
 function Cards() {
