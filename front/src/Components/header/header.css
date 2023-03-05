@@ -7,11 +7,12 @@
 }
 
 .logo-header {
-    width: 300px;  
+    width: 300px;
 }
 
 .logo-triplink{
     width: 40%;
+    cursor: pointer;
 }
 
 .main-title {
@@ -20,6 +21,7 @@
     font-family: 'Solitreo', cursive;
     font-size: 48px;
     color: var(--color-font-dark);
+    cursor: pointer;
 }
 
 .line-buttons {
@@ -32,8 +34,8 @@
 }
 
 .header-buttons {
-    width: 300px;
     display: flex;
     justify-content: space-between;
 }
+
 
