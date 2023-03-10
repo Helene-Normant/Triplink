@@ -35,7 +35,7 @@ h1 {
 font-weight: 300;
 font-family: 'Montserrat Alternates', sans-serif;
 font-size: 20px;
---color-font-medium: #05668D;
+color: var(--color-font-medium);
 }
 
 h2 {
@@ -84,3 +84,4 @@ h3 {
 .btn-light:hover {
  background-color: #BFA694;
 }
+
