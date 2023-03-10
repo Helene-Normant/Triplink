@@ -13,7 +13,7 @@ function Header() {
  const postNewUser = async (event) => {
   event.preventDefault();
   try {
-    await apiService.Users.post({email: email, userName: userName, password: password})
+    await apiService.Users.post({email: email, userName: userName, plainPassword: password})
   } catch (err) {
     console.error(err);
     alert(`Une erreur est survenue. \n${err}`)

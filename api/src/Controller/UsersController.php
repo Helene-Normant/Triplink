@@ -50,7 +50,14 @@ class UsersController extends AbstractController
         $body = $request->getContent();
         $form = $this->serializer->deserialize($body, Users::class, 'json');
             // encode the plain password
-        $user->setPassword($userPasswordHasher->hashPassword($user, $form['password']));
+        $plainPassword = $form['password'];
+       
+        // $user->setPassword($userPasswordHasher->hashPassword($user, $form['password']));
+        $hashedPassword = $userPasswordHasher->hashPassword(
+            $user,
+            $plainPassword,
+        );
+        $user->setPassword($hashedPassword);
 
             $entityManager->persist($user);
             $entityManager->flush();

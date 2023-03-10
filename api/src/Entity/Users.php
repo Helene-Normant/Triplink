@@ -2,29 +2,48 @@
 
 namespace App\Entity;
 
-use App\Repository\UsersRepository;
-use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UsersRepository;
+use App\State\UserPasswordHasher;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[ApiResource(
-    normalizationContext: ['groups' => ['usersFull']],
+    operations:[
+        new GetCollection(),
+        new Post(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'usersFullCreate']]),
+        new Get(),
+        new Put(processor: UserPasswordHasher::class),
+        new Patch(processor: UserPasswordHasher::class),
+        new Delete(),
+    ],
+    normalizationContext: ['groups' => ['usersFullRead']],
+    denormalizationContext: ['groups' => ['usersFullCreate']],
 )]
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(["usersFull"])]
+    #[Groups(["usersFullRead"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    #[Groups(["usersFull"])]
+    #[Groups(["usersFullRead", "usersFullCreate"])]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -37,28 +56,31 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(["usersFull"])]
+    #[Groups(["usersFullRead", "usersFullCreate"])]
     private ?string $userName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["usersFull"])]
+    #[Groups(["usersFullRead", "usersFullCreate"])]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["usersFull"])]
+    #[Groups(["usersFullRead", "usersFullCreate"])]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(["usersFull"])]
+    #[Groups(["usersFullRead", "usersFullCreate"])]
     private ?string $picture = null;
 
     #[ORM\Column(length: 500, nullable: true)]
-    #[Groups(["usersFull"])]
+    #[Groups(["usersFullRead", "usersFullCreate"])]
     private ?string $description = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
-
+    
+    #[Assert\NotBlank(groups: ["usersFullCreate"])]
+    #[Groups(["usersFullCreate"])]
+    private ?string $plainPassword = null;
 
     public function __construct()
     {
@@ -206,4 +228,16 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(?string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
 }
