@@ -1,6 +1,7 @@
 import logo from "../../assets/Triplink_min.png";
 import "./header.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Modal from "./modal/Modal";
 
 function Header() {
@@ -11,10 +12,10 @@ function Header() {
   return (
     <div className="container-header">
       <div className="logo-header">
-        <img className="logo-triplink" src={logo} alt={"Logo Triplink"} />
+       <Link to='/'><img className="logo-triplink" src={logo} alt={"Logo Triplink"} /></Link>
       </div>
       <div className="header-title">
-        <h1 className="main-title">Triplink</h1>
+       <Link to='/'><h1 className="main-title">Triplink</h1></Link>
       </div>
       <div className="header-buttons">
         <h3 className="btn-light open-modal" onClick={() => setOpenModal(true)}>
@@ -22,7 +23,7 @@ function Header() {
         </h3>
         <Modal open={openModal} onClose={() => setOpenModal(false)} />
         <hr className="line-buttons" />
-        <h3 className="btn-dark">S'inscrire</h3>
+       <Link to='/inscription'><h3 className="btn-dark">S'inscrire</h3></Link> 
       </div>
     </div>
   );
