@@ -1,4 +1,5 @@
 import "./modal.css";
+import { Link } from "react-router-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
 const Modal = ({ open, onClose }) => {
@@ -26,7 +27,7 @@ const Modal = ({ open, onClose }) => {
       <div className="modal-btn">
         <h3 className="btn-light">Se connecter</h3>
         <p className="lien-modal2">Pas encore de compte ? </p>
-        <p className="lien-modal3">Créer un compte en cliquant ici </p>
+       <Link to='/inscription'><p className="lien-modal3">Créer un compte en cliquant ici </p></Link>
       </div>
     </div>
     </div>
