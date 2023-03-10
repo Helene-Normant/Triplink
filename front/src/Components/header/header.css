@@ -10,7 +10,7 @@
     width: 300px;
 }
 
-.logo-triplink{
+.logo-triplink {
     width: 40%;
     cursor: pointer;
 }
@@ -28,7 +28,7 @@
     margin-top: 20px;
     width: 48px;
     height: 0px;
-    left: 1209px;   
+    left: 1209px;
     border: 0.75px solid var(--color-font-medium);
     transform: rotate(90deg);
 }
@@ -38,4 +38,26 @@
     justify-content: space-between;
 }
 
+/* For mobile phones: */
+@media only screen and (max-width: 844px) {
+    .main-title {
+        margin-left: -44px;
+        width: 200px;
+        font-size: 35px;
+        text-align: left;
+        cursor: none;
+    }
 
+    .line-buttons {
+        display: none;
+    }
+
+    .btn-dark {
+        display: none;
+    }
+
+    .logo-triplink {
+       display: none;
+    }
+
+};
