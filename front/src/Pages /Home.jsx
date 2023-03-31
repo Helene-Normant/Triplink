@@ -5,15 +5,15 @@ import Footer from '../Components/footer/Footer';
 import Modal from '../Components/header/modal/Modal';
 
 function Home() {
-    return (
+  return (
     <section className='container-home'>
-    <Header />
-     <Searchbar />
-     <Cards />
-     <Footer />
-     <Modal />
-     </section>
-    )
-   }
-  
-   export default Home;
+        <Modal />
+        <Header />
+        <Searchbar />
+        <Cards />
+        <Footer />   
+    </section>
+  )
+}
+
+export default Home;
