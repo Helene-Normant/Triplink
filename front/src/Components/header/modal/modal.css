@@ -6,7 +6,7 @@
     width: 100%;
     background-color: rgba(217, 211, 211, 0.661);
     z-index: 1;
- }
+}
 
 .modal-container {
     z-index: 1;
@@ -21,13 +21,19 @@
     border-radius: 10px;
 }
 
+.form1 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
 .close-btn {
     font-size: 18px;
     cursor: pointer;
 }
 
 .modal-form {
-    display: block;
     text-align: center;
 }
 
@@ -45,53 +51,21 @@
 .modal-btn {
     display: block;
     text-align: center;
-    margin-top: 17px;
+    margin-top: 35px;
 }
 
-.input-modal1 {
-    display: block;
-    text-align: center;
-    margin-top: 25px;
-}
-
-.input-modal2 {
-    display: block;
-    text-align: center;
-    margin-top: 22px;
-}
-
-.email-input {
-    background: #FFFBF6;
-    border: 1px solid #160F29;
-    border-radius: 10px;
-    width: 424px;
-    height: 53px;
-    font-weight: 300;
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-size: 20px;
-    color: #05668D;
-    padding-left: 15px;
-}
-
-.mot-input {
-    background: #FFFBF6;
-    border: 1px solid #160F29;
-    border-radius: 10px;
-    width: 424px;
-    height: 53px;
-    font-weight: 300;
-    font-family: 'Montserrat Alternates', sans-serif;
-    font-size: 20px;
-    color: #05668D;
-    padding-left: 15px;
+.login {
+  justify-content: center;
 }
 
 .lien-modal1 {
     display: flex;
     justify-content: right;
-    padding-right: 80px;
+    padding-right: 84px;
     text-decoration: underline;
     cursor: pointer;
+  /* border: 1px solid blue;  */
+
 }
 
 .lien-modal2 {

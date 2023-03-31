@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import  Home  from './Pages /Home';
-import Inscription from './Pages /Inscription';
+import Inscription from './Pages /inscription/Inscription';
 // import Cards from '../Components/cards/Cards';
 // import Header from '../Components/header/Header';
 // import Searchbar from '../Components/searchbar/Searchbar';
@@ -13,7 +13,7 @@ function App() {
     <div className='App'>
       <BrowserRouter>
       <Routes>
-        <Route path='/' element= { <Home />}/> 
+        <Route path='/' element= { <Home />}/>
         <Route path='/inscription' element= { <Inscription />}/> 
       </Routes>
       </BrowserRouter>
