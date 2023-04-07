@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import  Home  from './Pages /Home';
-import Inscription from './Pages /inscription/Inscription';
+import  Home  from './Pages/Home';
+import Inscription from './Pages/inscription/Inscription';
 // import Cards from '../Components/cards/Cards';
 // import Header from '../Components/header/Header';
 // import Searchbar from '../Components/searchbar/Searchbar';
