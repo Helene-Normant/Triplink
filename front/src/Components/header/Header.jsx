@@ -1,26 +1,37 @@
-import logo from "../../assets/Triplink_min.png";
 import "./header.css";
+import logo from "../../assets/Triplink_min.png";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Buttons from "../buttons/Buttons";
+import { Link } from "react-router-dom";
+import Button from "../button/Button";
+import Modal from "../modal/Modal";
 
 
 function Header() {
+  const [openModal, setOpenModal] = useState(false);
+  openModal?document.body.style.overflow = "hidden": document.body.style.overflow = "auto";
+
   return (
     <div className="container-header">
       <div className="logo-header">
-        {/* srcset avec 3 tailles d'image pour responsive */}
         <Link to="/">
           <img className="logo-triplink" src={logo} alt={"Logo Triplink"} />
         </Link>
       </div>
-      <div className="header-title">
         <Link to="/">
           <h1 className="main-title">Triplink</h1>
         </Link>
-      </div>
-      {/* <button onClick={handleClick}>Go to inscription</button> */}
-      <Buttons/>
+      <div className="buttons">
+      <Button
+        className="light"
+        onClick= {() => setOpenModal(true)}
+        children="Se connecter"
+      />
+      <Modal open={openModal} onClose={() => setOpenModal(false)} />
+      <hr className="line-buttons" />
+      <Link to="/inscription">
+        <Button className="dark" children="S'incrire" />
+      </Link>
+    </div>
     </div>
   );
 }
