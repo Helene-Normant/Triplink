@@ -51,7 +51,7 @@ final class PublicationFactory extends ModelFactory
             'country' => self::faker()->country(),
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
             'description' => self::faker()->paragraph(),
-            'picture' => self::faker()->imageUrl(640, 480, 'travel', true),
+            'picture' => "https://source.unsplash.com/random/900×700/?travel",
             'title' => self::faker()->sentence(),
             'travelType' => self::faker()->word(),
         ];

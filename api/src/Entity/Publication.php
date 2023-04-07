@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 use App\Repository\PublicationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
@@ -21,6 +22,12 @@ use ApiPlatform\Metadata\Put;
         new Put(),
         new Patch(),
         new Delete(),
+    ],
+    normalizationContext: [
+        'groups' => ['publication:read'],
+    ],
+    denormalizationContext: [
+        'groups' => ['publication:write'],
     ]
 )]
 class Publication
@@ -28,36 +35,47 @@ class Publication
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['publication:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['publication:read', 'publication:write'])]
     private ?string $title = null;
 
     #[ORM\Column(length: 500)]
+    #[Groups(['publication:read', 'publication:write'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['publication:read', 'publication:write'])]
     private ?string $country = null;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['publication:read', 'publication:write'])]
     private ?int $budget = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['publication:read', 'publication:write'])]
     private ?string $bagTips = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['publication:read', 'publication:write'])]
     private ?string $travelType = null;
 
     #[ORM\Column(length: 800)]
+    #[Groups(['publication:read', 'publication:write'])]
     private ?string $picture = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['publication:read', 'publication:write'])]
     private ?string $travelPartner = null;
 
     #[ORM\Column]
+    #[Groups(['publication:read', 'publication:write'])]
     private ?\DateTimeImmutable $createdAt;
 
     #[ORM\Column(nullable: true)]
+    #[Groups(['publication:read', 'publication:write'])]
     private ?\DateTimeImmutable $modifiedAt = null;
 
     public function __construct()
