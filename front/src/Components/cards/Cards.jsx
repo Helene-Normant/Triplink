@@ -1,7 +1,9 @@
 import "./cards.css";
 import IMG1 from "../../assets/card.png";
 import profil from "../../assets/profil.png";
+import { useState } from "react";
 import { IoCameraSharp, IoHeartSharp, IoLocationSharp } from "react-icons/io5";
+import ModalProfil from "./ModalProfil/ModalProfil";
 
 const data = [
   {
@@ -144,6 +146,7 @@ const data = [
 ];
 
 function Cards() {
+  const [openModalProfil, setOpenModalProfil] = useState(false);
   return (
     <section id="travels">
       <div className="container_travel-cards">
@@ -155,8 +158,6 @@ function Cards() {
             image,
             title,
             photo,
-            profil,
-            suivre,
             commentaire,
           }) => {
             return (
@@ -179,7 +180,9 @@ function Cards() {
                     className="travel-profil"
                     src={photo}
                     alt="profil"
+                    onClick={() => setOpenModalProfil(true)}
                   />
+                   <ModalProfil open={openModalProfil} onClose={() => setOpenModalProfil(false)} />
                   <hr className="line-profil" />
                   <h3>{commentaire}</h3>
                   <div className="profil-logo">  
@@ -195,5 +198,4 @@ function Cards() {
     </section>
   );
 }
-
 export default Cards;
