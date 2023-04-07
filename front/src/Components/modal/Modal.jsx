@@ -1,7 +1,7 @@
 import "./modal.css";
 import { Link } from "react-router-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
-import Input from "../../input/Input";
+import Input from "../input/Input";
 
 const Modal = ({ open, onClose }) => {
   if (!open) return null;

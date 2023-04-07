@@ -1,0 +1,31 @@
+.button {
+    width: max-content;
+    display: inline-block;
+    padding: 0.49rem 1rem;
+    text-align: center;
+    width: 135px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 13px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.button-dark {
+    color: var(--color-bg);
+    background-color: var(--color-bg-btn-dark);
+}
+
+.button-dark:hover {
+    background-color: #1F545B;
+}
+
+.button-light {
+    color: var(--color-font-dark);
+    background-color: var(--color-bg-btn-light);
+}
+
+.button-light:hover {
+    background-color: #BFA694;
+}
