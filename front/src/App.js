@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import  Home  from './Pages /Home';
-import Inscription from './Pages /inscription/Inscription';
+import  Home  from './Pages/Home';
+import Inscription from './Pages/inscription/Inscription';
 
 function App() {
   return (
