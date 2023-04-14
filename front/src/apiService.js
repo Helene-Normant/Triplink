@@ -1,7 +1,7 @@
 const API_ROOT = process.env.REACT_APP_API_URL+'/api/';
 
 const requestResult = (response) => {
-    return (response.statusText === 'OK' || response.statusText === 'Created')  ? response.json().then((res) => res) : response;
+    return (response.statusText === 'OK' || response.statusText === 'Created' || response.ok)  ? response.json().then((res) => res) : response;
   }
 
 const headers = new Headers({
