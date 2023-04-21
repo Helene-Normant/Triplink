@@ -16,7 +16,11 @@ use ApiPlatform\Metadata\Put;
 #[ORM\Entity(repositoryClass: PublicationRepository::class)]
 #[ApiResource(
     operations: [
-        new Get(),
+        new Get(
+            normalizationContext: [
+                'groups' => ['publication:read'],
+            ],
+        ),
         new GetCollection(),
         new Post(),
         new Put(),
@@ -35,19 +39,19 @@ class Publication
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['publication:read'])]
+    #[Groups(['publication:read', 'user:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['publication:read', 'publication:write'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $title = null;
 
     #[ORM\Column(length: 500)]
-    #[Groups(['publication:read', 'publication:write'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['publication:read', 'publication:write'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $country = null;
 
     #[ORM\Column(nullable: true)]
@@ -59,11 +63,11 @@ class Publication
     private ?string $bagTips = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['publication:read', 'publication:write'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $travelType = null;
 
     #[ORM\Column(length: 800)]
-    #[Groups(['publication:read', 'publication:write'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $picture = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -77,6 +81,11 @@ class Publication
     #[ORM\Column(nullable: true)]
     #[Groups(['publication:read', 'publication:write'])]
     private ?\DateTimeImmutable $modifiedAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'publications')]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['publication:read', 'publication:write'])]
+    private ?User $traveler = null;
 
     public function __construct()
     {
@@ -211,6 +220,18 @@ class Publication
     public function setModifiedAt(?\DateTimeImmutable $modifiedAt): self
     {
         $this->modifiedAt = $modifiedAt;
+
+        return $this;
+    }
+
+    public function getTraveler(): ?User
+    {
+        return $this->traveler;
+    }
+
+    public function setTraveler(?User $traveler): self
+    {
+        $this->traveler = $traveler;
 
         return $this;
     }

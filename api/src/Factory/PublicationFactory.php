@@ -54,6 +54,7 @@ final class PublicationFactory extends ModelFactory
             'picture' => "https://source.unsplash.com/random/900×700/?travel",
             'title' => self::faker()->sentence(),
             'travelType' => self::faker()->word(),
+            'traveler' => UserFactory::new(),
         ];
     }
 
