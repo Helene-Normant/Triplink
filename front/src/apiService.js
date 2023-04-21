@@ -37,8 +37,14 @@ const requests = {
     post: async (body) => await requests.post("publications", body),
   }
 
+  const Login = {
+    get: async () => await requests.get("login"),
+    post: async (body) => await requests.post("login", body),
+  }
+
 export default { 
     API_ROOT,
+    Login,
     Publications,
     headers,
     requests
