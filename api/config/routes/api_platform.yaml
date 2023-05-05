@@ -2,3 +2,13 @@ api_platform:
     resource: .
     type: api_platform
     prefix: /api
+
+app_security_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+    methods: ['POST']
+    defaults:
+        _api_resource_class: 'App\Entity\User'
+        _api_item_operation_name: 'login'
+    requirements:
+        _format: 'json'
