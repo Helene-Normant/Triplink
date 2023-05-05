@@ -85,7 +85,7 @@ class Publication
     #[ORM\ManyToOne(inversedBy: 'publications')]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(['publication:read', 'publication:write'])]
-    private ?User $traveler = null;
+    private ?User $traveler;
 
     public function __construct()
     {
