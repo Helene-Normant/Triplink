@@ -2,36 +2,35 @@ import React from "react";
 import { IoCameraSharp, IoHeartSharp, IoLocationSharp } from "react-icons/io5";
 
 type CardProps = {
- card: string;
  id: number;
- spot: string;
- image: string;
+ country: string;
+ picture: string;
  title: String;
- photo: string;
- profil: string;
+ travelerPicture: string;
+ travelerUsername: string;
 };
 
-const Card = ({ card, id, spot, image, title, photo, profil }: CardProps) => {
+const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }: CardProps) => {
   return (
     <>
-      <article key={id} className={card}>
+      <article key={id}>
         <div className="card-title">
           <h2>{title}</h2>
           <h3 className="card-localisation">
-            {spot} < IoLocationSharp />
+            {country} < IoLocationSharp />
           </h3>
         </div>
         <div className="card_travel-image">
           <img
             className="travel-image"
-            src={image}
+            src={picture}
             alt="voyage"
           />
         </div>
         <div className="card_travel-profil">
           <img
             className="travel-profil"
-            src={photo}
+            src={travelerPicture}
             alt="profil"
           />
           <hr className="line-profil" />
