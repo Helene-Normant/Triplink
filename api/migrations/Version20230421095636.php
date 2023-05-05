@@ -14,7 +14,7 @@ final class Version20230421095636 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Create relation OneToMany between User and Publication';
     }
 
     public function up(Schema $schema): void
