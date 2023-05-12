@@ -1,162 +1,65 @@
 import React from "react";
+import { useState, useEffect } from 'react';
 import "./cards.css";
+import apiService from "../../apiService.js";
 import IMG1 from "../../assets/card.png";
 import profil from "../../assets/profil.png";
 import Card from "../card/Card";
 
-const card = [
-  {
-    card: "travel_1",
-    id: 1,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
 
-  {
-    card: "travel_2",
-    id: 2,
-    spot: "Ibiza",
-    image: IMG1,
-    title: "Mon voyage à Ibiza",
-    photo: profil,
-    profil: "Lina007",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
+type Traveler = {
+  id: number;
+  username : string;
+  picture : string;
+}
 
-  {
-    card: "travel_3",
-    id: 3,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
-
-  {
-    card: "travel_4",
-    id: 4,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
-  {
-    card: "travel_5",
-    id: 5,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
-  {
-    card: "travel_6",
-    id: 6,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
-
-  {
-    card: "travel_7",
-    id: 7,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
-  {
-    card: "travel_8",
-    id: 8,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
-  {
-    card: "travel_9",
-    id: 9,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
-  {
-    card: "travel_10",
-    id: 10,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
-  {
-    card: "travel_11",
-    id: 11,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
-  {
-    card: "travel_12",
-    id: 12,
-    spot: "Tahiti",
-    image: IMG1,
-    title: "Mon voyage à Tahiti",
-    photo: profil,
-    profil: "Maya005",
-    // suivre: "Suivre",
-    // commentaire: "Commentaires",
-  },
-];
+type CardsProps = {
+  id: number;
+  country: string;
+  picture: string;
+  title: string;
+  photo: string;
+  profil: string;
+  traveler: Traveler;
+ };
 
 const Cards = () => {
+  const [cards, setCards] = useState([]);
+  const [loading, setLoading] = useState(false);
+  
+  const publicationsApi = async () => {
+    try {
+      setLoading(true);
+      const cardsData = await apiService.Publications.get();
+      setCards(cardsData);
+      setLoading(false);
+   } catch (err) {
+     console.log(err);
+   } finally {
+     setLoading(false);
+   }
+  };
+
+  useEffect(() => {
+    publicationsApi();
+  }, []);
+
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
+
   return (
     <section id="travels">
       <div className="container_travel-cards">
-        {card.map(({card, id, spot, image, title, photo, profil}) => {
+        {cards.map(({ id, country, picture, title, traveler }: CardsProps) => {
           return (
             <Card
-              card={card}
               id={id}
-              spot={spot}
-              image={image}
+              country={country}
+              picture={picture}
               title={title}
-              photo={photo}
-              profil={profil}
+              travelerPicture={traveler.picture}
+              travelerUsername={traveler.username}
             />
           );
         })};
