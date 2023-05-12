@@ -50,7 +50,7 @@ const Inscription = () => {
           <hr className="line-buttons" />
             <Button onClick={handleClick2} className="dark" children="S'inscrire" />
         </div>
-        <Link to='/'><img className="logo-triplink" src={logo} alt={"Logo Triplink"} /></Link>
+        <Link to='/'><img className="logo-triplink-inscription" src={logo} alt={"Logo Triplink"} /></Link>
       </div>
     </section>
   )

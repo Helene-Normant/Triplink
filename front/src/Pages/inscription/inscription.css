@@ -3,14 +3,12 @@
   flex-direction: column;
   text-align: center;
   height: 800px;
-  /* border: 1px solid red;  */
   justify-content: space-between;
 }
 
 .container-top {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid yellow;  */
 }
 
 .main-title {
@@ -34,7 +32,6 @@
   gap: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
-  /* border: 1px solid green; */
 }
 
 .first-line {
@@ -53,7 +50,6 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  /* border: 1px solid purple; */
 }
 
 input[type="checkbox"] {
@@ -68,7 +64,6 @@ input[type="checkbox"] {
 .container-bottom {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid blue;  */
 }
 
 .buttons {
@@ -86,6 +81,6 @@ input[type="checkbox"] {
   transform: rotate(90deg);
 }
 
-.logo-triplink {
-  width: 125px;
+.logo-triplink-inscription {
+  width: 8%;
 }

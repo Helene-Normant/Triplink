@@ -49,7 +49,7 @@ const Cards = () => {
   }
 
   return (
-    <section id="travels">
+    <section className="card-wrapper" id="travels">
       <div className="container_travel-cards">
         {cards.map(({ id, country, picture, title, traveler }: CardsProps) => {
           return (
@@ -62,10 +62,10 @@ const Cards = () => {
               travelerUsername={traveler.username}
             />
           );
-        })};
+        })}
       </div>
     </section>
-  );
+  )
 };
 
 export default Cards;

@@ -15,10 +15,14 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
     <>
       <article key={id}>
         <div className="card-title">
+        <div className="card-description">
           <h2>{title}</h2>
-          <h3 className="card-localisation">
+          </div>
+          <div className="card-localisation">
+          <h3>
             {country} < IoLocationSharp />
           </h3>
+          </div>
         </div>
         <div className="card_travel-image">
           <img
@@ -42,7 +46,7 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
         </div>
       </article>
     </>
-  );
-};
+  )
+}
   
 export default Card;

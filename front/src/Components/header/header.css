@@ -4,6 +4,8 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+    margin-right: 70px;
+    margin-left: 70px;
 }
 
 .logo-header {
@@ -38,42 +40,15 @@
   transform: rotate(90deg);
 }
 
-/* For mobile phones: */
-@media (max-width: 844px) {
-    .main-title {
-      width: 200px;
-      font-size: 35px;
-      text-align: left;
-      cursor: none;
-    }
+/* For desktop */
+@media (min-width : 1824px) {
+  
+  .logo-triplink {
+    width: 50%;
+  }
 
-    .btn-light {
-      text-align: center;
-    }
+  .main-title {
+    font-size: 58px;
+  }  
 
-    .line-buttons {
-      display: none;
-    }
-
-    .btn-dark {
-      display: none;
-    }
-
-    .logo-triplink {
-      display: none;
-    }
-};
-
-/* @media only screen and (max-width: 1180px) {   
-    .line-buttons {
-      display: none;
-    }
-
-    .btn-dark {
-      display: none;
-    }
-
-    .logo-triplink {
-      display: none;
-    }
-}; */
+}

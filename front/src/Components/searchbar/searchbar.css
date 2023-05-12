@@ -55,3 +55,19 @@
    margin-top: 10px;
 }
 
+/* For desktop */
+@media (min-width : 1824px) {
+   
+    .search-bar1 {
+        width: 260px;
+    }
+
+    .search-bar2 {
+        width: 260px;
+    }
+
+    .search-bar3 {
+        width: 260px;
+    }
+}
+
