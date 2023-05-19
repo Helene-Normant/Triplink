@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Symfony\Component\Serializer\Annotation\Groups;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use App\Repository\PublicationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
@@ -86,6 +88,10 @@ class Publication
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(['publication:read', 'publication:write'])]
     private ?User $traveler;
+
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy:'likedPublications')]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
+    private ArrayCollection|Collection $userWhoLiked;
 
     public function __construct()
     {
@@ -233,6 +239,37 @@ class Publication
     {
         $this->traveler = $traveler;
 
+        return $this;
+    }
+
+    public function getUserWhoLiked(): Collection
+    {
+        return $this->userWhoLiked;
+    }
+
+    public function setUserWhoLiked(Collection $userWhoLiked): self
+    {
+        $this->userWhoLiked = $userWhoLiked;
+
+        return $this;
+    }
+
+    public function addUserWhoLiked(User $user):self
+    {
+        if(!$this->userWhoLiked->contains($user)) {
+            $this->userWhoLiked[] = $user;
+            $user->addLikedPublication($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserWhoLiked(User $user): self 
+    {
+        if($this->userWhoLiked->removeElement($user)) {
+            $user->removeLikedPublication($this);
+        }
+        
         return $this;
     }
 }
