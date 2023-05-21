@@ -1,0 +1,60 @@
+.button {
+  width: max-content;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 13px;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.button-dark {
+  color: var(--color-bg);
+  background-color: var(--color-bg-btn-dark);
+  padding: 0.49rem 1rem;
+  width: 135px;
+  height: 40px;
+  border-radius: 10px;
+
+}
+
+.button-dark:hover {
+  background-color: #1F545B;
+}
+
+.button-dark-small {
+  color: var(--color-bg);
+  background-color: var(--color-bg-btn-dark);
+  width: 85px;
+  height: 22px;
+  border-radius: 5px;
+}
+
+.button-dark-small:hover {
+  background-color: #1F545B;
+}
+
+.button-light {
+  color: var(--color-font-dark);
+  background-color: var(--color-bg-btn-light);
+  padding: 0.49rem 1rem;
+  width: 135px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.button-light:hover {
+  background-color: #BFA694;
+}
+
+.button-light-small {
+  color: var(--color-font-dark);
+  background-color: var(--color-bg-btn-light);
+  width: 85px;
+  height: 22px;
+  border-radius: 5px;
+}
+
+.button-light-small:hover {
+  background-color: #BFA694;
+}

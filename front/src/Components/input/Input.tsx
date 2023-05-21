@@ -1,7 +1,14 @@
 import React from 'react';
 import './input.css';
 
-const Input = ({ className, type, placeholder, size }) => {
+type InputProps = {
+  className: 'small' | 'large' | 'input input--small' | 'input input--large';
+  type: 'text' | 'checkbox' | 'date';
+  placeholder: string;
+  size: 'small' | 'large';
+};
+
+const Input = ({ className, type, placeholder, size }: InputProps) => {
   let inputClass = 'input';
   if (size === 'small') {
     inputClass += ' input--small';

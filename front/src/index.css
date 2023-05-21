@@ -50,38 +50,5 @@ h3 {
   font-family: 'Montserrat Alternates', sans-serif;
 }
 
-.btn-dark {
-  width: max-content;
-  display: inline-block;
-  color : var(--color-bg);
-  background-color: var(--color-bg-btn-dark);
-  padding: 0.49rem 1rem;
-  text-align: center;
-  width: 135px;
-  height: 40px;
-  border-radius: 10px;
-  cursor: pointer;
-}
 
-.btn-dark:hover {
-  background-color: #1F545B;
-}
-
-.btn-light {
-  width: max-content;
-  display: inline-block;
-  color : var(--color-font-dark);
-  background-color: var(--color-bg-btn-light);
-  padding: 0.49rem 1rem;
-  text-align: center;
-  width: 135px;
-  height: 40px;
-  border-radius: 10px;
-  cursor: pointer;
-  border-color: transparent;
-}
-
-.btn-light:hover {
-background-color: #BFA694;
-}
 

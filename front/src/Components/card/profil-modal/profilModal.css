@@ -1,0 +1,53 @@
+.modal-profil-container {
+  z-index: 1;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 182px;
+  height: 150px;
+  left: 50%;
+  top: 50%;
+  background-color: var(--color-bg-btn-light);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.10);
+  border-radius: 10px;
+  padding : 10px;
+}
+
+.modal-title-profil {
+  display: flex;
+  text-align: center;
+  gap: 0 10px; 
+}
+
+.img-modal-profil {
+  width: 44px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.title-profil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.modal-data-title-profil {
+  display: flex;
+  justify-content: center;
+  gap: 17px;
+  margin-top: 8px;
+}
+
+.modal-data-profil {
+  display: flex;
+  justify-content: center;
+  gap: 73px;
+}
+
+.modal-profil-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}

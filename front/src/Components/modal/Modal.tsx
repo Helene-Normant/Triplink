@@ -1,9 +1,15 @@
+import React from "react";
 import "./modal.css";
 import { Link } from "react-router-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
-import Input from "../../input/Input";
+import Input from "../input/Input";
 
-const Modal = ({ open, onClose }) => {
+type ModalProps = {
+  open: boolean;
+  onClose: () => void;
+};
+
+const Modal = ({ open, onClose }: ModalProps) => {
   if (!open) return null;
   return (
     <div className="overlay">
@@ -19,10 +25,10 @@ const Modal = ({ open, onClose }) => {
         <h3 className="subtitle-modal">J'ai un compte</h3>
         <form className="form1">
           <div className='login'>
-            <Input type="text" placeholder="Adresse email" size="large"/>
+            <Input className='input input--large' type="text" placeholder="Adresse email" size="large"/>
           </div>
           <div className='login'>
-            <Input type="text" placeholder="Mot de passe" size="large"/>
+            <Input className='input input--large' type="text" placeholder="Mot de passe" size="large"/>
           </div>
         </form>   
         <p className="lien-modal1">mot de passe oublié</p>
