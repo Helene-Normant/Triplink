@@ -90,8 +90,8 @@ class Publication
     private ?User $traveler;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy:'likedPublications')]
-    #[Groups(['publication:read', 'publication:write', 'user:read'])]
-    private ArrayCollection|Collection $userWhoLiked;
+    #[Groups(['publication:read', 'publication:write'])]
+    private Collection $userWhoLiked;
 
     public function __construct()
     {

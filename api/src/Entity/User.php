@@ -100,8 +100,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinTable(name:'likes')]
     #[ORM\JoinColumn(name:'userId', referencedColumnName:'id')]
     #[ORM\InverseJoinColumn(name:'publicationId', referencedColumnName:'id')]
-    #[Groups(['user:read', 'user:create', 'user:update', 'publication:read'])] 
-    private ArrayCollection|Collection $likedPublications;
+    #[Groups(['user:read', 'user:create', 'user:update'])] 
+    private Collection $likedPublications;
 
     public function __construct()
     {
