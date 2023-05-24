@@ -13,15 +13,15 @@ const ProfilModal = ({ open, onClose }) => {
         <h2 className="title-profil">Name</h2>
       </div>
       <div className="modal-data-title-profil">
-        <p>Publications</p>
-        <p>Followers</p>
+        <h3>Publications</h3>
+        <h3>Followers</h3>
       </div>
       <div className="modal-data-profil">
-        <p>86</p>
-        <p>25</p>
+        <h3>86</h3>
+        <h3>25</h3>
       </div>
       <div className="modal-profil-button">
-        <Button className="dark" size='small' children="Suivre" />
+        <Button className="dark-small" children="Suivre" />
       </div>
     </div>
   );

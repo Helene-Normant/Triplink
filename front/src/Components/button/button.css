@@ -22,7 +22,7 @@
   background-color: #1F545B;
 }
 
-/* .button-dark-small {
+.button-dark-small {
   color: var(--color-bg);
   background-color: var(--color-bg-btn-dark);
   width: 5.313em;
@@ -32,7 +32,7 @@
 
 .button-dark-small:hover {
   background-color: #1F545B;
-} */
+}
 
 .button-light {
   color: var(--color-font-dark);
@@ -47,7 +47,7 @@
   background-color: #BFA694;
 }
 
-/* .button-light-small {
+.button-light-small {
   color: var(--color-font-dark);
   background-color: var(--color-bg-btn-light);
   width: 5.313em;
@@ -57,4 +57,4 @@
 
 .button-light-small:hover {
   background-color: #BFA694;
-} */
+}
