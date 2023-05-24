@@ -2,15 +2,13 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import "./cards.css";
 import apiService from "../../apiService.js";
-import IMG1 from "../../assets/card.png";
-import profil from "../../assets/profil.png";
 import Card from "../card/Card";
 
 
 type Traveler = {
   id: number;
-  username : string;
-  picture : string;
+  username: string;
+  picture: string;
 }
 
 type CardsProps = {
@@ -21,23 +19,23 @@ type CardsProps = {
   photo: string;
   profil: string;
   traveler: Traveler;
- };
+};
 
 const Cards = () => {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+
   const publicationsApi = async () => {
     try {
       setLoading(true);
       const cardsData = await apiService.Publications.get();
       setCards(cardsData);
       setLoading(false);
-   } catch (err) {
-     console.log(err);
-   } finally {
-     setLoading(false);
-   }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {

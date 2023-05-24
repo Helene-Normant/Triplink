@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoCameraSharp, IoHeartSharp, IoLocationSharp } from "react-icons/io5";
+import './card.css';
+import ProfilModal from "./profil-modal/ProfilModal";
 
 type CardProps = {
- id: number;
- country: string;
- picture: string;
- title: String;
- travelerPicture: string;
- travelerUsername: string;
+  id: number;
+  country: string;
+  picture: string;
+  title: String;
+  travelerPicture: string;
+  travelerUsername: string;
 };
 
 const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }: CardProps) => {
+  const [openModalProfil, setOpenModalProfil] = useState(false);
+  const handleCLick = () => setOpenModalProfil((previous) => {
+    return !previous;
+  });
+
   return (
     <>
-      <article key={id}>
+      <article key={id} className="card">
         <div className="card-title">
         <div className="card-description">
           <h2>{title}</h2>
@@ -37,7 +44,9 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
             className="travel-profil"
             src={travelerPicture}
             alt="profil"
+            onClick={handleCLick}
           />
+          <ProfilModal open={openModalProfil} onClose={() => setOpenModalProfil(false)} />
           <hr className="line-profil" />
           <h3>commentaire</h3>
           </div>
@@ -49,6 +58,7 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
       </article>
     </>
   )
-}
+};
   
 export default Card;
+

@@ -47,7 +47,8 @@
 .travel-profil {
     width: 1.563em;
     height: 1.563em;
-    border-radius: 50px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .line-profil {

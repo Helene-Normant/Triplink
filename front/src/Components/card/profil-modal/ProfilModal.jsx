@@ -4,10 +4,10 @@ import "./profilModal.css";
 import profil from '../../../assets/profil.png';
 import Button from "../../button/Button";
 
-const ProfilModal = ({ show }) => {
-  if (!show) return null;
+const ProfilModal = ({ open, onClose }) => {
+  if (!open) return null;
   return (
-    <div className="modal-profil-container">
+    <div className="modal-profil-container" onClick={onClose}>
       <div className="modal-title-profil">
         <img className="img-modal-profil" src={profil} alt="profil" />
         <h2 className="title-profil">Name</h2>
