@@ -20,7 +20,7 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
 
   return (
     <>
-      <article key={id}>
+      <article key={id} className="card">
         <div className="card-title">
           <h2>{title}</h2>
           <h3 className="card-localisation">
