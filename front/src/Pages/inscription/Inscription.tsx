@@ -41,7 +41,7 @@ const Inscription = () => {
         </form> 
         <div className='conditions-container'>
           <input type="checkbox" />
-          <p className="conditions">J’ai lu et j’accepte les conditions générales d’utilisation</p>
+          <h3 className="conditions">J’ai lu et j’accepte les conditions générales d’utilisation</h3>
         </div>
       </div>
       <div className='container-bottom'>
@@ -50,7 +50,7 @@ const Inscription = () => {
           <hr className="line-buttons" />
             <Button onClick={handleClick2} className="dark" children="S'inscrire" />
         </div>
-        <Link to='/'><img className="logo-triplink" src={logo} alt={"Logo Triplink"} /></Link>
+        <Link to='/'><img className="logo-triplink-inscription" src={logo} alt={"Logo Triplink"} /></Link>
       </div>
     </section>
   )

@@ -24,29 +24,28 @@ body {
   color:var(--color-font-dark);
   line-height: 1.7;
   font-weight: 400;
-  font-size: 13px;
-  margin-left: 70px;
-  margin-top: 15px;
-  margin-right: 70px;
+  margin-top: 0.938em;
+  margin-right: 4.375em;
+  margin-left: 4.375em;
 }
 
 
 h1 {
 font-weight: 300;
 font-family: 'Montserrat Alternates', sans-serif;
-font-size: 20px;
+font-size: 1.25em;
 color: var(--color-font-medium);
 }
 
 h2 {
   font-weight: 500;
-  font-size: 16px;
+  font-size: 1em;
   font-family: 'Montserrat Alternates', sans-serif;
 }
 
 h3 {
   font-weight: 400;
-  font-size: 13px;
+  font-size: 0.813em;
   font-family: 'Montserrat Alternates', sans-serif;
 }
 

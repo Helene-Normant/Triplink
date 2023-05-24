@@ -3,6 +3,7 @@ import "./modal.css";
 import { Link } from "react-router-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Input from "../input/Input";
+import Button from '../../Components/button/Button';
 
 type ModalProps = {
   open: boolean;
@@ -31,12 +32,12 @@ const Modal = ({ open, onClose }: ModalProps) => {
             <Input className='input input--large' type="text" placeholder="Mot de passe" size="large"/>
           </div>
         </form>   
-        <p className="lien-modal1">mot de passe oublié</p>
+        <h3 className="lien-modal1">mot de passe oublié</h3>
       </div>
       <div className="modal-btn">
-        <h3 className="btn-light">Se connecter</h3>
-        <p className="lien-modal2">Pas encore de compte ?</p>
-      <Link to='/inscription'><p className="lien-modal3">Créer un compte en cliquant ici </p></Link>
+      <Button className="light" children="Se connecter" />
+        <h3 className="lien-modal2"> Pas encore de compte ? </h3>
+      <Link to='/inscription'><h3 className="lien-modal3">Créer un compte en cliquant ici </h3></Link>
       </div>
     </div>
     </div>

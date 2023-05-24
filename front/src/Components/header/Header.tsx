@@ -34,7 +34,7 @@ const Header = () => {
       />
       <Modal open={openModal} onClose={() => setOpenModal(false)} />
       <hr className="line-buttons" />
-        <Button onClick={handleClick} className="dark" children="S'incrire" />
+        <Button onClick={handleClick} className="dark" children="S'inscrire" />
     </div>
     </div>
   );
