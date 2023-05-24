@@ -8,12 +8,12 @@
     margin-left: 4.375em;
 }
 
-.logo-header {
-    width: 18.75em;
-}
+/* .logo-header {
+    width: 18.75rem;
+} */
 
 .logo-triplink {
-  width: 40%;
+  width: 8rem;
   cursor: pointer;
 }
 
@@ -40,15 +40,15 @@
   transform: rotate(90deg);
 }
 
-/* For desktop */
+/*For desktop */
 @media (min-width : 114em) {
   
   .logo-triplink {
-    width: 50%;
+    width: 9rem;
   }
 
   .main-title {
     font-size: 3.625em;
   }  
 
-}
+}  
