@@ -4,12 +4,12 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin-right: 70px;
-    margin-left: 70px;
+    margin-right: 4.375em;
+    margin-left: 4.375em;
 }
 
 .logo-header {
-    width: 300px;
+    width: 18.75em;
 }
 
 .logo-triplink {
@@ -18,10 +18,10 @@
 }
 
 .main-title {
-  width: 300px;
+  width: 18.75em;
   text-align: center;
   font-family: 'Solitreo', cursive;
-  font-size: 48px;
+  font-size: 3em;
   color: var(--color-bg-btn-dark);
   cursor: pointer;
 }
@@ -32,23 +32,23 @@
 }
 
 .line-buttons {
-  margin-top: 20px;
-  width: 48px;
-  height: 0px;
-  left: 1209px;
+  margin-top: 1.25em;
+  width: 3em;
+  height: 0;
+  left: 75.563em;
   border: 0.75px solid var(--color-font-medium);
   transform: rotate(90deg);
 }
 
 /* For desktop */
-@media (min-width : 1824px) {
+@media (min-width : 114em) {
   
   .logo-triplink {
     width: 50%;
   }
 
   .main-title {
-    font-size: 58px;
+    font-size: 3.625em;
   }  
 
 }

@@ -41,7 +41,7 @@ const Inscription = () => {
         </form> 
         <div className='conditions-container'>
           <input type="checkbox" />
-          <p className="conditions">J’ai lu et j’accepte les conditions générales d’utilisation</p>
+          <h3 className="conditions">J’ai lu et j’accepte les conditions générales d’utilisation</h3>
         </div>
       </div>
       <div className='container-bottom'>

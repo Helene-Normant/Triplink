@@ -32,6 +32,7 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
           />
         </div>
         <div className="card_travel-profil">
+          <div className="photo-comment-line-profil">
           <img
             className="travel-profil"
             src={travelerPicture}
@@ -39,6 +40,7 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
           />
           <hr className="line-profil" />
           <h3>commentaire</h3>
+          </div>
           <div className="profil-logo">  
           < IoCameraSharp />
           < IoHeartSharp />
