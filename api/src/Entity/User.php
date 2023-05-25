@@ -96,6 +96,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups(['user:read'])] 
     private Collection $publications;
 
+    #[ORM\ManyToMany(inversedBy: 'userWhoLiked', targetEntity: Publication::class)]
+    #[ORM\JoinTable(name:'likes')]
+    #[ORM\JoinColumn(name:'userId', referencedColumnName:'id')]
+    #[ORM\InverseJoinColumn(name:'publicationId', referencedColumnName:'id')]
+    #[Groups(['user:read', 'user:create', 'user:update'])] 
+    private Collection $likedPublications;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -295,6 +302,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $publication->setTraveler(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLikedPublications(): Collection
+    {
+        return $this->likedPublications;
+    }
+
+    public function setLikedPublications(Collection $likedPublications): self
+    {
+        $this->likedPublications = $likedPublications;
+
+        return $this;
+    }
+
+    public function addLikedPublication(Publication $publication): self
+    {
+       if(!$this->likedPublications->contains($publication)) {
+        $this->likedPublications[] = $publication;
+        $publication->addUserWhoLiked($this);
+       }
+
+       return $this;
+    }
+
+    public function removeLikedPublication(Publication $publication): self
+    {
+        if($this->likedPublications->removeElement($publication)) {
+            $publication->removeUserWhoLiked($this);
+    }
 
         return $this;
     }
