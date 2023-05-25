@@ -12,3 +12,13 @@ app_security_login:
         _api_item_operation_name: 'login'
     requirements:
         _format: 'json'
+
+app_security_logout:
+    path: /api/logout
+    controller: App\Controller\SecurityController::logout
+    methods: ['POST']
+    defaults:
+        _api_resource_class: 'App\Entity\User'
+        _api_item_operation_name: 'logout'
+    requirements:
+        _format: 'json'

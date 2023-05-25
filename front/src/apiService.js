@@ -38,13 +38,17 @@ const requests = {
   }
 
   const Login = {
-    get: async () => await requests.get("login"),
     post: async (body) => await requests.post("login", body),
+  }
+
+  const Logout = {
+    post: async () => await requests.post("logout"),
   }
 
 export default { 
     API_ROOT,
     Login,
+    Logout, 
     Publications,
     headers,
     requests
