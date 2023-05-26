@@ -20,15 +20,12 @@ security:
                 check_path: auth
                 username_path: email
                 password_path: password
-            logout:
-                path: app_logout
-                target: /
-            access_token:
-                token_handler: App\Security\ApiTokenHandler
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
             jwt: ~
-
+            logout:
+                path: app_logout
+                target: /
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
