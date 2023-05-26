@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CountryRepository::class)]
 #[ApiResource (
+    paginationEnabled: false,
     operations: [
         new Get(
             normalizationContext: [
