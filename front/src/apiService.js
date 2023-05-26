@@ -5,7 +5,9 @@ const requestResult = (response) => {
   }
 
 const headers = new Headers({
-    "Content-Type": "application/json"})
+    "Content-Type": "application/json",
+    "Authorization": "Bearer TOKEN"
+  })
   
 const requests = {
     get: async (endpoint) =>
