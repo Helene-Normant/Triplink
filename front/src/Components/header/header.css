@@ -4,13 +4,12 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    margin-right: 4.375em;
-    margin-left: 4.375em;
+    width: 100%;
 }
 
-/* .logo-header {
-    width: 18.75rem;
-} */
+.logo-header {
+   width: 19.875em;
+}
 
 .logo-triplink {
   width: 8rem;
@@ -18,7 +17,6 @@
 }
 
 .main-title {
-  width: 18.75em;
   text-align: center;
   font-family: 'Solitreo', cursive;
   font-size: 3em;
@@ -40,8 +38,8 @@
   transform: rotate(90deg);
 }
 
-/*For desktop */
-@media (min-width : 114em) {
+/* For desktop */
+/* @media (min-width : 114em) {
   
   .logo-triplink {
     width: 9rem;
@@ -51,4 +49,12 @@
     font-size: 3.625em;
   }  
 
+}   */
+
+/* For mobile */
+@media (max-width : 26.875em) {
+ 
+  .buttons {
+  display: none;
+  }
 }  

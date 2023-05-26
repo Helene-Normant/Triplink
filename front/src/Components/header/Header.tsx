@@ -26,7 +26,7 @@ const Header = () => {
         <Link to="/">
           <h1 className="main-title">Triplink</h1>
         </Link>
-      <div className="buttons">
+    <div className="buttons">
       <Button
         className="light"
         onClick= {() => setOpenModal(true)}
