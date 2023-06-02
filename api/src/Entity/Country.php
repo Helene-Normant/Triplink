@@ -13,11 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource (
     paginationEnabled: false,
     operations: [
-        new Get(
-            normalizationContext: [
-                'groups' => ['country:read'],
-            ],
-        ),
+        new Get(),
         new GetCollection(),
     ],
     normalizationContext: [
