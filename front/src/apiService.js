@@ -44,12 +44,17 @@ const requests = {
   const Logout = {
     post: async () => await requests.post("logout"),
   }
+  
+  const Countries = { 
+    get: async () => await requests.get("countries"),
+  }
 
 export default { 
     API_ROOT,
     Login,
     Logout, 
     Publications,
+    Countries,
     headers,
     requests
 }
