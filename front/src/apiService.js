@@ -33,7 +33,7 @@ const requests = {
   };
 
   const Publications = {
-    get: async () => await requests.get("publications"),
+    getAll: async () => await requests.get("publications"),
     post: async (body) => await requests.post("publications", body),
   }
 
@@ -46,7 +46,15 @@ const requests = {
   }
   
   const Countries = { 
-    get: async () => await requests.get("countries"),
+    getAll: async () => await requests.get("countries"),
+  }
+
+  const Categories = { 
+    getAll: async () => await requests.get("categories"),
+  }
+
+  const TravelerPartners = { 
+    getAll: async () => await requests.get("traveler_partners"),
   }
 
 export default { 
@@ -56,5 +64,7 @@ export default {
     Publications,
     Countries,
     headers,
-    requests
+    requests,
+    Categories,
+    TravelerPartners
 }
