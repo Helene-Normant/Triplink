@@ -84,3 +84,81 @@ input[type="checkbox"] {
 .logo-triplink-inscription {
   width: 8%;
 }
+
+@media (max-width : 430px) { 
+  .container-inscription {
+    height: 100%;
+  }
+  
+  .main-title-inscription {
+    display: none;
+  }
+  
+  .welcome {
+    font-size: 2.125em;  
+  }
+  
+  .join-us {
+    margin-top: 0.5em;
+    font-size: 0.938em;  
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.938em;
+    margin-top: 0.938em;
+    margin-bottom: 0.938em;
+  }
+  
+  .first-line {
+    display: flex;
+    justify-content: center;
+    gap: 0.938em;
+  }
+  
+  .second-line {
+    display: flex;
+    justify-content: center;
+    gap: 0.938em;
+  }
+  
+  .conditions-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.625em;
+  }
+  
+  input[type="checkbox"] {
+    accent-color: var(--color-font-medium);
+  }
+  
+  .conditions {
+    font-size: 0.75em;
+    cursor: pointer;
+  }
+  
+  .container-bottom {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .buttons-inscription {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.875em;
+  }
+  
+  .line-buttons {
+    margin-top: 1.25em;
+    width: 3em;
+    height: 0;
+    left: 75.563em;   
+    border: 0.75px solid var(--color-font-medium);
+    transform: rotate(90deg);
+  }
+  
+  .logo-triplink-inscription {
+    width: 8%;
+  }
+}

@@ -56,8 +56,7 @@
 }
 
 /* For desktop */
-@media (min-width : 1824px) {
-   
+@media (min-width : 1824px) { 
     .search-bar1 {
         width: 260px;
     }

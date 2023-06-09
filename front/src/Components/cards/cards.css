@@ -64,3 +64,9 @@
     color: var(--color-bg-btn-dark);
 }
 
+@media (max-width : 26.875em) {
+    
+.container_travel-cards {
+    grid-template-columns: repeat(1, 1fr);
+}
+}

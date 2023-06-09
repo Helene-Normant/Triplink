@@ -1,0 +1,27 @@
+.header-mobile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-bg); 
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-modal {
+  position: absolute;
+  z-index: 1;
+}
+
+.line {
+  margin-top: 1.25em;
+  width: 3em;
+  height: 0;
+  left: 75.563em;   
+  border: 0.75px solid var(--color-font-medium);
+}

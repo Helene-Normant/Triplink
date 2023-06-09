@@ -8,11 +8,11 @@ import Header from '../Components/header/Header';
 const Home = () => {
   return (
     <section className='container-home'>
-        <Modal />
-        <Header />
-        <Searchbar />
-        <Cards />
-        <Footer />   
+      <Modal />
+      <Header />
+      <Searchbar />
+      <Cards />
+      <Footer />
     </section>
   )
 }

@@ -8,7 +8,7 @@
 }
 
 .logo-header {
-   width: 19.875em;
+  width: 19.875em;
 }
 
 .logo-triplink {
@@ -50,11 +50,3 @@
   }  
 
 }   */
-
-/* For mobile */
-@media (max-width : 26.875em) {
- 
-  .buttons {
-  display: none;
-  }
-}  
