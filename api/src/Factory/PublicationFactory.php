@@ -52,7 +52,7 @@ final class PublicationFactory extends ModelFactory
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
             'description' => self::faker()->paragraph(),
             'picture' => "https://source.unsplash.com/random/900×700/?travel",
-            'title' => self::faker()->sentence(),
+            'title' => self::faker()->sentence(3),
             'travelType' => self::faker()->word(),
             'traveler' => UserFactory::new(),
         ];

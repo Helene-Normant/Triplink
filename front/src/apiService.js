@@ -33,19 +33,38 @@ const requests = {
   };
 
   const Publications = {
-    get: async () => await requests.get("publications"),
+    getAll: async () => await requests.get("publications"),
     post: async (body) => await requests.post("publications", body),
   }
 
   const Login = {
-    get: async () => await requests.get("login"),
     post: async (body) => await requests.post("login", body),
+  }
+
+  const Logout = {
+    post: async () => await requests.post("logout"),
+  }
+  
+  const Countries = { 
+    getAll: async () => await requests.get("countries"),
+  }
+
+  const Categories = { 
+    getAll: async () => await requests.get("categories"),
+  }
+
+  const TravelerPartners = { 
+    getAll: async () => await requests.get("traveler_partners"),
   }
 
 export default { 
     API_ROOT,
     Login,
+    Logout, 
     Publications,
+    Countries,
     headers,
-    requests
+    requests,
+    Categories,
+    TravelerPartners
 }

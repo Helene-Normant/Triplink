@@ -2,12 +2,12 @@
   background: var(--color-bg);
   border: 1px solid var(--color-font-dark);
   border-radius: 10px;
-  width: 424px;
-  height: 53px;
+  width: 26.5rem;
+  height: 3.313rem;
   font-weight: 300;
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 20px;
-  padding-left: 15px;
+  font-size: 1.25rem;
+  padding-left: 0.938rem;
 }
 
 /* pseudo-selector */
@@ -16,9 +16,9 @@
 }
 
 .input--small {
-  width: 203px;
+  width: 12.688rem;
 }
 
 .input--large {
-  width: 424px;
+  width: 26.5rem;
 }
