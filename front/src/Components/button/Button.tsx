@@ -3,12 +3,13 @@ import './button.css';
 
 type ButtonProps = {
   className: 'dark' | 'light' | 'button button-dark' | 'button button-light';
+  role: string;
   children: string;
   onClick: () => void;
 }
 
 
-const Button = ({className, children, onClick }: ButtonProps) => {
+const Button = ({className, children, onClick, role }: ButtonProps) => {
     let buttonClass = 'button';
     if (className === 'dark') {
       buttonClass += ' button-dark';
@@ -23,6 +24,7 @@ const Button = ({className, children, onClick }: ButtonProps) => {
     className={buttonClass}
     onClick={onClick}
     children={children}
+    role={role}
     />
     )
 };

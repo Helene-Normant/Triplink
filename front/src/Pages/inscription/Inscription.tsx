@@ -15,7 +15,7 @@ const Inscription = () => {
   }  
 
   return (
-    <section className='container-inscription'>
+    <section className='container-inscription' data-testid="inscription-page">
       <div className='container-top'>
         <Link to='/'><h1 className="main-title">Triplink</h1></Link>
         <p className='welcome'>Bienvenue !</p>
@@ -46,9 +46,9 @@ const Inscription = () => {
       </div>
       <div className='container-bottom'>
         <div className="buttons">
-            <Button onClick={handleClick} className="light" children="Annuler" />
+            <Button onClick={handleClick} className="light" children="Annuler" role="annule" />
           <hr className="line-buttons" />
-            <Button onClick={handleClick2} className="dark" children="S'inscrire" />
+            <Button onClick={handleClick2} className="dark" children="S'inscrire" role="inscrit" />
         </div>
         <Link to='/'><img className="logo-triplink" src={logo} alt={"Logo Triplink"} /></Link>
       </div>
