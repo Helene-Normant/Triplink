@@ -4,7 +4,7 @@ api_platform:
         jsonld: [ 'application/ld+json' ]
         html: [ 'text/html' ]
     swagger:
-        api_keys:
-            access_token:
+         api_keys:
+             JWT:
                 name: Authorization
                 type: header

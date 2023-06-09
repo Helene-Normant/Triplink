@@ -25,11 +25,11 @@ use ApiPlatform\Metadata\Put;
 #[ApiResource(
     operations: [
         new GetCollection(),
-        new Post(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'user:create']]),
+        new Post(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'user:create']], security: 'is_granted("PUBLIC_ACCESS")'),
         new Get(),
-        new Put(processor: UserPasswordHasher::class),
-        new Patch(processor: UserPasswordHasher::class),
-        new Delete(),
+        new Put(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
+        new Patch(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
+        new Delete(security: 'is_granted("ROLE_USER") or object.owner == user'),
     ],
     normalizationContext: ['groups' => ['user:read']],
     denormalizationContext: ['groups' => ['user:create', 'user:update']]
@@ -100,18 +100,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinTable(name:'likes')]
     #[ORM\JoinColumn(name:'userId', referencedColumnName:'id')]
     #[ORM\InverseJoinColumn(name:'publicationId', referencedColumnName:'id')]
-    #[Groups(['user:read', 'user:create', 'user:update'])] 
+    #[Groups(['user:read'])] 
     private Collection $likedPublications;
-
-    #[ORM\OneToMany(mappedBy: 'ownedBy', targetEntity: ApiToken::class)]
-    private Collection $apiTokens;
 
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
         $this->roles = ['ROLE_USER'];
         $this->publications = new ArrayCollection();
-        $this->apiTokens = new ArrayCollection();
     }
     
     public function getId(): ?int
@@ -337,36 +333,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         if($this->likedPublications->removeElement($publication)) {
             $publication->removeUserWhoLiked($this);
     }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, ApiToken>
-     */
-    public function getApiTokens(): Collection
-    {
-        return $this->apiTokens;
-    }
-
-    public function addApiToken(ApiToken $apiToken): self
-    {
-        if (!$this->apiTokens->contains($apiToken)) {
-            $this->apiTokens->add($apiToken);
-            $apiToken->setOwnedBy($this);
-        }
-
-        return $this;
-    }
-
-    public function removeApiToken(ApiToken $apiToken): self
-    {
-        if ($this->apiTokens->removeElement($apiToken)) {
-            // set the owning side to null (unless already changed)
-            if ($apiToken->getOwnedBy() === $this) {
-                $apiToken->setOwnedBy(null);
-            }
-        }
 
         return $this;
     }

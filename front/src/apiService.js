@@ -6,9 +6,8 @@ const requestResult = (response) => {
 
 const headers = new Headers({
     "Content-Type": "application/json",
-    "Authorization": "Bearer TOKEN"
   })
-  
+
 const requests = {
     get: async (endpoint) =>
       await fetch(`${API_ROOT}${endpoint}`, {
@@ -40,7 +39,8 @@ const requests = {
   }
 
   const Login = {
-    post: async (body) => await requests.post("login", body),
+    get: async () => await requests.get("auth"),
+    post: async (body) => await requests.post("auth", body),
   }
 
   const Logout = {
