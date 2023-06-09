@@ -52,6 +52,7 @@ const Cards = () => {
         {cards.map(({ id, country, picture, title, traveler }: CardsProps) => {
           return (
             <Card
+              key={id}
               id={id}
               country={country}
               picture={picture}
