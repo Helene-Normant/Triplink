@@ -19,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
     normalizationContext: [
         'groups' => ['country:read'],
     ]
-    )]
+)]
 
 class Country
 {

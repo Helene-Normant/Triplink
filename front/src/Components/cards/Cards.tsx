@@ -28,7 +28,7 @@ const Cards = () => {
   const publicationsApi = async () => {
     try {
       setLoading(true);
-      const cardsData = await apiService.Publications.get();
+      const cardsData = await apiService.Publications.getAll();
       setCards(cardsData);
       setLoading(false);
     } catch (err) {
