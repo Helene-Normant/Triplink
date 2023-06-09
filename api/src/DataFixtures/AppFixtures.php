@@ -19,10 +19,5 @@ class AppFixtures extends Fixture
                 'traveler' => UserFactory::random(),
             ];
        });
-       ApiTokenFactory::createMany(30, function() {
-            return [
-                'ownedBy' => UserFactory::random(),
-            ];
-       });
     }
 }
