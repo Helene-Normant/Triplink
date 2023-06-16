@@ -2,7 +2,7 @@ import React from "react";
 import "./header.css";
 import logo from "../../assets/Triplink_min.png";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, BrowserRouter as Router  } from "react-router-dom";
 import Button from "../button/Button";
 import Modal from "../modal/Modal";
 
@@ -31,10 +31,12 @@ const Header = () => {
         className="light"
         onClick= {() => setOpenModal(true)}
         children="Se connecter"
+        role= "login"
       />
       <Modal open={openModal} onClose={() => setOpenModal(false)} />
       <hr className="line-buttons" />
-        <Button onClick={handleClick} className="dark" children="S'inscrire" />
+        <Button onClick={handleClick} className="dark" children="S'incrire" role= "inscription" />
+
     </div>
     </div>
   );

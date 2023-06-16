@@ -5,8 +5,8 @@ type ButtonProps = {
   className: 'dark' | 'light' | 'button button-dark' | 'button button-light' | 'dark-small' | 'light-small' | 'button button-dark-small' | 'button button-light-small';
   children: string;
   onClick: () => void;
+  role: string;
 }
-
 
 const Button = ({ className, children, onClick }: ButtonProps) => {
   let buttonClass = 'button';
@@ -26,7 +26,9 @@ const Button = ({ className, children, onClick }: ButtonProps) => {
     <button
       className={buttonClass}
       onClick={onClick}
-      children={children}
+      children={children} 
+      role={role}
+
     />
   )
 };
