@@ -23,7 +23,7 @@ use ApiPlatform\Metadata\Put;
             ],
         ),
         new GetCollection(),
-        new Post(security: 'is_granted("PUBLIC_ACCESS")'),
+        new Post(security: 'is_granted("ROLE_USER")'),
         new Put(security: 'is_granted("ROLE_USER") or object.owner == user'),
         new Patch(security: 'is_granted("ROLE_USER") or object.owner == user'),
         new Delete(security: 'is_granted("ROLE_USER") or object.owner == user'),
@@ -89,7 +89,7 @@ class Publication
     private ?User $traveler;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy:'likedPublications')]
-    #[Groups(['publication:read', 'publication:write'])]
+    #[Groups(['publication:read'])]
     private Collection $userWhoLiked;
 
     public function __construct()

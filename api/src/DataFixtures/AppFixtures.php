@@ -2,8 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\ApiToken;
-use App\Factory\ApiTokenFactory;
 use App\Factory\PublicationFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
