@@ -43,7 +43,5 @@ final class Version20230602143415 extends AbstractMigration
     {
         $this->addSql('DROP TABLE category');
         $this->addSql('DROP TABLE traveler_partner');
-        $this->connection->executeQuery('TRUNCATE TABLE category');
-        $this->connection->executeQuery('TRUNCATE TABLE traveler_partner');
     }
 }
