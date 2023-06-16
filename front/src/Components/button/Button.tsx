@@ -8,7 +8,7 @@ type ButtonProps = {
   role: string;
 }
 
-const Button = ({ className, children, onClick }: ButtonProps) => {
+const Button = ({ className, children, role, onClick }: ButtonProps) => {
   let buttonClass = 'button';
   if (className === 'dark') {
     buttonClass += ' button-dark';
