@@ -19,16 +19,14 @@ const HeaderMobile = () => {
       <div className="logo-profil">
         <img className="profil-icon" src={IconProfil} alt={"Profil Icon"} onClick={openModal} />
       </div>
-      {isOpen &&
-        <HeaderMobileModal open={isOpen} onClose={() => setIsOpen(false)} />
-      }
+      <HeaderMobileModal open={isOpen} onClose={() => setIsOpen(false)} />
       <div className="logo-header-mobile">
         <Link to="/">
           <img className="logo-triplink-mobile" src={logo} alt={"Logo Triplink"} />
         </Link>
       </div>
       <Link to="/">
-        <h1 className="main-title">Triplink</h1>
+        <h1 className="main-title-modal">Triplink</h1>
       </Link>
     </div >
 

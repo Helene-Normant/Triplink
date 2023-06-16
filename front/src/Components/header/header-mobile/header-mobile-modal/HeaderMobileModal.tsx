@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../../button/Button";
-import { useNavigate } from "react-router-dom";
-// import Modal from "../../../modal/Modal";
+import { Link, useNavigate } from "react-router-dom";
 import "./headerMobileModal.css";
+import Modal from "../../../modal/Modal";
+import logo from '../../../../assets/Triplink_min.png'
 
 
 type HeaderMobileModalProps = {
@@ -12,7 +13,15 @@ type HeaderMobileModalProps = {
 
 const HeaderMobileModal = ({ open, onClose }: HeaderMobileModalProps) => {
   const [openModal, setOpenModal] = useState(false);
-  openModal ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto";
+
+  useEffect(() => {
+    const body = document.body;
+    if (open) {
+      body.classList.add('is-modal-open')
+    } else {
+      body.classList.remove('is-modal-open')
+    }
+  }, [open])
 
   const navigate = useNavigate();
 
@@ -21,19 +30,32 @@ const HeaderMobileModal = ({ open, onClose }: HeaderMobileModalProps) => {
   }
 
   if (!open) return null;
+
   return (
-    <div className="header-mobile-modal">
-      <div className="buttons-modal">
-        <Button
-          className="light"
-          onClick={() => setOpenModal(true)}
-          children="Se connecter"
-        />
-        {/* <Modal open={openModal} onClose={() => setOpenModal(false)} /> */}
-        <hr className="line" />
-        <Button onClick={handleClick} className="dark" children="S'inscrire" />
+    <>
+      <div className="header-mobile-modal">
+        <div onClick={onClose} className="close"></div>
+        <div className="container-logo-title">
+          <Link to="/">
+            <img className="logo-triplink-modal" src={logo} alt={"Logo Triplink"} />
+          </Link>
+          <h1 className="title-triplink-modal">Triplink</h1>
+        </div>
+        <div className="buttons-modal">
+          <Button
+            className="light"
+            onClick={() => setOpenModal(true)}
+            children="Se connecter"
+            role="login"
+          />
+          <Modal open={openModal} onClose={() => setOpenModal(false)} />
+          <div className="line-modal">
+            <hr className="line" />
+          </div>
+          <Button onClick={handleClick} className="dark" children="S'inscrire" role="inscription" />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -37,7 +37,7 @@ const Modal = ({ open, onClose }: ModalProps) => {
           <h3 className="lien-modal1">mot de passe oublié</h3>
         </div>
         <div className="modal-btn">
-          <Button onClick={handleClick} className="light" children="Se connecter" />
+          <Button onClick={handleClick} className="light" children="Se connecter" role="login" />
           <h3 className="lien-modal2"> Pas encore de compte ? </h3>
           <Link to='/inscription'><h3 className="lien-modal3">Créer un compte en cliquant ici </h3></Link>
         </div>

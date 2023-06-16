@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./headerDesktop.css";
 import logo from "../../../assets/Triplink_min.png";
 import { useState } from "react";
@@ -31,10 +31,11 @@ const HeaderDesktop = () => {
           className="light"
           onClick={() => setOpenModal(true)}
           children="Se connecter"
+          role="login"
         />
         <Modal open={openModal} onClose={() => setOpenModal(false)} />
         <hr className="line-buttons" />
-        <Button onClick={handleClick} className="dark" children="S'inscrire" />
+        <Button onClick={handleClick} className="dark" children="S'inscrire" role="inscription" />
       </div>
     </div >
   );
