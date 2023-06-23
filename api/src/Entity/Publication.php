@@ -83,7 +83,7 @@ class Publication
     #[Groups(['publication:read', 'publication:write'])]
     private ?\DateTimeImmutable $modifiedAt = null;
 
-    #[ORM\ManyToOne(inversedBy: 'publications')]
+    #[ORM\ManyToOne(inversedBy: 'publications', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(['publication:read', 'publication:write'])]
     private ?User $traveler;
