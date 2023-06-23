@@ -22,10 +22,10 @@
 }
 
 .form1 {
-  display: flex;
-  flex-direction: column;
-  gap: 0.938em;
-  margin-top: 0.938em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.938em;
+    margin-top: 0.938em;
 }
 
 .close-btn {
@@ -55,7 +55,7 @@
 }
 
 .login {
-  justify-content: center;
+    justify-content: center;
 }
 
 .lien-modal1 {

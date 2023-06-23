@@ -21,7 +21,7 @@ const ProfilModal = ({ open, onClose }) => {
         <h3>25</h3>
       </div>
       <div className="modal-profil-button">
-        <Button className="dark-small" children="Suivre" />
+        <Button className="dark-small" children="Suivre" role="follow" />
       </div>
     </div>
   );
