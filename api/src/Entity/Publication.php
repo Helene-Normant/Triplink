@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Symfony\Component\Serializer\Annotation\Groups;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use App\Repository\PublicationRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -24,10 +23,10 @@ use ApiPlatform\Metadata\Put;
             ],
         ),
         new GetCollection(),
-        new Post(),
-        new Put(),
-        new Patch(),
-        new Delete(),
+        new Post(security: 'is_granted("ROLE_USER")'),
+        new Put(security: 'is_granted("ROLE_USER") or object.owner == user'),
+        new Patch(security: 'is_granted("ROLE_USER") or object.owner == user'),
+        new Delete(security: 'is_granted("ROLE_USER") or object.owner == user'),
     ],
     normalizationContext: [
         'groups' => ['publication:read'],
@@ -84,13 +83,13 @@ class Publication
     #[Groups(['publication:read', 'publication:write'])]
     private ?\DateTimeImmutable $modifiedAt = null;
 
-    #[ORM\ManyToOne(inversedBy: 'publications')]
+    #[ORM\ManyToOne(inversedBy: 'publications', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     #[Groups(['publication:read', 'publication:write'])]
     private ?User $traveler;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy:'likedPublications')]
-    #[Groups(['publication:read', 'publication:write'])]
+    #[Groups(['publication:read'])]
     private Collection $userWhoLiked;
 
     public function __construct()

@@ -25,11 +25,11 @@ use ApiPlatform\Metadata\Put;
 #[ApiResource(
     operations: [
         new GetCollection(),
-        new Post(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'user:create']]),
+        new Post(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'user:create']], security: 'is_granted("PUBLIC_ACCESS")'),
         new Get(),
-        new Put(processor: UserPasswordHasher::class),
-        new Patch(processor: UserPasswordHasher::class),
-        new Delete(),
+        new Put(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
+        new Patch(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
+        new Delete(security: 'is_granted("ROLE_USER") or object.owner == user'),
     ],
     normalizationContext: ['groups' => ['user:read']],
     denormalizationContext: ['groups' => ['user:create', 'user:update']]
@@ -41,7 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['user:read', 'publication:read'])]
+    #[Groups(['user:read', 'publication:read', 'publication:write'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
@@ -100,7 +100,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinTable(name:'likes')]
     #[ORM\JoinColumn(name:'userId', referencedColumnName:'id')]
     #[ORM\InverseJoinColumn(name:'publicationId', referencedColumnName:'id')]
-    #[Groups(['user:read', 'user:create', 'user:update'])] 
+    #[Groups(['user:read'])] 
     private Collection $likedPublications;
 
     public function __construct()
