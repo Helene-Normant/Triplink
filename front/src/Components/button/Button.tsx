@@ -4,11 +4,12 @@ import './button.css';
 type ButtonProps = {
   className: 'dark' | 'light' | 'button button-dark' | 'button button-light' | 'dark-small' | 'light-small' | 'button button-dark-small' | 'button button-light-small';
   children: string;
-  onClick: () => void;
+  onClick?: () => void;
   role: string;
+  type: 'submit' | 'button';
 }
 
-const Button = ({ className, children, role, onClick }: ButtonProps) => {
+const Button = ({ className, children, role, onClick, type }: ButtonProps) => {
   let buttonClass = 'button';
   if (className === 'dark') {
     buttonClass += ' button-dark';
@@ -28,6 +29,7 @@ const Button = ({ className, children, role, onClick }: ButtonProps) => {
       onClick={onClick}
       children={children} 
       role={role}
+      type={type}
 
     />
   )

@@ -46,6 +46,10 @@ const requests = {
   const Logout = {
     post: async () => await requests.post("logout"),
   }
+
+  const User = {
+    post: async (body) => await requests.post("users", body),
+  }
   
   const Countries = { 
     getAll: async () => await requests.get("countries"),
@@ -63,6 +67,7 @@ export default {
     API_ROOT,
     Login,
     Logout, 
+    User,
     Publications,
     Countries,
     headers,

@@ -13,6 +13,8 @@
 
 .main-title-inscription {
   margin: auto;
+  font-family: 'Solitreo', cursive;
+  font-size: 3em;
 }
 
 .welcome {
@@ -57,13 +59,13 @@ input[type="checkbox"] {
 }
 
 .conditions {
-  font-size: 0.75em;
   cursor: pointer;
 }
 
 .container-bottom {
   display: flex;
   flex-direction: column;
+  margin-top: 1.25em;
 }
 
 .buttons-inscription {
@@ -82,7 +84,8 @@ input[type="checkbox"] {
 }
 
 .logo-triplink-inscription {
-  width: 8%;
+  margin-top: 2em;
+  width: 5%;
 }
 
 @media (max-width : 430px) { 
