@@ -6,7 +6,7 @@ type ButtonProps = {
   children: string;
   onClick?: () => void;
   role: string;
-  type: 'submit' | 'button';
+  type: 'submit' | 'button' | 'file';
 }
 
 const Button = ({ className, children, role, onClick, type }: ButtonProps) => {

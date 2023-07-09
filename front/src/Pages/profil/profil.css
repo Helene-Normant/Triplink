@@ -1,0 +1,96 @@
+.container-profil {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.container-picture {
+  position: relative;
+  margin-top: 10px;
+}
+
+.profil-picture-button {
+  position: absolute;
+  left: 47.6%;
+  top: 69%;
+}
+
+.main-title-profil {
+  margin: auto;
+  font-family: 'Solitreo', cursive;
+  font-size: 3em;
+}
+
+.picture {
+width: 118px;
+height : 118px;
+border: 1px solid var(--color-font-dark);
+border-radius: 10px;
+}
+
+.profil-bio-input {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.profil-info-input {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 2.8em;
+}
+
+.condition-age {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+}
+
+.profil-travel-select {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 0.938em;
+}
+
+.profil-tavel-style-select{
+  margin-top: 10px;
+}
+
+.select {
+  color: var(--color-font-medium);
+}
+
+.container-bottom-profil {
+  margin-top: 1.25em;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons-profil-info {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.875em;
+}
+
+.line-buttons {
+  margin-top: 1.25em;
+  width: 3em;
+  height: 0;
+  left: 75.563em;   
+  border: 0.75px solid var(--color-font-medium);
+  transform: rotate(90deg);
+}
+
+.logo-triplink-profil {
+  margin-top: 2em;
+  width: 5%;
+}
+
+.textarea {
+  resize: none;
+}
+
+

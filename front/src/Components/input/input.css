@@ -22,3 +22,8 @@
 .input--large {
   width: 26.5rem;
 }
+
+.input--xlarge {
+  width: 26.5rem;
+  height: 4em;
+}
