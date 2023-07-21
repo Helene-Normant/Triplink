@@ -30,7 +30,6 @@ use ApiPlatform\Metadata\Put;
         new Put(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
         new Patch(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
         new Delete(security: 'is_granted("ROLE_USER") or object.owner == user'),
-        new Get( name: 'userByEmail', requirements: ['email'],  routeName: 'user_by_email' ),
     ],
     normalizationContext: ['groups' => ['user:read']],
     denormalizationContext: ['groups' => ['user:create', 'user:update']],

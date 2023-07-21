@@ -18,7 +18,8 @@ const initialUser = { password: "", email: "" };
 const Modal = ({ open, onClose }: ModalProps) => {
   const handleClick = () => { }
 
-  const [user, setUser] = useState(initialUser)
+  const [user, setUser] = useState(initialUser);
+  const [username, setUsername] = useState('');
 
   const handleChange = ({ target }: any) => {
     const { name, value } = target
@@ -36,15 +37,20 @@ const Modal = ({ open, onClose }: ModalProps) => {
         if (loginData.hasOwnProperty("token") && loginData.token) { 
           localStorage.setItem("apiToken", loginData.token);
         }
-        console.log({loginData});
-        onClose()
-        toast.success("Prêt.e pour le voyage ?", {
-          hideProgressBar: true,
-          position: toast.POSITION.BOTTOM_RIGHT,
-          icon: "🏝️",
-        });
+        if (loginData.hasOwnProperty("userID") && loginData.userID) { 
+          localStorage.setItem("userID", loginData.userID);
+          const userData = await apiService.User.get(loginData.userID);
+          setUsername(userData.username);
+          if (username) { 
+            onClose()
+            toast.success("Prêt.e pour le voyage"  + username + "?", {
+              hideProgressBar: true,
+              position: toast.POSITION.BOTTOM_RIGHT,
+              icon: "🏝️",
+            });
+          }
+        }
       }
-    
     } catch(error:any) {
      toast.error(error.message, {
       hideProgressBar: true,

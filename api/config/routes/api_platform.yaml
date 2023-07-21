@@ -22,13 +22,3 @@ app_security_logout:
         _api_item_operation_name: 'logout'
     requirements:
         _format: 'json'
-
-user_by_email:
-    path: /user/email
-    controller: App\Controller\GetUserByEmailController::foundUserByEmail
-    methods: ['GET']
-    defaults:
-        _api_resource_class: 'App\Entity\User'
-        _api_operation_name: 'get_user_by_email'
-    requirements:
-        _format: 'json'
