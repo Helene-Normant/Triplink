@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import "./cards.css";
 import apiService from "../../apiService.js";
 import Card from "../card/Card";
+import Loading from "../loading/Loading";
 
 
 type Traveler = {
@@ -43,7 +44,9 @@ const Cards = () => {
   }, []);
 
   if (loading) {
-    return <h1>Loading...</h1>
+    return <div>
+      <Loading/>
+      </div>
   }
 
   return (
