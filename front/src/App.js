@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import  Home  from './Pages/Home';
 import Inscription from './Pages/inscription/Inscription';
 import { ToastContainer } from 'react-toastify';
+import Travel from './Pages/Travel';
 
 
 function App() {
@@ -11,8 +12,9 @@ function App() {
   <React.StrictMode>
       <BrowserRouter>
       <Routes>
-        <Route path='/' element= { <Home />}/>
-        <Route path='/inscription' element= { <Inscription />}/> 
+        <Route path='/' element= {<Home />}/>
+        <Route path='/inscription' element= {<Inscription />}/> 
+        <Route path='/travel' element= {<Travel />} />
       </Routes>
       </BrowserRouter>
       <ToastContainer />

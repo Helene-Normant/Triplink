@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { IoCameraSharp, IoHeartSharp, IoLocationSharp } from "react-icons/io5";
 import './card.css';
 import ProfilModal from "./profil-modal/ProfilModal";
@@ -31,6 +32,7 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
           </h3>
           </div>
         </div>
+        <Link to="/travel">
         <div className="card_travel-image">
           <img
             className="travel-image"
@@ -38,6 +40,7 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
             alt="voyage"
           />
         </div>
+        </Link>
         <div className="card_travel-profil">
           <div className="photo-comment-line-profil">
           <img
