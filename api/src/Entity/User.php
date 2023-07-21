@@ -26,13 +26,15 @@ use ApiPlatform\Metadata\Put;
     operations: [
         new GetCollection(),
         new Post(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'user:create']], security: 'is_granted("PUBLIC_ACCESS")'),
-        new Get(),
+        new Get(security:'is_granted("ROLE_USER")'),
         new Put(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
         new Patch(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
         new Delete(security: 'is_granted("ROLE_USER") or object.owner == user'),
+        new Get( name: 'userByEmail', requirements: ['email'],  routeName: 'user_by_email' ),
     ],
     normalizationContext: ['groups' => ['user:read']],
-    denormalizationContext: ['groups' => ['user:create', 'user:update']]
+    denormalizationContext: ['groups' => ['user:create', 'user:update']],
+
 )]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[UniqueEntity(fields: ['username'], message: 'It looks like another traveler took your username.')]
