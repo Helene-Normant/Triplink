@@ -5,7 +5,7 @@ import "./inscription.css";
 import logo from "../../assets/Triplink_min.png";
 import Button from '../../Components/button/Button';
 import apiService from "../../apiService.js";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -101,7 +101,7 @@ const Inscription = () => {
             <Input onChange={handleUserChange} value={user.userConfirm} name="userConfirm" className="input input--large" type="password" placeholder="Confirmation de mot de passe" size="large" required />
           </div>
           <div className='conditions-container'>
-            <input type="checkbox" />
+            <input type="checkbox" required/>
             <h3 className="conditions">J’ai lu et j’accepte les conditions générales d’utilisation</h3>
           </div>
           <div className='container-bottom'>
