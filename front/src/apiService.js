@@ -16,8 +16,6 @@ const headers = new Headers({
     "Authorization": `Bearer ${apiToken ? apiToken : ""}`
   })
 
-  console.log(headersToken);
-
 const requests = {
     get: async (endpoint) =>
       await fetch(`${API_ROOT}${endpoint}`, {

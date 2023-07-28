@@ -39,11 +39,10 @@ const Modal = ({ open, onClose }: ModalProps) => {
         }
         if (loginData.hasOwnProperty("userID") && loginData.userID) { 
           localStorage.setItem("userID", loginData.userID);
-          const userData = await apiService.User.get(loginData.userID);
-          setUsername(userData.username);
-          if (username) { 
+          const name = await apiService.User.get(loginData.userID);
+          if (name.username) { 
             onClose()
-            toast.success("Prêt.e pour le voyage"  + username + "?", {
+            toast.success("Prêt.e pour le voyage "  + name.username + "?", {
               hideProgressBar: true,
               position: toast.POSITION.BOTTOM_RIGHT,
               icon: "🏝️",
