@@ -22,12 +22,11 @@ const requests = {
         method: "GET",
         headers,
       }).then((response) => requestResult(response)),
-    getSecure: async (endpoint) =>
-      await fetch(`${API_ROOT}${endpoint}`, {
+    getSecure: async (endpoint) => {
+      return fetch(`${API_ROOT}${endpoint}`, {
         method: "GET",
-        headersToken,
-      }).then((response) => requestResult(response)),
-
+        headers: headersToken,
+      }).then((response) => requestResult(response))},
     post: async (endpoint, body = null) =>
       await fetch(`${API_ROOT}${endpoint}`, {
         method: "POST",
