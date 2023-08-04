@@ -6,10 +6,10 @@ type ButtonProps = {
   children: string;
   onClick?: () => void;
   role: string;
-  type: 'submit' | 'button';
+  type?: 'submit' | 'button';
 }
 
-const Button = ({ className, children, role, onClick, type }: ButtonProps) => {
+const Button = ({ className, children, role, onClick, type = 'button' }: ButtonProps) => {
   let buttonClass = 'button';
   if (className === 'dark') {
     buttonClass += ' button-dark';
@@ -27,7 +27,7 @@ const Button = ({ className, children, role, onClick, type }: ButtonProps) => {
     <button
       className={buttonClass}
       onClick={onClick}
-      children={children} 
+      children={children}
       role={role}
       type={type}
 

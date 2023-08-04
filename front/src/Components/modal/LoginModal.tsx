@@ -1,16 +1,16 @@
 import React from "react";
-import "./modal.css";
+import "./loginModal.css";
 import { Link } from "react-router-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import Input from "../input/Input";
-import Button from '../../Components/button/Button';
+import Button from '../button/Button';
 
-type ModalProps = {
+type LoginModalProps = {
   open: boolean;
   onClose: () => void;
 };
 
-const Modal = ({ open, onClose }: ModalProps) => {
+const LoginModal = ({ open, onClose }: LoginModalProps) => {
   const handleClick = () => { }
 
   if (!open) return null;
@@ -31,7 +31,7 @@ const Modal = ({ open, onClose }: ModalProps) => {
               <Input className='input input--large' type="text" placeholder="Adresse email" size="large" />
             </div>
             <div className='login'>
-              <Input className='input input--large' type="text" placeholder="Mot de passe" size="large" />
+              <Input className='input input--large' type="password" placeholder="Mot de passe" size="large" />
             </div>
           </form>
           <h3 className="lien-modal1">mot de passe oublié</h3>
@@ -46,4 +46,4 @@ const Modal = ({ open, onClose }: ModalProps) => {
   );
 };
 
-export default Modal;
+export default LoginModal;

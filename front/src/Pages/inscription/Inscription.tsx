@@ -5,7 +5,7 @@ import "./inscription.css";
 import logo from "../../assets/Triplink_min.png";
 import Button from '../../Components/button/Button';
 import apiService from "../../apiService.js";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -26,16 +26,21 @@ const Inscription = () => {
     }));
   };
 
+  const showToast = (text: string, icon: string) => {
+    toast(text, {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+      icon,
+    });
+  };
+
   const signUp = async (event: any) => {
     event.preventDefault();
 
     if (user.password !== user.userConfirm) {
-      toast.error("Oups, les mots de passe ne sont pas identiques", {
-        hideProgressBar: true,
-        position: toast.POSITION.BOTTOM_LEFT,
-        icon: "😓",
-      });
-    };
+      showToast("Oups, les mots de passe ne sont pas identiques", "😓");
+      return;
+    }
 
     try {
       if (user.userName && user.userSurname && user.userPseudo && user.userBirth && user.email && user.password) {
@@ -49,30 +54,22 @@ const Inscription = () => {
             plainPassword: user.password
           });
 
-          if (registerData.ok === false) {
+          if (!registerData.ok) {
             console.log('ERROR', Error);
-            toast.error("Oups une erreur s'est produite", {
-              hideProgressBar: true,
-              position: toast.POSITION.BOTTOM_LEFT,
-              icon: "😥",
-            });
+            if (registerData.status === 422) {
+              showToast("Oups, un compte existe déjà avec ce pseudo ou cette adresse-mail", "😥");
+            } else {
+              showToast("Oups une erreur s'est produite", "😥");
+            }
           } else {
-            toast.success("Bienvenue sur Triplink !", {
-              hideProgressBar: true,
-              position: toast.POSITION.BOTTOM_RIGHT,
-              icon: "🏝️",
-            });
-            setUser(initialUser);
+            showToast("Bienvenue sur Triplink !", "🏝️");
             navigate('/');
           }
         }
       }
     } catch (Error) {
       console.log('ERROR', Error);
-      toast.error("Oups une erreur s'est produite", {
-        hideProgressBar: true,
-        position: toast.POSITION.BOTTOM_LEFT
-      });
+      showToast("Oups une erreur s'est produite", "😥");
     }
   };
 
@@ -101,7 +98,7 @@ const Inscription = () => {
             <Input onChange={handleUserChange} value={user.userConfirm} name="userConfirm" className="input input--large" type="password" placeholder="Confirmation de mot de passe" size="large" required />
           </div>
           <div className='conditions-container'>
-            <input type="checkbox" />
+            <input type="checkbox" required />
             <h3 className="conditions">J’ai lu et j’accepte les conditions générales d’utilisation</h3>
           </div>
           <div className='container-bottom'>

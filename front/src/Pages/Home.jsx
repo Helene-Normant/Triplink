@@ -3,20 +3,20 @@ import './home.css';
 import Cards from '../Components/cards/Cards';
 import Searchbar from '../Components/searchbar/Searchbar';
 import Footer from '../Components/footer/Footer';
-import Modal from '../Components/modal/Modal';
+import Modal from '../Components/modal/LoginModal';
 import Header from '../Components/header/Header';
 
 const Home = () => {
   return (
     <>
-    <section className='container-home'>
-      <Modal />
-      <Header />
-      <Searchbar />
-      <Cards />
-    </section>
-     <Footer />
-     </>
+      <section className='container-home'>
+        <Modal />
+        <Header />
+        <Searchbar />
+        <Cards />
+      </section>
+      <Footer />
+    </>
   )
 }
 

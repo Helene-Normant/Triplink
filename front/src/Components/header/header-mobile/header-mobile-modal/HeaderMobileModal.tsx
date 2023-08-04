@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "../../../button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import "./headerMobileModal.css";
-import Modal from "../../../modal/Modal";
+import Modal from "../../../modal/LoginModal";
 import logo from '../../../../assets/Triplink_min.png'
 
 

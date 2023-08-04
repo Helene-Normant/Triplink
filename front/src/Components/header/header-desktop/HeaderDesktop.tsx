@@ -4,7 +4,7 @@ import logo from "../../../assets/Triplink_min.png";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../button/Button";
-import Modal from "../../modal/Modal";
+import Modal from "../../modal/LoginModal";
 
 const HeaderDesktop = () => {
   const [openModal, setOpenModal] = useState(false);
