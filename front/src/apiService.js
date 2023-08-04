@@ -1,11 +1,19 @@
 const API_ROOT = process.env.REACT_APP_API_URL+'/api/';
+let apiToken = localStorage.getItem("apiToken");
+
 
 const requestResult = (response) => {
     return (response.statusText === 'OK' || response.statusText === 'Created' || response.ok)  ? response.json().then((res) => res) : response;
   }
 
 const headers = new Headers({
-    "Content-Type": "application/json",
+    "content-type": "application/json",
+    // "Authorization": `bearer ${apiToken ? apiToken : ""}`
+  })
+
+  const headersToken = new Headers({
+    "content-type": "application/json",
+    "Authorization": `Bearer ${apiToken ? apiToken : ""}`
   })
 
 const requests = {
@@ -14,6 +22,11 @@ const requests = {
         method: "GET",
         headers,
       }).then((response) => requestResult(response)),
+    getSecure: async (endpoint) => {
+      return fetch(`${API_ROOT}${endpoint}`, {
+        method: "GET",
+        headers: headersToken,
+      }).then((response) => requestResult(response))},
     post: async (endpoint, body = null) =>
       await fetch(`${API_ROOT}${endpoint}`, {
         method: "POST",
@@ -39,7 +52,7 @@ const requests = {
   }
 
   const Login = {
-    get: async () => await requests.get("auth"),
+    // get: async () => await requests.get("auth"),
     post: async (body) => await requests.post("auth", body),
   }
 
@@ -48,6 +61,7 @@ const requests = {
   }
 
   const User = {
+    get: async (id) => await requests.getSecure(`users/${id}`),
     post: async (body) => await requests.post("users", body),
   }
   

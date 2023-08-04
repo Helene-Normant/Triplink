@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.938em;
-    margin-top: 0.938em;
+    margin-top: 0.7em;
 }
 
 .close-btn {
@@ -51,11 +51,12 @@
 .modal-btn {
     display: block;
     text-align: center;
-    margin-top: 2.188em;
+    margin-top: 0.7em;
 }
 
 .login {
     justify-content: center;
+    margin-top: 1em;
 }
 
 .lien-modal1 {
