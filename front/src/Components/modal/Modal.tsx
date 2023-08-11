@@ -5,7 +5,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import Input from "../input/Input";
 import Button from '../../Components/button/Button';
 import apiService from "../../apiService";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 type ModalProps = {
@@ -42,6 +42,7 @@ const Modal = ({ open, onClose }: ModalProps) => {
           const name = await apiService.User.get(loginData.userID);
           if (name.username) { 
             onClose()
+            console.log("User authenticated successfully");
             toast.success("Prêt.e pour le voyage "  + name.username + "?", {
               hideProgressBar: true,
               position: toast.POSITION.BOTTOM_RIGHT,
