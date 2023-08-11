@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\Common\Collections\Collection;
 use App\Repository\PublicationRepository;
@@ -40,19 +41,19 @@ class Publication
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['publication:read', 'user:read'])]
+    #[Groups(['publication:read', 'user:read', 'travelstep:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['publication:read', 'publication:write', 'user:read'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read', 'travelstep:read'])]
     private ?string $title = null;
 
     #[ORM\Column(length: 500)]
-    #[Groups(['publication:read', 'publication:write', 'user:read'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read', 'travelstep:read'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['publication:read', 'publication:write', 'user:read'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read', 'travelstep:read'])]
     private ?string $country = null;
 
     #[ORM\Column(nullable: true)]
@@ -92,9 +93,14 @@ class Publication
     #[Groups(['publication:read'])]
     private Collection $userWhoLiked;
 
+    #[ORM\OneToMany(mappedBy: 'publicationRelated', targetEntity: TravelStep::class)]
+    #[Groups(['publication:read'])]
+    private Collection $stepTravel;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
+        $this->stepTravel = new ArrayCollection();
     }
     
     public function getId(): ?int
@@ -269,6 +275,36 @@ class Publication
             $user->removeLikedPublication($this);
         }
         
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TravelStep>
+     */
+    public function getStepTravel(): Collection
+    {
+        return $this->stepTravel;
+    }
+
+    public function addStepTravel(TravelStep $stepTravel): self
+    {
+        if (!$this->stepTravel->contains($stepTravel)) {
+            $this->stepTravel->add($stepTravel);
+            $stepTravel->setPublicationRelated($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStepTravel(TravelStep $stepTravel): self
+    {
+        if ($this->stepTravel->removeElement($stepTravel)) {
+            // set the owning side to null (unless already changed)
+            if ($stepTravel->getPublicationRelated() === $this) {
+                $stepTravel->setPublicationRelated(null);
+            }
+        }
+
         return $this;
     }
 }
