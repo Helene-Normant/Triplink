@@ -29,35 +29,41 @@ const Modal = ({ open, onClose }: ModalProps) => {
     }));
   };
 
-  const handleLogin = async (event:any) => {
+  const handleLogin = async (event: any) => {
     event.preventDefault();
     try {
-      if(user.email && user.password) {
-        const loginData = await apiService.Login.post({"email": user.email, "password": user.password }); 
-        if (loginData.hasOwnProperty("token") && loginData.token) { 
+      if (user.email && user.password) {
+        const loginData = await apiService.Login.post({ "email": user.email, "password": user.password });
+        if (loginData.hasOwnProperty("token") && loginData.token) {
           localStorage.setItem("apiToken", loginData.token);
         }
-        if (loginData.hasOwnProperty("userID") && loginData.userID) { 
+        if (loginData.hasOwnProperty("userID") && loginData.userID) {
           localStorage.setItem("userID", loginData.userID);
-          const name = await apiService.User.get(loginData.userID);
-          if (name.username) { 
-            onClose()
-            console.log("User authenticated successfully");
-            toast.success("Prêt.e pour le voyage "  + name.username + "?", {
-              hideProgressBar: true,
-              position: toast.POSITION.BOTTOM_RIGHT,
-              icon: "🏝️",
+          console.log(loginData);
+          apiService.User.get(loginData.userID)
+            .then((name) => {
+              if (name.username) {
+                onClose();
+                toast.success("Prêt.e pour le voyage " + name.username + "?", {
+                  hideProgressBar: true,
+                  position: toast.POSITION.BOTTOM_RIGHT,
+                  icon: "🏝️",
+                });
+              }
+            })
+            .catch((error) => {
+              console.error("Erreur lors de l'appel à l'API :", error);
             });
-          }
         }
       }
-    } catch(error:any) {
-     toast.error(error.message, {
-      hideProgressBar: true,
-       });
-      }
-    };
-
+    } catch (error: any) {
+      toast.error(error.message, {
+        hideProgressBar: true,
+      });
+    }
+  };
+  
+  
   if (!open) return null;
   return (
     <div className="overlay">
@@ -73,10 +79,10 @@ const Modal = ({ open, onClose }: ModalProps) => {
           <h2>Bienvenue sur Triplink</h2>
           <h3 className="subtitle-modal">J'ai un compte</h3>
             <div className='login'>
-              <Input className='input input--large' onChange={handleChange} type="text" value={user.email} name="email" placeholder="Adresse email" size="large" />
+              <Input className='input input--large' onChange={handleChange} type="text" value={user.email} name="email" placeholder="Adresse email" size="large" required />
             </div>
             <div className='login'>
-              <Input className='input input--large' onChange={handleChange} type="text" value={user.password} name="password" placeholder="Mot de passe" size="large" />
+              <Input className='input input--large' onChange={handleChange} type="text" value={user.password} name="password" placeholder="Mot de passe" size="large" required/>
             </div>
           <h3 className="lien-modal1">mot de passe oublié</h3>
         </div>
