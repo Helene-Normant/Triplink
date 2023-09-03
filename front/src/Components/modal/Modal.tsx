@@ -37,25 +37,30 @@ const Modal = ({ open, onClose }: ModalProps) => {
         if (loginData.hasOwnProperty("token") && loginData.token) { 
           localStorage.setItem("apiToken", loginData.token);
         }
-        if (loginData.hasOwnProperty("userID") && loginData.userID) { 
+        if (loginData.hasOwnProperty("userID") && loginData.userID) {
           localStorage.setItem("userID", loginData.userID);
-          const name = await apiService.User.get(loginData.userID);
-          if (name.username) { 
-            onClose()
-            toast.success("Prêt.e pour le voyage "  + name.username + "?", {
-              hideProgressBar: true,
-              position: toast.POSITION.BOTTOM_RIGHT,
-              icon: "🏝️",
-            });
-          }
         }
+          apiService.User.get(loginData.userID)
+            .then((name) => {
+              if (name.username) {
+                onClose();
+                toast.success("Prêt.e pour le voyage "  + name.username + "?", {
+                  hideProgressBar: true,
+                  position: toast.POSITION.BOTTOM_RIGHT,
+                  icon: "🏝️",
+                });
+              }
+            })
+            .catch((error) => {
+              console.error("Erreur lors de l'appel à l'API :", error);
+            });
       }
     } catch(error:any) {
-     toast.error(error.message, {
-      hideProgressBar: true,
-       });
-      }
-    };
+      toast.error(error.message, {
+        hideProgressBar: true,
+      });
+    }
+  };
 
   if (!open) return null;
   return (
