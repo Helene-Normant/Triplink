@@ -1,10 +1,9 @@
+import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../button/Button";
 import Modal from "../../../modal/Modal";
 import logo from "../../../../assets/Triplink_min.png";
-import Dropdown from "react-dropdown";
-
 
 
 const HeaderLogon = () => {

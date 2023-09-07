@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "../../../button/Button";
 import logo from "../../../../assets/Triplink_min.png";
 import "./headerLogout.css";
 import profil from "../../../../assets/profil.png";
