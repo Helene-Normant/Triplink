@@ -100,6 +100,7 @@ class Publication
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
+        $this->userWhoLiked = new ArrayCollection();
         $this->stepTravel = new ArrayCollection();
     }
     

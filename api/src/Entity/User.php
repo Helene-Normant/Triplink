@@ -109,6 +109,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->createdAt = new \DateTimeImmutable();
         $this->roles = ['ROLE_USER'];
         $this->publications = new ArrayCollection();
+        $this->likedPublications = new ArrayCollection();
     }
     
     public function getId(): ?int

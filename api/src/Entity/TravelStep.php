@@ -124,7 +124,7 @@ class TravelStep
 
     public function setLatitude(float $latitude): self
     {
-        $this->$latitude = $latitude;
+        $this->latitude = $latitude;
 
         return $this;
     }
@@ -136,7 +136,7 @@ class TravelStep
 
     public function setLongitude(float $longitude): self
     {
-        $this->$longitude = $longitude;
+        $this->longitude = $longitude;
 
         return $this;
     }
