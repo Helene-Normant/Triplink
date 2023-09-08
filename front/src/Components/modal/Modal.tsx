@@ -5,7 +5,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import Input from "../input/Input";
 import Button from '../../Components/button/Button';
 import apiService from "../../apiService";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 type ModalProps = {
@@ -16,7 +16,8 @@ type ModalProps = {
 const initialUser = { password: "", email: "" };
 
 const Modal = ({ open, onClose }: ModalProps) => {
-  const handleClick = () => { }
+  const handleClick = () => { 
+  }
 
   const [user, setUser] = useState(initialUser);
   const [username, setUsername] = useState('');
@@ -37,9 +38,10 @@ const Modal = ({ open, onClose }: ModalProps) => {
         if (loginData.hasOwnProperty("token") && loginData.token) { 
           localStorage.setItem("apiToken", loginData.token);
         }
-        if (loginData.hasOwnProperty("userID") && loginData.userID) { 
+        if (loginData.hasOwnProperty("userID") && loginData.userID) {
           localStorage.setItem("userID", loginData.userID);
-          const name = await apiService.User.get(loginData.userID);
+        }
+        const name = await apiService.User.get(loginData.userID);
           if (name.username) { 
             onClose()
             toast.success("Prêt.e pour le voyage "  + name.username + "?", {
@@ -47,16 +49,23 @@ const Modal = ({ open, onClose }: ModalProps) => {
               position: toast.POSITION.BOTTOM_RIGHT,
               icon: "🏝️",
             });
-          }
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
         }
+        console.log(loginData.userID)
       }
     } catch(error:any) {
-     toast.error(error.message, {
-      hideProgressBar: true,
-       });
-      }
-    };
+      toast.error("Oups il y a une erreur", {
+        hideProgressBar: true,
+        position: toast.POSITION.BOTTOM_RIGHT,
+        icon: "☹️",
+      });
+    }
+  };
 
+ 
+  
   if (!open) return null;
   return (
     <div className="overlay">
@@ -72,10 +81,10 @@ const Modal = ({ open, onClose }: ModalProps) => {
           <h2>Bienvenue sur Triplink</h2>
           <h3 className="subtitle-modal">J'ai un compte</h3>
             <div className='login'>
-              <Input className='input input--large' onChange={handleChange} type="text" value={user.email} name="email" placeholder="Adresse email" size="large" />
+              <Input className='input input--large' onChange={handleChange} type="text" value={user.email} name="email" placeholder="Adresse email" size="large" required />
             </div>
             <div className='login'>
-              <Input className='input input--large' onChange={handleChange} type="text" value={user.password} name="password" placeholder="Mot de passe" size="large" />
+              <Input className='input input--large' onChange={handleChange} type="password" value={user.password} name="password" placeholder="Mot de passe" size="large" required/>
             </div>
           <h3 className="lien-modal1">mot de passe oublié</h3>
         </div>
