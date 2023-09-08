@@ -32,7 +32,7 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
           </h3>
           </div>
         </div>
-        <Link to="/travel">
+        <Link to="/details">
         <div className="card_travel-image">
           <img
             className="travel-image"

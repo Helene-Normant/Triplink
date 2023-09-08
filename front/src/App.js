@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import  Home  from './Pages/Home';
 import Inscription from './Pages/inscription/Inscription';
 import { ToastContainer } from 'react-toastify';
-import Travel from './Pages/Travel';
+import Details from './Pages/Details';
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element= {<Home />}/>
         <Route path='/inscription' element= {<Inscription />}/> 
-        <Route path='/travel' element= {<Travel />} />
+        <Route path='/details' element= {<Details />} />
       </Routes>
       </BrowserRouter>
       <ToastContainer />

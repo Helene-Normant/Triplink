@@ -1,0 +1,10 @@
+.card-details-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.line-details {
+    border: 0.75px solid var(--color-font-medium);
+    height: 488px;
+}
