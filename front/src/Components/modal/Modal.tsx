@@ -16,7 +16,8 @@ type ModalProps = {
 const initialUser = { password: "", email: "" };
 
 const Modal = ({ open, onClose }: ModalProps) => {
-  const handleClick = () => { }
+  const handleClick = () => { 
+  }
 
   const [user, setUser] = useState(initialUser);
   const [username, setUsername] = useState('');
@@ -40,29 +41,30 @@ const Modal = ({ open, onClose }: ModalProps) => {
         if (loginData.hasOwnProperty("userID") && loginData.userID) {
           localStorage.setItem("userID", loginData.userID);
         }
-          apiService.User.get(loginData.userID)
-            .then((name) => {
-              if (name.username) {
-                onClose();
-                toast.success("Prêt.e pour le voyage "  + name.username + "?", {
-                  hideProgressBar: true,
-                  position: toast.POSITION.BOTTOM_RIGHT,
-                  icon: "🏝️",
-                });
-              }
-            })
-            .catch((error) => {
-              console.error("Erreur lors de l'appel à l'API :", error);
+        const name = await apiService.User.get(loginData.userID);
+          if (name.username) { 
+            onClose()
+            toast.success("Prêt.e pour le voyage "  + name.username + "?", {
+              hideProgressBar: true,
+              position: toast.POSITION.BOTTOM_RIGHT,
+              icon: "🏝️",
             });
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+        }
+        console.log(loginData.userID)
       }
     } catch(error:any) {
-      toast.error(error.message, {
+      toast.error("Oups il y a une erreur", {
         hideProgressBar: true,
+        position: toast.POSITION.BOTTOM_RIGHT,
+        icon: "☹️",
       });
     }
   };
 
-  
+ 
   
   if (!open) return null;
   return (
