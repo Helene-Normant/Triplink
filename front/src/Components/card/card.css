@@ -3,7 +3,6 @@
 }
 
 .travel-image:hover {
-  /* border: 1px solid var(--color-font-medium); */
 -ms-transform: scale(1.5); 
 -webkit-transform: scale(1.5);
 transform: scale(1.02);

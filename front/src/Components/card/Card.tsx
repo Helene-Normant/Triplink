@@ -14,6 +14,8 @@ type CardProps = {
 };
 
 const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }: CardProps) => {
+  let token = localStorage.getItem('apiToken');
+
   const [openModalProfil, setOpenModalProfil] = useState(false);
   const handleCLick = () => setOpenModalProfil((previous) => {
     return !previous;
@@ -32,6 +34,7 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
           </h3>
           </div>
         </div>
+        { token ? (
         <Link to="/details">
         <div className="card_travel-image">
           <img
@@ -40,7 +43,18 @@ const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }
             alt="voyage"
           />
         </div>
+        </Link>) : (
+        <Link to="/inscription">
+        <div className="card_travel-image">
+          <img
+            className="travel-image"
+            src={picture}
+            alt="voyage"
+          />
+        </div>
         </Link>
+        )
+        }
         <div className="card_travel-profil">
           <div className="photo-comment-line-profil">
           <img

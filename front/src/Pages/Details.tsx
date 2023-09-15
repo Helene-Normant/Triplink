@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderDesktop from '../Components/header/header-desktop/HeaderDesktop';
+import Header from '../Components/header/Header';
 import TravelDetail from "../Components/details/TravelDetail";
 import PhotoDetail from "../Components/details/PhotoDetail";
 import './details.css'
@@ -7,7 +7,7 @@ import './details.css'
 const Details = () => {
   return (
     <>
-      <HeaderDesktop/>
+      <Header/>
       <div className="card-details-container">
        <PhotoDetail/>
        <hr className="line-details"></hr>
