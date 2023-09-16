@@ -1,25 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './travelDetails.css';
-import profil from "../../assets/profil.png";
 import { FaEuroSign } from "react-icons/fa";
 import { GiBackpack } from "react-icons/gi";
 import { PiHandWaving } from "react-icons/pi";
+import apiService from "../../apiService.js";
+
+type DetailsProps = {
+  traveler: string;
+  createdAt: Date;
+  description: string;
+  travelPartner: string;
+  bagTips: string;
+};
 
 const TravelDetail = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-
+    const [details, setDetails] = useState([]);
+    const [loading, setLoading] = useState(false);
+  
+    const formatDate = (dateString : string) => {
+      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+      const formattedDate = new Date(dateString).toLocaleDateString('fr-FR');
+      return formattedDate;
+    }
+  
     const toggleMenu = () => {
       setMenuOpen(!menuOpen);
     };
+
+    const publicationApi = async () => {
+      try {
+        setLoading(true);
+        const detailsData = await apiService.Publications.get(35);
+        setDetails(detailsData);
+        console.log(detailsData)
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    useEffect(() => {
+      publicationApi();
+    }, []);
+
+  
   return (
+  <section className="detail-wrapper" id="details">
     <div className="info-travel-container">
-    <div className="info-publication">
+     <div className="info-publication">
       <div className="info-details-profil">
-        <img className="info-icon" src={profil} alt={"Profil Icon"} />
-      <div className="info-date">
-        <h2 className="info-profil">Publié par julie</h2>
-        <h3>Le 25/05/2023</h3>
-      </div>
+        <img className="info-icon" src={details.traveler?.picture} alt={"Profil Icon"} />
+        <div className="info-date">
+        <h2 className="info-profil">Publié par {details.traveler?.username}</h2>
+        <h3>Le {formatDate(details.createdAt)}</h3>
+       </div>
       </div>
     </div>
 
@@ -29,10 +66,10 @@ const TravelDetail = () => {
        <FaEuroSign/> <FaEuroSign/>
        </div>
        <div className="info-type">
-       <GiBackpack/>
+       <GiBackpack/> 
        </div>
        <div className="info-tribu">
-       <h1>En famille</h1>
+       <h1>{details.travelPartner} existe pas ?</h1>
      </div>
   </div>
   <div className="info-contact-details">
@@ -54,19 +91,13 @@ const TravelDetail = () => {
   <div className="info-detail-description">
       <div className="info-description">
         <h3>
-        orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has 
-        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a 
-        galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
-        but also the leap into electronic to make a type specimen book. 
+        {details.description}
         </h3>
       </div>
       <div className="info-pack">
         <h1>À avoir dans son sac</h1>
         <h3>
-        orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has 
-        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a 
-        galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
-        but also the leap into electronic to make a type specimen book. 
+        {details.bagTips} Existe pas ?
         </h3>
       </div>
     </div>
@@ -80,8 +111,9 @@ const TravelDetail = () => {
          Partant.e pour de nouvelles aventures 
         </h1>
       </div>
-      </div>
+    </div>
   </div>
+  </section>
   )
 }
 
