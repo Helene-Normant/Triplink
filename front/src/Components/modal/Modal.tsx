@@ -20,7 +20,7 @@ const Modal = ({ open, onClose }: ModalProps) => {
   }
 
   const [user, setUser] = useState(initialUser);
-  const [username, setUsername] = useState('');
+  //const [username, setUsername] = useState('');
 
   const handleChange = ({ target }: any) => {
     const { name, value } = target
