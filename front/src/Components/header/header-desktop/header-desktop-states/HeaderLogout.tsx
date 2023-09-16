@@ -4,9 +4,11 @@ import logo from "../../../../assets/Triplink_min.png";
 import "./headerLogout.css";
 import profil from "../../../../assets/profil.png";
 
+type LogoutProps = {
+  logout: () => void;
+};
 
-
-const HeaderLogout = ({ logout }) => {
+const HeaderLogout = ({ logout } : LogoutProps) => {
   
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,13 +35,13 @@ const HeaderLogout = ({ logout }) => {
       <li className="menu-cat top"> <h3>Mon compte</h3></li>
       <li className="menu-cat"><h3>Mes publications</h3></li>
       <li className="menu-cat-deco"> 
-        <a
+        <div
         className="logout-header"
         onClick={() => logout()}
-        role="login"
+        role="button"
       > 
       <h3>Se déconnecter</h3> 
-      </a>
+      </div>
       </li>
     </ul>
   </div>

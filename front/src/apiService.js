@@ -77,15 +77,17 @@ const requests = {
     getAll: async () => await requests.get("traveler_partners"),
   }
 
-export default { 
-    API_ROOT,
-    Login,
-    Logout, 
-    User,
-    Publications,
-    Countries,
-    headers,
-    requests,
-    Categories,
-    TravelerPartners
+const apiService={ 
+  API_ROOT,
+  Login,
+  Logout, 
+  User,
+  Publications,
+  Countries,
+  headers,
+  requests,
+  Categories,
+  TravelerPartners
 }
+
+export default apiService;
