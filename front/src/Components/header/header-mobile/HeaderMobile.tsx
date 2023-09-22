@@ -6,8 +6,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import HeaderMobileModal from "./header-mobile-modal/HeaderMobileModal";
 
+type HeaderProps = {
+  isUserLoggedIn: boolean;
+  checkLocalStorage : boolean;
+  logout: () => void;
+};
 
-const HeaderMobile = () => {
+const HeaderMobile = ({isUserLoggedIn, checkLocalStorage, logout} : HeaderProps ) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {

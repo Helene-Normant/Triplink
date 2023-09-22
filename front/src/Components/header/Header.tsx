@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../context/userContext";
 import HeaderMobile from "./header-mobile/HeaderMobile";
 import HeaderDesktop from "./header-desktop/HeaderDesktop";
 import useIsMobile from "../../Hooks/useIsMobile";
 
-
 const Header = () => {
-
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [checkLocalStorage, setCheckLocalStorage] = useState(false);
+  const userContext = useContext(UserContext);
 
   useEffect(() => {
-    let token = localStorage.getItem('apiToken');
-    if (token) {
+    if (userContext?.currentUser) {
       setIsUserLoggedIn(true);
       setCheckLocalStorage(true);
     }
-  }, []);
+  }, [userContext]);
 
   const logout = () => {
     localStorage.clear();
@@ -36,9 +35,9 @@ const Header = () => {
       logout={logout}
       /> : 
       <HeaderMobile 
-      //isUserLoggedIn={isUserLoggedIn}
-      //checkLocalStorage={checkLocalStorage}
-      //logout={logout}
+      isUserLoggedIn={isUserLoggedIn}
+      checkLocalStorage={checkLocalStorage}
+      logout={logout}
       />}
     </>
   );
