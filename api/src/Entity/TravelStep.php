@@ -49,13 +49,16 @@ class TravelStep
 
     #[ORM\Column(length: 500)]
     #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
+    #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
+    #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?string $address = null;
 
     #[ORM\Column]
+    #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?float $latitude = null;
 
@@ -64,6 +67,7 @@ class TravelStep
     private ?float $longitude = null;
 
     #[ORM\Column(length: 300, nullable: true)]
+    #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?string $plus = null;
 

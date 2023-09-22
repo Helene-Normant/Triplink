@@ -46,9 +46,11 @@ class Publication
 
     #[ORM\Column(length: 255)]
     #[Groups(['publication:read', 'publication:write', 'user:read'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $title = null;
 
     #[ORM\Column(length: 500)]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $description = null;
 
