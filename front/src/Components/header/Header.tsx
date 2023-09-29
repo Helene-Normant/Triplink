@@ -5,7 +5,6 @@ import useIsMobile from "../../Hooks/useIsMobile";
 
 
 const Header = () => {
-
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [checkLocalStorage, setCheckLocalStorage] = useState(false);
 
