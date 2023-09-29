@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Factory\TravelStepFactory;
 use App\Factory\PublicationFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -17,5 +18,10 @@ class AppFixtures extends Fixture
                 'traveler' => UserFactory::random(),
             ];
        });
+        TravelStepFactory::createMany(20, function() {
+            return [
+                'publicationRelated' => PublicationFactory::random(),
+            ];
+        });
     }
 }

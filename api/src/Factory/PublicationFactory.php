@@ -55,6 +55,10 @@ final class PublicationFactory extends ModelFactory
             'title' => self::faker()->sentence(3),
             'travelType' => self::faker()->word(),
             'traveler' => UserFactory::new(),
+            'budget' => self::faker()->numberBetween(100, 5000),
+            'bagTips' => self::faker()->sentence(),
+            'travelPartner' => self::faker()->name(),
+            'modifiedAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTimeThisMonth()),
         ];
     }
 
