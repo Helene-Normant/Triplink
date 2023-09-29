@@ -18,14 +18,15 @@ type Country = {
 }
 
 type CardsProps = {
-  destination?: string;
+  destination?: Country;
   category?: string;
   profil?: string;
 };
 
+
 type ApiCard = {
   id: number;
-  country: string;
+  country: Country;
   travelType: string;
   picture: string;
   title: string;
@@ -54,7 +55,7 @@ const Cards = ({ destination, category, profil }: CardsProps) => {
     }
   };
 
-  const filterCards = (newDestination?: string, newCategory?: string, newProfil?: string) => {
+  const filterCards = (newDestination?: Country, newCategory?: string, newProfil?: string) => {
     setDisplayCards(apiCards.filter(
       (card) => {
         const destinationMatch = !newDestination || (card.country === newDestination);
@@ -88,7 +89,7 @@ const Cards = ({ destination, category, profil }: CardsProps) => {
     <section className="card-wrapper" id="travels">
       <div className="container_travel-cards">
         {!displayCards.length && <p>Il n'y a rien</p>}
-        {displayCards.map(({ id, country, picture, title, traveler }: CardsProps) => {
+        {displayCards.map(({ id, country, picture, title, traveler }: ApiCard) => {
           return (
             <Card
               key={id}
