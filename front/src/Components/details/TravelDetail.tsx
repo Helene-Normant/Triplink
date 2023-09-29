@@ -5,21 +5,26 @@ import { GiBackpack } from "react-icons/gi";
 import { PiHandWaving } from "react-icons/pi";
 import apiService from "../../apiService.js";
 
-type DetailsProps = {
-  traveler: string;
-  createdAt: Date;
-  description: string;
-  travelPartner: string;
-  bagTips: string;
+type User = {
+  picture: string,
+  username: string,
 };
+
+type Publication = {
+  createdAt: string,
+  travelPartner: string,
+  description: string;
+  bagTips: string;
+  traveler: User;
+}
 
 const TravelDetail = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [details, setDetails] = useState([]);
+    const [details, setDetails] = useState<Publication | null>();
+    const [categories, setCategories] = useState();
     const [loading, setLoading] = useState(false);
   
     const formatDate = (dateString : string) => {
-      const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
       const formattedDate = new Date(dateString).toLocaleDateString('fr-FR');
       return formattedDate;
     }
@@ -33,8 +38,7 @@ const TravelDetail = () => {
         setLoading(true);
         const detailsData = await apiService.Publications.get(35);
         setDetails(detailsData);
-        console.log(detailsData)
-        setLoading(false);
+        console.log(detailsData);
       } catch (err) {
         console.log(err);
       } finally {
@@ -46,6 +50,9 @@ const TravelDetail = () => {
       publicationApi();
     }, []);
 
+    if (!details) {
+      return null;
+    }
   
   return (
   <section className="detail-wrapper" id="details">
@@ -66,10 +73,10 @@ const TravelDetail = () => {
        <FaEuroSign/> <FaEuroSign/>
        </div>
        <div className="info-type">
-       <GiBackpack/> 
+       {/* <GiBackpack/>  */} {details.travelType}
        </div>
        <div className="info-tribu">
-       <h1>{details.travelPartner} existe pas ?</h1>
+       <h1>{details.travelPartner}</h1>
      </div>
   </div>
   <div className="info-contact-details">

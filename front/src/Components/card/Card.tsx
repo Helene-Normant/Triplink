@@ -5,15 +5,15 @@ import './card.css';
 import ProfilModal from "./profil-modal/ProfilModal";
 
 type CardProps = {
+  
   id: number;
   country: string;
   picture: string;
   title: String;
   travelerPicture: string;
-  travelerUsername: string;
 };
 
-const Card = ({ id, country, picture, title, travelerPicture, travelerUsername }: CardProps) => {
+const Card = ({ id, country, picture, title, travelerPicture }: CardProps) => {
   let token = localStorage.getItem('apiToken');
 
   const [openModalProfil, setOpenModalProfil] = useState(false);
