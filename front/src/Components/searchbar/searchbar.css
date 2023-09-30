@@ -2,13 +2,72 @@
     background-color: var(--color-bg);
     display: flex;
     justify-content: center;
-    margin-top: 15px;
 }
 
 .css-13cymwt-control.css-13cymwt-control {
     background-color: var(--color-bg);
+    border-color: transparent;
     border-style: none;
     border-radius: 10px;
+}
+
+.css-t3ipsp-control.css-t3ipsp-control{
+    background-color: var(--color-bg);
+    border-color: transparent;
+    border-color: none;
+    border-style: none;
+    border-width: none;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.css-t3ipsp-control:hover.css-t3ipsp-control:hover {
+    background-color: var(--color-bg);
+    border-color: none;
+    border-style: none;
+    border-width: none;
+    box-shadow: none;
+}
+
+.css-1v8qtb9-control.css-1v8qtb9-control {
+    background-color: var(--color-bg);
+    border-color: transparent;
+    border-color: none;
+    border-style: none;
+    border-width: none;
+    border-radius: 10px;
+    box-shadow: none;
+    font-size: 15px;
+}
+
+.css-1v8qtb9-control.css-1v8qtb9-control:hover {
+    border-color: transparent;
+    border-color: none;
+    border-style: none;
+    border-width: none;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.css-1xc3v61-indicatorContainer.css-1xc3v61-indicatorContainer {
+    color: var(--color-bg-btn-light);
+}
+
+.css-1xc3v61-indicatorContainer.css-1xc3v61-indicatorContainer:hover {
+    color: var(--color-bg-btn-dark);
+}
+
+.css-15lsz6c-indicatorContainer.css-15lsz6c-indicatorContainer {
+    color: var(--color-bg-btn-light);
+}
+
+.css-15lsz6c-indicatorContainer.css-15lsz6c-indicatorContainer:hover {
+    color: var(--color-bg-btn-dark);
+}
+
+.css-1nmdiq5-menu.css-1nmdiq5-menu {
+background-color: var(--color-bg);
+font-size: 15px;
 }
 
 .css-1hb7zxy-IndicatorsContainer.css-1hb7zxy-IndicatorsContainer > :nth-child(3) {
@@ -25,9 +84,8 @@
 }
 
 .css-1dimb5e-singleValue.css-1dimb5e-singleValue {
-    color: #9B9B9B;
-    /* margin-left: 20px; */
-    font-size: 10px;
+    color: var( --color-font-medium);
+    font-size: 15px;
 }
 
 .search-name {
@@ -44,7 +102,6 @@
     flex-direction: column;
     background-color: var(--color-bg);
     justify-content: center;
-    margin-top: 15px;
     position: relative;
     width: 240px;
     border-top: 1px solid var( --color-font-medium);
@@ -83,6 +140,10 @@
    border: 0.75px solid var(--color-font-medium);
    height: 30px;
    margin-top: 10px;
+}
+
+.react-select__singleValue {
+    font-size: 50px;
 }
 
 /* For desktop */
@@ -128,6 +189,33 @@ html,
 body{
 height:100%;
 } */
+
+.form-search {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 15px;
+margin-left: 40px;
+gap: 20px
+}
+
+.search-button {
+    cursor: pointer;
+    padding-top: 1.5px;
+    height: 38px;
+    width: 45px;
+    background-color: var( --color-bg-btn-light);
+    border: 1px solid var( --color-bg-btn-light);
+    border-radius: 10px;
+    color: var(--color-bg-btn-dark);
+    font-size: 30px;
+}
+
+.search-button:hover {
+    background-color: var(--color-bg-btn-dark);
+    border: 1px solid var(--color-bg-btn-dark);
+    color:var( --color-bg-btn-light);
+}
 
 .bar{
 width:650px;

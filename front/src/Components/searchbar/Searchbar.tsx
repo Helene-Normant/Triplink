@@ -6,7 +6,8 @@ import "./searchbar.css";
 import { useState, useEffect } from "react";
 import apiService from "../../apiService.js";
 import Loading from "../loading/Loading";
-import Button from "../button/Button";
+import {AiOutlineSearch} from "react-icons/ai";
+
 
 type SearchbarProps = {
   setDestination: (countryOption?: string) => void;
@@ -137,13 +138,20 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
 
   return (
     <>
-      <form className="form" onSubmit={handleSearch}>
+      <form className="form-search" onSubmit={handleSearch}>
         <div className='select'>
           <div className="search-bar search-bar-radius-left">
-            <p className="search-name">Destination</p>
             <Select
+             theme={(theme) => ({
+              ...theme,
+              colors: {
+                ...theme.colors,
+                primary25: '#DDBEA8;',
+                primary: '#05668D',
+              },
+            })}
               options={countryOptions}
-              defaultValue={{ value: 1, label: 'Rechercher une destination' }}
+              defaultValue={{ value: 1, label: 'Destinations' }}
               name="country"
               onChange={handleDestinationChange}
               isClearable={true}
@@ -151,10 +159,17 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
           </div>
           <div className="search-bar">
             <hr className="line-search-bar line-search-bar-left" />
-            <p className="search-name">Catégorie</p>
             <Select
+            theme={(theme) => ({
+              ...theme,
+              colors: {
+                ...theme.colors,
+                primary25: '#DDBEA8;',
+                primary: '#05668D',
+              },
+            })}
               options={categoryOptions}
-              defaultValue={{ value: 'Catégorie', label: 'Rechercher une catégorie' }}
+              defaultValue={{ value: 'Catégorie', label: 'Catégories' }}
               name="category"
               onChange={handleCategoryChange}
               isClearable={true}
@@ -162,10 +177,17 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
             <hr className="line-search-bar line-search-bar-right" />
           </div>
           <div className="search-bar search-bar-radius-rigth">
-            <p className="search-name">Profil</p>
             <Select
+            theme={(theme) => ({
+              ...theme,
+              colors: {
+                ...theme.colors,
+                primary25: '#DDBEA8;',
+                primary: '#05668D',
+              },
+            })}
               options={profilOptions}
-              defaultValue={{ value: 'Profil', label: 'Rechercher un profil' }}
+              defaultValue={{ value: 'Profil', label: 'Profil' }}
               name="profil"
               onChange={handleProfilChange}
               isClearable={true}
@@ -173,33 +195,13 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
           </div>
 
         </div>
-        <div className="search-button">
-          <Button className="light" children="Rechercher" role="annule" type="submit" />
+        <div>
+          <button className="search-button" role="search" type="submit">
+          <AiOutlineSearch/>
+          </button>
         </div>
       </form>
 
-      {/* <div className="searchBar">
-        <input
-          type="text"
-          name="search"
-          id="search"
-          placeholder="Rechercher"
-          onChange={handleSearchTerm}
-        />
-      </div> */}
-      {/* <div className="search__results">
-        {datas
-          .filter((value) => {
-            return value.title.toLowerCase().includes(searchTerm.toLowerCase());
-          })
-          .map((value) => {
-            return (
-              <div className="search__result" key={value.id}>
-                {value.title}
-              </div>
-            );
-          })}
-      </div> */}
     </>
   );
 }

@@ -49,7 +49,7 @@ const HeaderMobileModal = ({ open, onClose }: HeaderMobileModalProps) => {
             type='button'
             role="login"
           />
-          <Modal open={openModal} onClose={() => setOpenModal(false)} />
+          <Modal isOpen={openModal} onClose={() => setOpenModal(false)} />
           <div className="line-modal">
             <hr className="line" />
           </div>
