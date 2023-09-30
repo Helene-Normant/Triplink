@@ -35,7 +35,7 @@ const HeaderLogon = () => {
           role="login"
           type="button"
         />
-        <Modal open={openModal} onClose={() => setOpenModal(false)} />
+        <Modal isOpen={openModal} onClose={() => setOpenModal(false)} />
         <hr className="line-buttons" />
         <Button onClick={handleClick} className="dark" children="S'inscrire" role="inscription" type="button" />
       </div>
