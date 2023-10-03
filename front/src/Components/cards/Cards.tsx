@@ -4,6 +4,7 @@ import "./cards.css";
 import apiService from "../../apiService.js";
 import Card from "../card/Card";
 import Loading from "../loading/Loading";
+import { ImCross } from "react-icons/im";
 
 type Traveler = {
   id: number;
@@ -81,7 +82,15 @@ const Cards = ({ destination, category, profil }: CardsProps) => {
   return (
     <section className="card-wrapper" id="travels">
       <div className="container_travel-cards">
-        {!displayCards.length && <p>Il n'y a rien</p>}
+        {!displayCards.length &&
+          <div className="no-result-container">
+            <div className="no-result-message">
+              <h2>PAS DE RESULTATS</h2>
+            </div>
+            <div className="no-result-icon">
+              <ImCross />
+            </div>
+          </div>}
         {displayCards.map(({ id, country, picture, title, traveler }) => {
           return (
             <Card

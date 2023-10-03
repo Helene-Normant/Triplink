@@ -46,13 +46,14 @@ const HeaderMobileModal = ({ open, onClose }: HeaderMobileModalProps) => {
             className="light"
             onClick={() => setOpenModal(true)}
             children="Se connecter"
+            type='button'
             role="login"
           />
-          <Modal open={openModal} onClose={() => setOpenModal(false)} />
+          <Modal isOpen={openModal} onClose={() => setOpenModal(false)} />
           <div className="line-modal">
             <hr className="line" />
           </div>
-          <Button onClick={handleClick} className="dark" children="S'inscrire" role="inscription" />
+          <Button onClick={handleClick} className="dark" children="S'inscrire" role="inscription" type="button"/>
         </div>
       </div>
     </>

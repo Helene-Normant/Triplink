@@ -81,7 +81,7 @@ const TravelerPartners = {
   getAll: async () => await requests.get("traveler_partners"),
 }
 
-export default {
+const apiService = {
   API_ROOT,
   Login,
   Logout,
@@ -93,3 +93,5 @@ export default {
   Categories,
   TravelerPartners
 }
+
+export default apiService;

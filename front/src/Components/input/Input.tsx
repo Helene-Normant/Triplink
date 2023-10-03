@@ -1,4 +1,4 @@
-import React, { Attributes } from 'react';
+import React from 'react';
 import './input.css';
 
 type InputProps = {
