@@ -56,6 +56,7 @@ const TravelDetail = () => {
     useEffect(() => {
       publicationApi();
     }, 
+    // eslint-disable-next-line
     []);
 
     if (!details) {
