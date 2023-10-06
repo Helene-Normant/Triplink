@@ -5,6 +5,9 @@ import { FaEuroSign } from "react-icons/fa";
 import { PiHandWaving } from "react-icons/pi";
 import apiService from "../../apiService.js";
 import { useParams } from "react-router-dom";
+import Loading from "../loading/Loading";
+
+
 
 type User = {
   picture: string,
@@ -41,6 +44,7 @@ const TravelDetail = () => {
         setLoading(true);
         const detailsData = await apiService.Publications.get(id);
         setDetails(detailsData);
+        setLoading(false);
         console.log(detailsData);
       } catch (err) {
         console.log(err);
@@ -51,11 +55,19 @@ const TravelDetail = () => {
   
     useEffect(() => {
       publicationApi();
-    }, []);
+    }, 
+    []);
 
     if (!details) {
       return null;
     }
+
+    if (loading) {
+      return <div>
+        <Loading/>
+        </div>
+    }
+  
   
   return (
   <section className="detail-wrapper">
