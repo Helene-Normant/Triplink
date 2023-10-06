@@ -1,3 +1,19 @@
+.card-details-return { 
+    margin-top: 30px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.link-return {
+   display: flex;
+   gap: 10px;
+}
+
+.return-details {
+    text-decoration: none;
+    color: var(--color-font-medium);
+}
+
 .card-details-container {
     margin-top: 20px;
     display: flex;
