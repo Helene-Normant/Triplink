@@ -52,9 +52,10 @@ class Publication
     #[Groups(['publication:read', 'publication:write', 'user:read', 'travelstep:read'])]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255)]
-    #[Groups(['publication:read', 'publication:write', 'user:read', 'travelstep:read'])]
-    private ?string $country = null;
+    #[ORM\ManyToOne(inversedBy: 'publications', cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
+    private ?Country $country = null;
 
     #[ORM\Column(nullable: true)]
     #[Groups(['publication:read', 'publication:write'])]
@@ -64,17 +65,18 @@ class Publication
     #[Groups(['publication:read', 'publication:write'])]
     private ?string $bagTips = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\ManyToOne(inversedBy: 'publications', cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: false)]
     #[Groups(['publication:read', 'publication:write', 'user:read'])]
-    private ?string $travelType = null;
+    private ?Category $travelType = null;
 
     #[ORM\Column(length: 800)]
     #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $picture = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['publication:read', 'publication:write'])]
-    private ?string $travelPartner = null;
+    #[ORM\ManyToOne(inversedBy: 'publications', cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?TravelerPartner $travelPartner = null;
 
     #[ORM\Column]
     #[Groups(['publication:read', 'publication:write'])]
@@ -94,6 +96,7 @@ class Publication
     private Collection $userWhoLiked;
 
     #[ORM\OneToMany(mappedBy: 'publicationRelated', targetEntity: TravelStep::class)]
+    
     #[Groups(['publication:read'])]
     private Collection $stepTravel;
 
@@ -140,12 +143,12 @@ class Publication
         return $this;
     }
 
-    public function getCountry(): ?string
+    public function getCountry(): ?Country
     {
         return $this->country;
     }
 
-    public function setCountry(string $country): self
+    public function setCountry(?Country $country): self
     {
         $this->country = $country;
 
@@ -176,12 +179,12 @@ class Publication
         return $this;
     }
 
-    public function getTravelType(): ?string
+    public function getTravelType(): ?Category
     {
         return $this->travelType;
     }
 
-    public function setTravelType(string $travelType): self
+    public function setTravelType(?Category $travelType): self
     {
         $this->travelType = $travelType;
 
@@ -200,12 +203,12 @@ class Publication
         return $this;
     }
 
-    public function getTravelPartner(): ?string
+    public function getTravelPartner(): ?TravelerPartner
     {
         return $this->travelPartner;
     }
 
-    public function setTravelPartner(?string $travelPartner): self
+    public function setTravelPartner(?TravelerPartner $travelPartner): self
     {
         $this->travelPartner = $travelPartner;
 

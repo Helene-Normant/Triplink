@@ -18,7 +18,7 @@ class AppFixtures extends Fixture
                 'traveler' => UserFactory::random(),
             ];
        });
-        TravelStepFactory::createMany(20, function() {
+        TravelStepFactory::createMany(30, function() {
             return [
                 'publicationRelated' => PublicationFactory::random(),
             ];
