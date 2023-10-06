@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import './travelDetails.css';
 import { FaEuroSign } from "react-icons/fa";
-import { GiBackpack } from "react-icons/gi";
+// import { GiBackpack } from "react-icons/gi";
 import { PiHandWaving } from "react-icons/pi";
 import apiService from "../../apiService.js";
+import { useParams } from "react-router-dom";
 
 type User = {
   picture: string,
@@ -14,14 +15,16 @@ type Publication = {
   createdAt: string,
   travelPartner: string,
   description: string;
+  travelType : string;
   bagTips: string;
+  id: string;
   traveler: User;
 }
 
 const TravelDetail = () => {
+    const { id } = useParams();
     const [menuOpen, setMenuOpen] = useState(false);
     const [details, setDetails] = useState<Publication | null>();
-    const [categories, setCategories] = useState();
     const [loading, setLoading] = useState(false);
   
     const formatDate = (dateString : string) => {
@@ -36,7 +39,7 @@ const TravelDetail = () => {
     const publicationApi = async () => {
       try {
         setLoading(true);
-        const detailsData = await apiService.Publications.get(35);
+        const detailsData = await apiService.Publications.get(id);
         setDetails(detailsData);
         console.log(detailsData);
       } catch (err) {
@@ -55,7 +58,7 @@ const TravelDetail = () => {
     }
   
   return (
-  <section className="detail-wrapper" id="details">
+  <section className="detail-wrapper">
     <div className="info-travel-container">
      <div className="info-publication">
       <div className="info-details-profil">
@@ -73,7 +76,7 @@ const TravelDetail = () => {
        <FaEuroSign/> <FaEuroSign/>
        </div>
        <div className="info-type">
-       {/* <GiBackpack/>  */} {details.travelType}
+       {details.travelType} 
        </div>
        <div className="info-tribu">
        <h1>{details.travelPartner}</h1>

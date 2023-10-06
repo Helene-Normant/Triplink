@@ -35,7 +35,7 @@ const Card = ({ id, country, picture, title, travelerPicture }: CardProps) => {
           </div>
         </div>
         { token ? (
-        <Link to="/details">
+        <Link to={`/details/${id}`}>
         <div className="card_travel-image">
           <img
             className="travel-image"
