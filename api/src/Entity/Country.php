@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Repository\CountryRepository;
 use ApiPlatform\Metadata\Get;
@@ -30,6 +31,7 @@ class Country
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Groups(['country:read','publication:read'])]
     private ?int $code = null;
 
     #[ORM\Column(length: 10)]
@@ -39,12 +41,15 @@ class Country
     private ?string $alpha3 = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['country:read'])]
+    #[Groups(['country:read','publication:read'])]
     private ?string $nameFr = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['country:read'])]
+    #[Groups(['country:read','publication:read'])]
     private ?string $nameEn = null;
+
+    #[ORM\OneToMany(mappedBy: 'country', targetEntity: Publication::class)]
+    private Collection $publications;
 
     public function getId(): ?int
     {
@@ -107,6 +112,21 @@ class Country
     public function setNameEn(string $nameEn): self
     {
         $this->nameEn = $nameEn;
+
+        return $this;
+    }
+
+       /**
+     * @return Collection<int, Publication>
+     */
+    public function getPublications(): Collection
+    {
+        return $this->publications;
+    }
+
+    public function setPublication(?Publication $publications): self
+    {
+        $this->publications = $publications;
 
         return $this;
     }

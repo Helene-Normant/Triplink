@@ -12,9 +12,15 @@ type Traveler = {
   picture: string;
 }
 
+type Country = {
+  id: number;
+  nameFr: string;
+  nameEn: string;
+}
+
 type CardsProps = {
   id: number;
-  country: string;
+  country: Country;
   picture: string;
   title: string;
   photo: string;
@@ -25,7 +31,6 @@ type CardsProps = {
 const Cards = () => {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const publicationsApi = async () => {
     try {
       setLoading(true);
@@ -57,8 +62,8 @@ const Cards = () => {
             <Card
               key={id}
               id={id}
-              country={country}
-              picture={picture}
+              country={country.nameFr}
+              picture={picture.split(',')[0]}
               title={title}
               travelerPicture={traveler.picture}
             />
