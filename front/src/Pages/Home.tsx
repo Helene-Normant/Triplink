@@ -7,11 +7,12 @@ import Footer from '../Components/footer/Footer';
 import Modal from '../Components/modal/LoginModal';
 import Header from '../Components/header/Header';
 import { useState } from "react";
+import { TravelType } from '../Components/details/TravelDetail';
 
 
 const Home = () => {
   const [destination, setDestination] = useState<Country>();
-  const [category, setCategory] = useState<string>();
+  const [category, setCategory] = useState<TravelType>();
   const [profil, setProfil] = useState<string>();
 
   return (
