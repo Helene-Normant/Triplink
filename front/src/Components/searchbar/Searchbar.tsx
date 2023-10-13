@@ -1,4 +1,3 @@
-// import Dropdown from "react-dropdown";
 import React, { useRef } from "react";
 import "react-dropdown/style.css";
 import Select, { SingleValue } from 'react-select';
@@ -6,7 +5,7 @@ import "./searchbar.css";
 import { useState, useEffect } from "react";
 import apiService from "../../apiService.js";
 import Loading from "../loading/Loading";
-import {AiOutlineSearch} from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
 
 
 type SearchbarProps = {
@@ -142,14 +141,14 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
         <div className='select'>
           <div className="search-bar search-bar-radius-left">
             <Select
-             theme={(theme) => ({
-              ...theme,
-              colors: {
-                ...theme.colors,
-                primary25: '#DDBEA8;',
-                primary: '#05668D',
-              },
-            })}
+              theme={(theme) => ({
+                ...theme,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#DDBEA8;',
+                  primary: '#05668D',
+                },
+              })}
               options={countryOptions}
               defaultValue={{ value: 1, label: 'Destinations' }}
               name="country"
@@ -160,14 +159,14 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
           <div className="search-bar">
             <hr className="line-search-bar line-search-bar-left" />
             <Select
-            theme={(theme) => ({
-              ...theme,
-              colors: {
-                ...theme.colors,
-                primary25: '#DDBEA8;',
-                primary: '#05668D',
-              },
-            })}
+              theme={(theme) => ({
+                ...theme,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#DDBEA8;',
+                  primary: '#05668D',
+                },
+              })}
               options={categoryOptions}
               defaultValue={{ value: 'Catégorie', label: 'Catégories' }}
               name="category"
@@ -175,32 +174,32 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
               isClearable={true}
             />
             <hr className="line-search-bar line-search-bar-right" />
-          </div>
+          </div >
           <div className="search-bar search-bar-radius-rigth">
             <Select
-            theme={(theme) => ({
-              ...theme,
-              colors: {
-                ...theme.colors,
-                primary25: '#DDBEA8;',
-                primary: '#05668D',
-              },
-            })}
+              theme={(theme) => ({
+                ...theme,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#DDBEA8;',
+                  primary: '#05668D',
+                },
+              })}
               options={profilOptions}
               defaultValue={{ value: 'Profil', label: 'Profil' }}
               name="profil"
               onChange={handleProfilChange}
               isClearable={true}
             />
-          </div>
+          </div >
 
-        </div>
+        </div >
         <div>
           <button className="search-button" role="search" type="submit">
-          <AiOutlineSearch/>
+            <AiOutlineSearch />
           </button>
         </div>
-      </form>
+      </form >
 
     </>
   );
