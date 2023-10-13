@@ -5,7 +5,6 @@ import useIsMobile from "../../Hooks/useIsMobile";
 
 
 const Header = () => {
-
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [checkLocalStorage, setCheckLocalStorage] = useState(false);
 
@@ -29,17 +28,17 @@ const Header = () => {
 
   return (
     <>
-      {!isMobile ? 
-      <HeaderDesktop 
-      isUserLoggedIn={isUserLoggedIn}
-      checkLocalStorage={checkLocalStorage}
-      logout={logout}
-      /> : 
-      <HeaderMobile 
-      //isUserLoggedIn={isUserLoggedIn}
-      //checkLocalStorage={checkLocalStorage}
-      //logout={logout}
-      />}
+      {!isMobile ?
+        <HeaderDesktop
+          isUserLoggedIn={isUserLoggedIn}
+          checkLocalStorage={checkLocalStorage}
+          logout={logout}
+        /> :
+        <HeaderMobile
+        //isUserLoggedIn={isUserLoggedIn}
+        //checkLocalStorage={checkLocalStorage}
+        //logout={logout}
+        />}
     </>
   );
 }

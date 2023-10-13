@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "../../../button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import "./headerMobileModal.css";
-import Modal from "../../../modal/Modal";
+import Modal from "../../../modal/LoginModal";
 import logo from '../../../../assets/Triplink_min.png'
 
 
@@ -49,7 +49,7 @@ const HeaderMobileModal = ({ open, onClose }: HeaderMobileModalProps) => {
             type='button'
             role="login"
           />
-          <Modal open={openModal} onClose={() => setOpenModal(false)} />
+          <Modal isOpen={openModal} onClose={() => setOpenModal(false)} />
           <div className="line-modal">
             <hr className="line" />
           </div>
