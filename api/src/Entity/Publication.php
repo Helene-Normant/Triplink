@@ -76,6 +76,7 @@ class Publication
 
     #[ORM\ManyToOne(inversedBy: 'publications', cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?TravelerPartner $travelPartner = null;
 
     #[ORM\Column]
@@ -96,7 +97,6 @@ class Publication
     private Collection $userWhoLiked;
 
     #[ORM\OneToMany(mappedBy: 'publicationRelated', targetEntity: TravelStep::class)]
-    
     #[Groups(['publication:read'])]
     private Collection $stepTravel;
 
