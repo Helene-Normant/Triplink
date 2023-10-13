@@ -20,7 +20,6 @@ final class Version20231006123234 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE category DROP publication_category_id');
         $this->addSql('ALTER TABLE publication ADD country_id INT NOT NULL, ADD travel_type_id INT NOT NULL, DROP country, DROP travel_type');
         $this->addSql('ALTER TABLE publication ADD CONSTRAINT FK_AF3C6779F92F3E70 FOREIGN KEY (country_id) REFERENCES country (id)');
         $this->addSql('ALTER TABLE publication ADD CONSTRAINT FK_AF3C677940F3B82 FOREIGN KEY (travel_type_id) REFERENCES category (id)');

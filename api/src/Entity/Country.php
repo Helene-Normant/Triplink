@@ -27,11 +27,11 @@ class Country
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['country:read'])]
+    #[Groups(['country:read','publication:read'])]
     private ?int $id = null;
 
     #[ORM\Column]
-    #[Groups(['country:read','publication:read'])]
+    #[Groups(['country:read'])]
     private ?int $code = null;
 
     #[ORM\Column(length: 10)]
