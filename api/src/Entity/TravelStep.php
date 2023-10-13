@@ -60,7 +60,7 @@ class TravelStep
     private ?float $latitude = null;
 
     #[ORM\Column]
-    #[Groups(['travelstep:write', 'publication:read'])]
+    #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?float $longitude = null;
 
     #[ORM\Column(length: 300, nullable: true)]
@@ -71,10 +71,10 @@ class TravelStep
     #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?string $less = null;
 
-    #[ORM\ManyToOne(inversedBy: 'stepTravel')]
+    #[ORM\ManyToOne(inversedBy: 'stepTravel',cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(['travelstep:read'])]
-    private ?Publication $publicationRelated = null;
+    #[Groups(['travelstep:read','travelstep:write'])]
+    private ?Publication $publicationRelated;
 
     public function getId(): ?int
     {
@@ -153,7 +153,7 @@ class TravelStep
         return $this;
     }
 
-    public function getLess(): ?string
+    public function getLess():?string
     {
         return $this->less;
     }

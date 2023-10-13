@@ -1,5 +1,8 @@
-<?php 
+<?php
 use App\Entity\Publication;
+use App\Entity\Country;
+use App\Entity\Category;
+use App\Entity\TravelerPartner;
 use App\Entity\User;
 use PHPUnit\Framework\TestCase;
 
@@ -10,14 +13,25 @@ class PublicationTest extends TestCase
         $publication = new Publication();
         $publication->setTitle('Sample Publication');
         $publication->setDescription('This is a test publication');
-        $publication->setCountry('Sample Country');
+
+        // You should set related objects using their setter methods
+        $country = new Country(); // Replace 'Country' with your actual entity class
+        $publication->setCountry($country);
+
         $publication->setBudget(1000); // Sample budget
         $publication->setBagTips('Sample Bag Tips');
-        $publication->setTravelType('Sample Travel Type');
+
+        $travelType = new Category(); // Replace 'Category' with your actual entity class
+        $publication->setTravelType($travelType);
+
         $publication->setPicture('sample.jpg');
-        $publication->setTravelPartner('Sample Travel Partner');
+
+        $travelPartner = new TravelerPartner(); // Replace 'TravelerPartner' with your actual entity class
+        $publication->setTravelPartner($travelPartner);
+
         $createdAt = new \DateTimeImmutable();
         $publication->setCreatedAt($createdAt);
+
         $modifiedAt = new \DateTimeImmutable();
         $publication->setModifiedAt($modifiedAt);
 
@@ -25,19 +39,22 @@ class PublicationTest extends TestCase
         $user = new User();
         $user->setUsername('john_doe');
         $user->setEmail('john@example.com');
-        $user->setPassword('password123');
+
+        // You should hash the password as per your Symfony configuration
+        $password = password_hash('password123', PASSWORD_BCRYPT);
+        $user->setPassword($password);
 
         $publication->setTraveler($user);
 
         $this->assertInstanceOf(Publication::class, $publication);
         $this->assertEquals('Sample Publication', $publication->getTitle());
         $this->assertEquals('This is a test publication', $publication->getDescription());
-        $this->assertEquals('Sample Country', $publication->getCountry());
+        $this->assertInstanceOf(Country::class, $publication->getCountry());
         $this->assertEquals(1000, $publication->getBudget());
         $this->assertEquals('Sample Bag Tips', $publication->getBagTips());
-        $this->assertEquals('Sample Travel Type', $publication->getTravelType());
+        $this->assertInstanceOf(Category::class, $publication->getTravelType());
         $this->assertEquals('sample.jpg', $publication->getPicture());
-        $this->assertEquals('Sample Travel Partner', $publication->getTravelPartner());
+        $this->assertInstanceOf(TravelerPartner::class, $publication->getTravelPartner());
         $this->assertEquals($createdAt, $publication->getCreatedAt());
         $this->assertEquals($modifiedAt, $publication->getModifiedAt());
         $this->assertInstanceOf(User::class, $publication->getTraveler());

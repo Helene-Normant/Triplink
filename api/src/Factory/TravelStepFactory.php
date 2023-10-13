@@ -48,8 +48,8 @@ final class TravelStepFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'title' => self::faker()->sentence(3),
-            'description' => self::faker()->paragraph(),
+            'title' => self::faker()->sentence(2),
+            'description' => self::faker()->paragraph(1),
             'address' => self::faker()->address,
             'latitude' => self::faker()->latitude,
             'longitude' => self::faker()->longitude,
