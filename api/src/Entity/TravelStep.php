@@ -48,27 +48,27 @@ class TravelStep
     private ?string $title = null;
 
     #[ORM\Column(length: 500)]
-    #[Groups(['travelstep:read', 'travelstep:write'])]
+    #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['travelstep:read', 'travelstep:write'])]
+    #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?string $address = null;
 
     #[ORM\Column]
-    #[Groups(['travelstep:read', 'travelstep:write'])]
+    #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?float $latitude = null;
 
     #[ORM\Column]
-    #[Groups(['travelstep:write'])]
+    #[Groups(['travelstep:write', 'publication:read'])]
     private ?float $longitude = null;
 
     #[ORM\Column(length: 300, nullable: true)]
-    #[Groups(['travelstep:read', 'travelstep:write'])]
+    #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?string $plus = null;
 
     #[ORM\Column(length: 300, nullable: true)]
-    #[Groups(['travelstep:read', 'travelstep:write'])]
+    #[Groups(['travelstep:read', 'travelstep:write', 'publication:read'])]
     private ?string $less = null;
 
     #[ORM\ManyToOne(inversedBy: 'stepTravel')]

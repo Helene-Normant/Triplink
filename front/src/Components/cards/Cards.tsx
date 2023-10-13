@@ -57,7 +57,7 @@ const Cards = () => {
   return (
     <section className="card-wrapper" id="travels">
       <div className="container_travel-cards">
-        {cards.map(({ id, country, picture, title, traveler }: CardsProps) => {
+        {cards.map(({id, country, picture, title, traveler}: CardsProps) => {
           return (
             <Card
               key={id}
@@ -66,7 +66,6 @@ const Cards = () => {
               picture={picture.split(',')[0]}
               title={title}
               travelerPicture={traveler.picture}
-              travelerUsername={traveler.username}
             />
           );
         })}

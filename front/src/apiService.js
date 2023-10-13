@@ -49,6 +49,7 @@ const requests = {
   const Publications = {
     getAll: async () => await requests.get("publications"),
     post: async (body) => await requests.post("publications", body),
+    get: async (id) => await requests.get(`publications/${id}`),
   }
 
   const Login = {
