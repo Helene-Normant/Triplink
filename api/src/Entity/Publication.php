@@ -45,15 +45,15 @@ class Publication
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['publication:read', 'publication:write', 'user:read', 'travelstep:read'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $title = null;
 
     #[ORM\Column(length: 500)]
-    #[Groups(['publication:read', 'publication:write', 'user:read', 'travelstep:read'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    #[Groups(['publication:read', 'publication:write', 'user:read', 'travelstep:read'])]
+    #[Groups(['publication:read', 'publication:write', 'user:read'])]
     private ?string $country = null;
 
     #[ORM\Column(nullable: true)]
