@@ -78,6 +78,8 @@ const Cards = ({ destination, category, profil }: CardsProps) => {
 
   useEffect(() => {
     filterCards(destination, category, profil);
+
+    // eslint-disable-next-line
   }, [category, destination, profil]);
 
   if (loading) {
