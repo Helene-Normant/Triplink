@@ -39,7 +39,7 @@ h1 {
 font-weight: 300;
 font-family: 'Montserrat Alternates', sans-serif;
 font-size: 1.25em;
-color: var(--color-font-medium);
+color: var(--color-bg-btn-dark);
 }
 
 h2 {

@@ -6,14 +6,13 @@ import Card from "../card/Card";
 import Loading from "../loading/Loading";
 import { ImCross } from "react-icons/im";
 
-
 type Traveler = {
   id: number;
   username: string;
   picture: string;
 }
 
-type Country = {
+export type Country = {
   id: number;
   nameFr: string;
   nameEn: string;
