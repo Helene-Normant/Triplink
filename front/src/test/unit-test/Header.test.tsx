@@ -1,9 +1,9 @@
+import React from 'react';
 import {
   render,
   screen,
   waitFor,
   fireEvent,
-  queryByText,
 } from "@testing-library/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
@@ -46,29 +46,27 @@ describe("<Header />", () => {
   });
 
   test('clicking on "S\'incrire" button redirects to Inscription page with correct text', () => {
-   render(<Router>
-      <Header />
-      <Routes>
-        {/* Define your routes here using <Route> */}
-        <Route path="/inscription" element={<Inscription />} />
-        {/* Add more routes as needed */}
-      </Routes>
-    </Router>
-  );
+   render(
+    <Router>
+    <Header />
+    <Routes>
+      <Route path="/inscription" element={<Inscription />} />
+    </Routes>
+  </Router>
+);
 
-  fireEvent.click(screen.getByRole("inscription"));
+fireEvent.click(screen.getByText("S'inscrire")); // Cliquer sur le bouton "S'inscrire"
 
-  // Use queryByText with a custom text matcher function
-  const UserClick = (content, element) => {
-    const hasText = (node) =>
-      node.textContent === "Rejoins la communauté des voyageurs";
-    const nodeHasText = hasText(element);
+(element : HTMLElement ) => {
+  const hasText = (node : Node) =>
+    node.textContent === "Rejoins la communauté des voyageurs";
+  const nodeHasText = hasText(element);
 
-    return nodeHasText;
-  };
+  return nodeHasText;
+};
 
-  expect(
-    queryByText(screen.getByTestId("inscription-page"), UserClick)
-  ).toBeInTheDocument();
-});
+expect(
+  screen.getByTestId("inscription-page").innerHTML, // Vérifiez le contenu de la page d'inscription
+).toMatch(/Rejoins la communauté des voyageurs/);
+ });
 });
