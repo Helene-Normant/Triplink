@@ -7,11 +7,12 @@ import apiService from "../../apiService.js";
 import Loading from "../loading/Loading";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Country } from "../cards/Cards";
+import { TravelType } from '../details/TravelDetail';
 
 
 type SearchbarProps = {
   setDestination: (countryOption?: Country) => void;
-  setCategory: (categoryOption?: string) => void;
+  setCategory: (categoryOption?: TravelType) => void;
   setProfil: (profilOption?: string) => void;
 }
 
@@ -23,6 +24,9 @@ export type CountryOption = {
 
 export type CategoryOption = {
   categoryFr: string;
+  categoryEn: string;
+  id: number;
+
 }
 
 export type ProfilOption = {
@@ -36,7 +40,7 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
   const [loading, setLoading] = useState(false);
 
   const tempCountryValue = useRef<Country>();  // = un objet, donc on manipule tempCountryValue.current
-  const tempCategoryValue = useRef<string>();
+  const tempCategoryValue = useRef<TravelType>();
   const tempProfilValue = useRef<string>();
 
   const fetchCountries = async () => {
@@ -92,7 +96,7 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
 
   const categoryOptions =
     categoriesDatas.map((data: CategoryOption) => {
-      return { value: data.categoryFr, label: data.categoryFr };
+      return { value: data.id, label: data.categoryFr };
     })
 
   const profilOptions =
@@ -114,7 +118,7 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
   }>) => {
     if (newValue !== null) {
       tempCountryValue.current = {
-        id: newValue.value,
+        id: newValue.value, 
         nameFr: newValue.label,
         nameEn: newValue.label,
       }
@@ -124,10 +128,18 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
   }
 
   const handleCategoryChange = (newValue: SingleValue<{
-    value: string;
+    value: number;
     label: string;
   }>) => {
-    tempCategoryValue.current = newValue?.label;
+    // tempCategoryValue.current = newValue?.label;
+
+    if (newValue !== null) {
+      tempCategoryValue.current = {
+        id: newValue.value, 
+        categoryFr: newValue.label,
+        categoryEn: newValue.label,
+      }
+    }
   }
 
   const handleProfilChange = (newValue: SingleValue<{
@@ -176,7 +188,7 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
                 },
               })}
               options={categoryOptions}
-              defaultValue={{ value: 'Catégorie', label: 'Catégories' }}
+              defaultValue={{ value: 1, label: 'Catégories' }}
               name="category"
               onChange={handleCategoryChange}
               isClearable={true}

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import './travelDetails.css';
 import { FaEuroSign } from "react-icons/fa";
-// import { GiBackpack } from "react-icons/gi";
-// import { PiHandWaving } from "react-icons/pi";
 import apiService from "../../apiService.js";
 import { useParams } from "react-router-dom";
 import Loading from "../loading/Loading";
+import hello from "../../assets/wave-hand.svg";
 
 
 
@@ -14,14 +13,27 @@ type User = {
   username: string,
 };
 
+export type TravelType = {
+  id: number;
+  categoryFr: string;
+  categoryEn: string;
+}
+
+type TravelPartner = {
+  id: number;
+  partnerFR: string;
+  partnerEN: string;
+}
+
 type Publication = {
   createdAt: string,
-  travelPartner: string,
+  travelPartner: TravelPartner,
   description: string;
-  travelType: string;
+  travelType: TravelType,
   bagTips: string;
   id: string;
   traveler: User;
+  budget: number;
 }
 
 const TravelDetail = () => {
@@ -87,12 +99,13 @@ const TravelDetail = () => {
           <div className="info-detail-travel">
             <div className="info-price">
               <FaEuroSign /> <FaEuroSign />
+              {details.budget}
             </div>
             <div className="info-type">
-              {details.travelType}
+            {details.travelType.categoryFr}
             </div>
             <div className="info-tribu">
-              <h1>{details.travelPartner}</h1>
+              {details.travelPartner.partnerFR}
             </div>
           </div>
           <div className="info-contact-details">
@@ -120,7 +133,7 @@ const TravelDetail = () => {
           <div className="info-pack">
             <h1>À avoir dans son sac</h1>
             <h3>
-              {details.bagTips} Existe pas ?
+              {details.bagTips}
             </h3>
           </div>
         </div>
@@ -131,7 +144,8 @@ const TravelDetail = () => {
           </div>
           <div className="info-contact-me">
             <h1>
-              Partant.e pour de nouvelles aventures
+              <img src={hello} alt="rencontre" />
+             Partant.e pour de nouvelles aventures
             </h1>
           </div>
         </div>

@@ -5,6 +5,7 @@ import apiService from "../../apiService.js";
 import Card from "../card/Card";
 import Loading from "../loading/Loading";
 import { ImCross } from "react-icons/im";
+import { TravelType } from '../details/TravelDetail';
 
 type Traveler = {
   id: number;
@@ -20,7 +21,7 @@ export type Country = {
 
 type CardsProps = {
   destination?: Country;
-  category?: string;
+  category?: TravelType;
   profil?: string;
 };
 
@@ -28,7 +29,7 @@ type CardsProps = {
 type ApiCard = {
   id: number;
   country: Country;
-  travelType: string;
+  travelType: TravelType;
   picture: string;
   title: string;
   photo: string;
@@ -56,11 +57,11 @@ const Cards = ({ destination, category, profil }: CardsProps) => {
     }
   };
 
-  const filterCards = (newDestination?: Country, newCategory?: string, newProfil?: string) => {
+  const filterCards = (newDestination?: Country, newCategory?: TravelType, newProfil?: string) => {
     setDisplayCards(apiCards.filter(
       (card) => {
-        const destinationMatch = !newDestination || (card.country === newDestination);
-        const categoryMatch = !newCategory || (card.travelType === newCategory);
+        const destinationMatch = !newDestination || (card.country.id === newDestination.id);
+        const categoryMatch = !newCategory || (card.travelType.id === newCategory.id);
         const profilMatch = !newProfil || (card.traveler.username === newProfil);
 
         return destinationMatch && categoryMatch && profilMatch;
