@@ -5,6 +5,9 @@ import apiService from "../../apiService.js";
 import { useParams } from "react-router-dom";
 import Loading from "../loading/Loading";
 import hello from "../../assets/wave-hand.svg";
+import { FaCameraRetro, FaCar, FaLeaf, FaBook, FaHamburger, FaSuitcase, FaHandHoldingHeart } from "react-icons/fa";
+import { GiBackpack } from "react-icons/gi";
+import { BsSunglasses } from "react-icons/bs";
 
 
 
@@ -57,7 +60,6 @@ const TravelDetail = () => {
       const detailsData = await apiService.Publications.get(id);
       setDetails(detailsData);
       setLoading(false);
-      console.log(detailsData);
     } catch (err) {
       console.log(err);
     } finally {
@@ -81,7 +83,6 @@ const TravelDetail = () => {
     </div>
   }
 
-
   return (
     <section className="detail-wrapper">
       <div className="info-travel-container">
@@ -98,14 +99,38 @@ const TravelDetail = () => {
         <div className="info-contact-travel">
           <div className="info-detail-travel">
             <div className="info-price">
-              <FaEuroSign /> <FaEuroSign />
-              {details.budget}
+              {[...Array(details.budget)].map((index) => (
+                 <FaEuroSign key={index} />
+              ))}
             </div>
             <div className="info-type">
-            {details.travelType.categoryFr}
+            {(() => {
+            switch (details.travelType.categoryFr) {
+               case 'Touristique':
+                return <FaCameraRetro/>;
+               case 'Road Trip':
+                return <FaCar/>;
+               case 'Aventure':
+                return <GiBackpack/>;
+               case 'Nature':
+                return <FaLeaf/>;
+               case 'Culturel':
+                 return <FaBook/>;
+               case 'Culinaire':
+                 return <FaHamburger/>;
+               case 'Détente':
+                 return <BsSunglasses/>;
+               case 'Voyages daffaires':
+                 return <FaSuitcase/>;
+               case 'Humanitaire':
+                 return <FaHandHoldingHeart/>;
+             default:
+              return 'Autre';
+            }
+           })()}
             </div>
             <div className="info-tribu">
-              {details.travelPartner.partnerFR}
+              <h1>{details.travelPartner.partnerFR}</h1>
             </div>
           </div>
           <div className="info-contact-details">
@@ -137,14 +162,12 @@ const TravelDetail = () => {
             </h3>
           </div>
         </div>
-
         <div className="info-contact">
           <div className="info-hello">
-            {/* <PiHandWaving /> */}
+          <img src={hello} alt="rencontre" />
           </div>
           <div className="info-contact-me">
             <h1>
-              <img src={hello} alt="rencontre" />
              Partant.e pour de nouvelles aventures
             </h1>
           </div>

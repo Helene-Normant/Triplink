@@ -46,6 +46,7 @@ color: var(--color-font-medium);
 display: flex;
 text-align: center;
 font-size: 30px;
+color: var(--color-font-dark);
 }
 
 .info-description {
@@ -102,7 +103,6 @@ line-height: 48px;
     position: relative;
     width: 3.125em;
   }
-  
   
   .contact-items {
     list-style: none;
