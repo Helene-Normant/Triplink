@@ -51,6 +51,7 @@ const MapComponent = () => {
 
   useEffect(() => {
     handlePublication();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!pingPublication) {

@@ -5,7 +5,7 @@ import PhotoDetail from "../Components/details/PhotoDetail";
 import './details.css'
 import { BsArrowReturnLeft } from "react-icons/bs";
 import { Link} from "react-router-dom";
-import MapComponent from "../Components/map/Map"
+import MapComponent from "../Components/map/Map";
 
 const Details = () => {
   return (
