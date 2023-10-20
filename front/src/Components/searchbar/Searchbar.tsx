@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import "react-dropdown/style.css";
 import Select, { SingleValue } from 'react-select';
 import "./searchbar.css";
 import { useState, useEffect } from "react";
