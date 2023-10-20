@@ -90,3 +90,9 @@
     text-decoration: none;
 }
 
+@media screen and (max-width : 26.875em) {
+    /* .form1 {
+        padding-left: 30px;
+        padding-right: 30px;
+    } */
+}
