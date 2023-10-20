@@ -23,3 +23,8 @@
     height: 1.163em;
 }
 
+@media screen and (max-width : 26.875em) {
+ .footer-mobile {
+    font-size: 0.563em;
+ }
+}

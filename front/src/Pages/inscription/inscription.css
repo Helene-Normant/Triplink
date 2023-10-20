@@ -88,7 +88,7 @@ input[type="checkbox"] {
   width: 5%;
 }
 
-@media (max-width : 430px) { 
+@media (max-width : 26.875em) { 
   .container-inscription {
     height: 100%;
   }
@@ -116,7 +116,6 @@ input[type="checkbox"] {
   
   .first-line {
     display: flex;
-    justify-content: center;
     gap: 0.938em;
   }
   
@@ -124,6 +123,7 @@ input[type="checkbox"] {
     display: flex;
     justify-content: center;
     gap: 0.938em;
+    left: 75.563em;   
   }
   
   .conditions-container {
@@ -162,6 +162,6 @@ input[type="checkbox"] {
   }
   
   .logo-triplink-inscription {
-    width: 8%;
+   display: none;
   }
 }

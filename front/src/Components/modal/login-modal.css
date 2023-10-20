@@ -91,8 +91,39 @@
 }
 
 @media screen and (max-width : 26.875em) {
-    /* .form1 {
-        padding-left: 30px;
-        padding-right: 30px;
-    } */
+    .modal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        display: flex;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1.875rem;
+        font-size: 1.7em;
+    }
+    .form1 {
+        display: flex;
+        flex-direction: column;
+        gap: 0.938em;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0.938em;
+        left: 61%; 
+        transform: translate(-50%);
+    }
+    .lien-modal3 {
+        margin-top: -0.375em;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    .lien-modal1 {
+        margin-right: -5.75em;
+    }
 }

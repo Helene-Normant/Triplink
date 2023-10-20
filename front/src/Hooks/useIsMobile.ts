@@ -1,25 +1,28 @@
 import { useEffect, useState } from 'react';
 
 const useIsMobile = (): boolean => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 430);
-
-  const updateSize = (): void => {
-    setIsMobile(window.innerWidth <= 430);
-  };
+  const [isMobile, setIsMobile] = useState(window.matchMedia('(max-width: 26.875em)').matches);
 
   useEffect(() => {
-    window.addEventListener('resize', updateSize);
+    const mq = window.matchMedia('(max-width: 26.875em)');
 
-    return (): void => window.removeEventListener('resize', updateSize);
+    const updateSize = (mq: MediaQueryListEvent): void => {
+      setIsMobile(mq.matches);
+    };
+
+    // Mettre à jour l'état initial
+    updateSize(mq);
+
+    // Ajouter un écouteur pour les changements
+    mq.addEventListener('change', updateSize);
+
+    return (): void => {
+      // Retirer l'écouteur lors du démontage
+      mq.removeEventListener('change', updateSize);
+    };
   }, []);
 
   return isMobile;
 };
 
 export default useIsMobile;
-
-
-
-
-
-

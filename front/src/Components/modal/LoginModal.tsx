@@ -7,6 +7,8 @@ import Button from '../button/Button';
 import apiService from "../../apiService";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import useIsMobile from "../../Hooks/useIsMobile";
+
 
 type ModalProps = {
   isOpen: boolean;
@@ -20,7 +22,7 @@ const LoginModal = ({ isOpen, onClose }: ModalProps) => {
   }
 
   const [user, setUser] = useState(initialUser);
-  // const [username, setUsername] = useState('');
+  const isMobile = useIsMobile();
 
   const handleChange = ({ target }: any) => {
     const { name, value } = target
@@ -79,10 +81,10 @@ const LoginModal = ({ isOpen, onClose }: ModalProps) => {
             <h2>Bienvenue sur Triplink</h2>
             <h3 className="subtitle-modal">J'ai un compte</h3>
             <div className='login'>
-              <Input className='input input--large' onChange={handleChange} type="text" value={user.email} name="email" placeholder="Adresse email" size="large" required />
+              <Input  className={`input ${isMobile ? 'input--medium' : 'input--large'}`} onChange={handleChange} type="text" value={user.email} name="email" placeholder="Adresse email" size="medium" required />
             </div>
             <div className='login'>
-              <Input className='input input--large' onChange={handleChange} type="password" value={user.password} name="password" placeholder="Mot de passe" size="large" required />
+              <Input  className={`input ${isMobile ? 'input--medium' : 'input--large'}`} onChange={handleChange} type="password" value={user.password} name="password" placeholder="Mot de passe" size="medium" required />
             </div>
             <h3 className="lien-modal1">mot de passe oublié</h3>
           </div>

@@ -7,11 +7,15 @@ import Button from '../../Components/button/Button';
 import apiService from "../../apiService.js";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import useIsMobile from "../../Hooks/useIsMobile";
+
 
 
 const initialUser = { userName: "", userSurname: "", userPseudo: "", userBirth: "", email: "", password: "", userConfirm: "" };
 const Inscription = () => {
   const [user, setUser] = useState(initialUser);
+  const isMobile = useIsMobile();
+
 
   const navigate = useNavigate();
   const handleClick = () => {
@@ -92,13 +96,13 @@ const Inscription = () => {
             <Input onChange={handleUserChange} value={user.userBirth} name="userBirth" className="input input--small" type="date" placeholder="26/12/2022" size="small" />
           </div>
           <div>
-            <Input onChange={handleUserChange} value={user.email} name="email" className="input input--large" type="text" placeholder="Adresse email" size="large" required />
+            <Input onChange={handleUserChange} value={user.email} name="email" className={`input ${isMobile ? 'input--medium' : 'input--large'}`}  type="text" placeholder="Adresse email" size="medium" required />
           </div>
           <div>
-            <Input onChange={handleUserChange} value={user.password} name="password" className="input input--large" type="password" placeholder="Mot de passe" size="large" required />
+            <Input onChange={handleUserChange} value={user.password} name="password" className={`input ${isMobile ? 'input--medium' : 'input--large'}`}  type="password" placeholder="Mot de passe" size="medium" required />
           </div>
           <div>
-            <Input onChange={handleUserChange} value={user.userConfirm} name="userConfirm" className="input input--large" type="password" placeholder="Confirmation de mot de passe" size="large" required />
+            <Input onChange={handleUserChange} value={user.userConfirm} name="userConfirm" className={`input ${isMobile ? 'input--medium' : 'input--large'}`} type="password" placeholder="Confirmation de mot de passe" size="medium" required />
           </div>
           <div className='conditions-container'>
             <input type="checkbox" required/>
