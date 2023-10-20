@@ -1,6 +1,38 @@
 .travel-photo-container {
-margin-top: 35px;
-width: 617px;
-height: 426px;
-background-color: darkgrey;
+margin-top: 25px;
 }
+
+.travel-photo {
+    display: flex;
+    overflow: hidden;
+  }
+  
+.travel-photo img {
+    width: 617px;
+    height: 426px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+
+.travel-photos {
+    object-fit: cover;
+}
+
+.next-button {
+    background-color: var(--color-bg);
+    font-size: 20px;
+    color: var(--color-bg-btn-light);
+    cursor: pointer;
+    padding: 1.5px;
+}
+
+.travel-country {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 20px;
+}
+
+  
+
+
