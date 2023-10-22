@@ -1,5 +1,5 @@
 .travel-photo-container {
-margin-top: 25px;
+margin-top: 1.563em;
 }
 
 .travel-photo {
@@ -8,8 +8,8 @@ margin-top: 25px;
   }
   
 .travel-photo img {
-    width: 617px;
-    height: 426px;
+    width: 38.563em;
+    height: 26.625em;
     border-radius: 10px;
     transition: transform 0.3s ease;
   }
@@ -30,8 +30,24 @@ margin-top: 25px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 1.25em;
 }
+
+@media (max-width : 26.875em) {
+.travel-photo-container{
+    margin-top: 1em;
+    height: 27.375em;
+    width: auto;
+    margin-bottom: 4em;
+}
+
+.travel-photo img {
+  height: 27.375em;
+  width: 15em;
+  }
+
+}
+
 
   
 

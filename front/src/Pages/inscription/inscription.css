@@ -115,25 +115,26 @@ input[type="checkbox"] {
   }
   
   .first-line {
-    display: flex;
+    display: block;
     gap: 0.938em;
+  }
+
+  .first-line input:nth-child(2n + 1) {
+    margin-bottom: 0.875em;
   }
   
   .second-line {
-    display: flex;
-    justify-content: center;
+    display: block;
     gap: 0.938em;
-    left: 75.563em;   
+  }
+
+  .second-line input:nth-child(2n + 1) {
+    margin-bottom: 0.875em;
   }
   
   .conditions-container {
-    display: flex;
-    justify-content: center;
-    gap: 0.625em;
-  }
-  
-  input[type="checkbox"] {
-    accent-color: var(--color-font-medium);
+    gap: 0em;
+    align-items:flex-start;
   }
   
   .conditions {
@@ -164,4 +165,10 @@ input[type="checkbox"] {
   .logo-triplink-inscription {
    display: none;
   }
+
+  .check-inscription {
+    margin-top: 0.313rem;
+    accent-color: var(--color-font-medium);
+  }
+
 }

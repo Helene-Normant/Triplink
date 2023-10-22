@@ -10,6 +10,7 @@
     bottom: 0;
     left: 0;
     color: var(--color-font-dark); 
+    z-index: 2;
 }
 
 .footer-items{
@@ -27,4 +28,9 @@
  .footer-mobile {
     font-size: 0.563em;
  }
+
+ .footer-container {
+    width: auto;
+    
+}
 }

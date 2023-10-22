@@ -2,6 +2,7 @@ import React from "react";
 import Header from '../Components/header/Header';
 import TravelDetail from "../Components/details/TravelDetail";
 import PhotoDetail from "../Components/details/PhotoDetail";
+import Footer from "../Components/footer/Footer";
 import './details.css'
 import { BsArrowReturnLeft } from "react-icons/bs";
 import { Link} from "react-router-dom";
@@ -27,6 +28,7 @@ const Details = () => {
        <TravelDetail/>
       </div>
       <MapComponent/>
+      <Footer/>
    </>
   )
 }

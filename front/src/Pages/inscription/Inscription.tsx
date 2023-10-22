@@ -96,16 +96,16 @@ const Inscription = () => {
             <Input onChange={handleUserChange} value={user.userBirth} name="userBirth" className="input input--small" type="date" placeholder="26/12/2022" size="small" />
           </div>
           <div>
-            <Input onChange={handleUserChange} value={user.email} name="email" className={`input ${isMobile ? 'input--medium' : 'input--large'}`}  type="text" placeholder="Adresse email" size="medium" required />
+            <Input onChange={handleUserChange} value={user.email} name="email" className={`input ${isMobile ? 'input--small' : 'input--large'}`}  type="text" placeholder="Adresse email" size="small" required />
           </div>
           <div>
-            <Input onChange={handleUserChange} value={user.password} name="password" className={`input ${isMobile ? 'input--medium' : 'input--large'}`}  type="password" placeholder="Mot de passe" size="medium" required />
+            <Input onChange={handleUserChange} value={user.password} name="password" className={`input ${isMobile ? 'input--small' : 'input--large'}`}  type="password" placeholder="Mot de passe" size="small" required />
           </div>
           <div>
-            <Input onChange={handleUserChange} value={user.userConfirm} name="userConfirm" className={`input ${isMobile ? 'input--medium' : 'input--large'}`} type="password" placeholder="Confirmation de mot de passe" size="medium" required />
+            <Input onChange={handleUserChange} value={user.userConfirm} name="userConfirm" className={`input ${isMobile ? 'input--small' : 'input--large'}`} type="password" placeholder="Confirmation de mot de passe" size="small" required />
           </div>
           <div className='conditions-container'>
-            <input type="checkbox" required/>
+            <input className='check-inscription' type="checkbox" required/>
             <h3 className="conditions">J’ai lu et j’accepte les conditions générales d’utilisation</h3>
           </div>
           <div className='container-bottom'>

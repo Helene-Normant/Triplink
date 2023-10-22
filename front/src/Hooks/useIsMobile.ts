@@ -6,19 +6,19 @@ const useIsMobile = (): boolean => {
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 26.875em)');
 
-    const updateSize = (mq: MediaQueryListEvent): void => {
-      setIsMobile(mq.matches);
+    const updateSize = (e: MediaQueryListEvent | MediaQueryList): void => {
+      setIsMobile(e.matches);
     };
 
     // Mettre à jour l'état initial
     updateSize(mq);
 
     // Ajouter un écouteur pour les changements
-    mq.addEventListener('change', updateSize);
+    mq.addListener(updateSize);
 
     return (): void => {
       // Retirer l'écouteur lors du démontage
-      mq.removeEventListener('change', updateSize);
+      mq.removeListener(updateSize);
     };
   }, []);
 
@@ -26,3 +26,7 @@ const useIsMobile = (): boolean => {
 };
 
 export default useIsMobile;
+
+
+
+

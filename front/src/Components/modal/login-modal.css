@@ -103,7 +103,7 @@
 
     .close-btn {
         position: absolute;
-        top: 1rem;
+        top: 3rem;
         right: 1.875rem;
         font-size: 1.7em;
     }
@@ -114,7 +114,7 @@
         position: absolute;
         justify-content: center;
         align-items: center;
-        margin-top: 0.938em;
+        margin-top: 3em;
         left: 61%; 
         transform: translate(-50%);
     }
