@@ -38,15 +38,33 @@
   transform: rotate(90deg);
 }
 
-/* For desktop */
-/* @media (min-width : 114em) {
-  
-  .logo-triplink {
-    width: 9rem;
+/* For tablet */
+@media (max-width: 48em) { 
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .line-buttons {
+    border: none;
   }
 
   .main-title {
-    font-size: 3.625em;
-  }  
+    text-align: center;
+    font-family: 'Solitreo', cursive;
+    font-size: 2.5em;
+    color: var(--color-bg-btn-dark);
+    cursor: pointer;
+  }
 
-}   */
+  .logo-triplink {
+    width: 6rem;
+    cursor: pointer;
+  }
+
+  .logo-header {
+    width: 9.875em;
+  }
+
+}   

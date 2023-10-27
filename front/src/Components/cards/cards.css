@@ -89,11 +89,29 @@
     text-align: center;
 }
 
+/* For tablet  */
+@media (max-width: 48em) { 
+    .container_travel-cards {
+        grid-template-columns: repeat(2, 2fr);
+        margin-top: 2em;
+  } 
 
+  .no-result-container {
+    left: 100%;
+}
+} 
+
+/* For mobile */
 @media (max-width : 26.875em) {
     
 .container_travel-cards {
     grid-template-columns: repeat(1, 1fr);
     margin-top: 2em;
+    
+} 
+
+.no-result-container {
+    left: 100%;
 }
 }
+
