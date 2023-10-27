@@ -23,7 +23,6 @@ const Header = () => {
     console.log(localStorage);
   };
 
-
   const isMobile = useIsMobile();
 
   return (
@@ -35,9 +34,9 @@ const Header = () => {
           logout={logout}
         /> :
         <HeaderMobile
-        //isUserLoggedIn={isUserLoggedIn}
-        //checkLocalStorage={checkLocalStorage}
-        //logout={logout}
+          isUserLoggedIn={isUserLoggedIn}
+          checkLocalStorage={checkLocalStorage}
+          logout={logout}
         />}
     </>
   );

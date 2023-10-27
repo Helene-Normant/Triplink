@@ -1,36 +1,22 @@
 import React from "react";
-import "./headerMobile.css";
-import logo from "../../../assets/Triplink_min.png";
-import IconProfil from "../../../assets/Profil_icon.png";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import HeaderMobileModal from "./header-mobile-modal/HeaderMobileModal";
+import HeaderMobileLogin from "./header-mobile-states/HeaderMobileLogin";
+import HeaderMobileLogout from "./header-mobile-states/HeaderMobileLogout";
 
+type HeaderMobileProps = {
+  isUserLoggedIn: boolean;
+  checkLocalStorage: boolean;
+  logout: () => void;
+};
 
-const HeaderMobile = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openModal = () => {
-    setIsOpen(!isOpen);
-  }
+const HeaderMobile = ({ isUserLoggedIn, checkLocalStorage, logout }: HeaderMobileProps) => {
 
   return (
-    <div className="container-header-mobile">
-      <div className="logo-profil">
-        <img className="profil-icon" src={IconProfil} alt={"Profil Icon"} onClick={openModal} />
-      </div>
-      <HeaderMobileModal open={isOpen} onClose={() => setIsOpen(false)} />
-      <div className="logo-header-mobile">
-        <Link to="/">
-          <img className="logo-triplink-mobile" src={logo} alt={"Logo Triplink"} />
-        </Link>
-      </div>
-      <Link to="/">
-        <h1 className="main-title-modal">Triplink</h1>
-      </Link>
-    </div >
-
+    isUserLoggedIn ? (
+      <HeaderMobileLogout logout={logout} />
+    ) : (
+      <HeaderMobileLogin />
+    )
   );
-};
+}
 
 export default HeaderMobile;

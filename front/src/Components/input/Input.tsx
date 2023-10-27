@@ -2,11 +2,11 @@ import React from 'react';
 import './input.css';
 
 type InputProps = {
-  className: 'small' | 'large' | 'input input--small' | 'input input--large';
+  className: 'small' | 'medium' | 'large' | 'input input--small' | 'input input--medium' |'input input--large';
   type: 'text' | 'checkbox' | 'date' | 'email' | 'password' ;
   name: string;
   placeholder: string;
-  size: 'small' | 'large';
+  size: 'small' | 'medium' | 'large';
   value: string;
   required?: boolean; 
   onChange: (event: any) => void;
@@ -16,7 +16,10 @@ const Input = ({ className, type, placeholder, size, value, name, required, onCh
   let inputClass = 'input';
   if (size === 'small') {
     inputClass += ' input--small';
-  } else if (size === 'large') {
+  } else if (size === 'medium') {
+    inputClass += ' input--medium';
+  }
+   else if (size === 'large') {
     inputClass += ' input--large';
   }
   if (className) {

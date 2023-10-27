@@ -10,6 +10,7 @@
     bottom: 0;
     left: 0;
     color: var(--color-font-dark); 
+    z-index: 2;
 }
 
 .footer-items{
@@ -23,3 +24,13 @@
     height: 1.163em;
 }
 
+@media screen and (max-width : 26.875em) {
+ .footer-mobile {
+    font-size: 0.563em;
+ }
+
+ .footer-container {
+    width: auto;
+    
+}
+}

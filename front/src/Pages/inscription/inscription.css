@@ -88,7 +88,7 @@ input[type="checkbox"] {
   width: 5%;
 }
 
-@media (max-width : 430px) { 
+@media (max-width : 26.875em) { 
   .container-inscription {
     height: 100%;
   }
@@ -115,25 +115,26 @@ input[type="checkbox"] {
   }
   
   .first-line {
-    display: flex;
-    justify-content: center;
+    display: block;
     gap: 0.938em;
+  }
+
+  .first-line input:nth-child(2n + 1) {
+    margin-bottom: 0.875em;
   }
   
   .second-line {
-    display: flex;
-    justify-content: center;
+    display: block;
     gap: 0.938em;
+  }
+
+  .second-line input:nth-child(2n + 1) {
+    margin-bottom: 0.875em;
   }
   
   .conditions-container {
-    display: flex;
-    justify-content: center;
-    gap: 0.625em;
-  }
-  
-  input[type="checkbox"] {
-    accent-color: var(--color-font-medium);
+    gap: 0em;
+    align-items:flex-start;
   }
   
   .conditions {
@@ -162,6 +163,12 @@ input[type="checkbox"] {
   }
   
   .logo-triplink-inscription {
-    width: 8%;
+   display: none;
   }
+
+  .check-inscription {
+    margin-top: 0.313rem;
+    accent-color: var(--color-font-medium);
+  }
+
 }

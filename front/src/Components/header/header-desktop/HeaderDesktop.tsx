@@ -5,19 +5,18 @@ import HeaderLogon from "./header-desktop-states/HeaderLogon";
 
 type HeaderProps = {
   isUserLoggedIn: boolean;
-  checkLocalStorage : boolean;
+  checkLocalStorage: boolean;
   logout: () => void;
 };
 
-const HeaderDesktop = ({isUserLoggedIn, checkLocalStorage, logout} : HeaderProps ) => {
-  
+const HeaderDesktop = ({ isUserLoggedIn, checkLocalStorage, logout }: HeaderProps) => {
+
   return (
     isUserLoggedIn ? (
-    <HeaderLogout logout={logout} />
+      <HeaderLogout logout={logout} />
     ) : (
-    <HeaderLogon />
+      <HeaderLogon />
     )
-    
   );
 }
 

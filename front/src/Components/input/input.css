@@ -19,6 +19,10 @@
   width: 12.688rem;
 }
 
+.input--medium {
+  width: 23rem;
+}
+
 .input--large {
   width: 26.5rem;
 }
