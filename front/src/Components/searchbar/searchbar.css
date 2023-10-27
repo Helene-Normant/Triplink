@@ -240,7 +240,6 @@ background:hsl(0 0% 90%);
     background:transparent;
 }
 
-
 .bar>div:hover::before{
 background:transparent;
 }
@@ -258,7 +257,6 @@ background:transparent;
 @media screen and (max-width : 26.875em) {
     .select {
         display: block;
-
     }
 
     .search-bar {

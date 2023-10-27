@@ -88,6 +88,20 @@ input[type="checkbox"] {
   width: 5%;
 }
 
+@media (max-width: 64em) { 
+  .logo-triplink-inscription {
+    margin-top: 1em;
+    width: 15%;
+  }
+}
+
+@media (max-width: 48em) { 
+  .logo-triplink-inscription {
+    margin-top: 1em;
+    width: 15%;
+  }
+}
+
 /* For tablet */
 @media (max-width: 48em) { 
   .logo-triplink-inscription {
