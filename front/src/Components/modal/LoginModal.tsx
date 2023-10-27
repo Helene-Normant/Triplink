@@ -37,25 +37,27 @@ const LoginModal = ({ isOpen, onClose }: ModalProps) => {
     try {
       if (user.email && user.password) {
         const loginData = await apiService.Login.post({ "email": user.email, "password": user.password });
-        if (loginData.hasOwnProperty("token") && loginData.token) {
+  
+        if (loginData.token) {
           localStorage.setItem("apiToken", loginData.token);
         }
-        if (loginData.hasOwnProperty("userID") && loginData.userID) {
+  
+        if (loginData.userID) {
           localStorage.setItem("userID", loginData.userID);
-        }
-        const name = await apiService.User.get(loginData.userID);
-        if (name.username) {
-          onClose()
-          toast.success("Prêt.e pour le voyage " + name.username + "?", {
-            hideProgressBar: true,
-            position: toast.POSITION.BOTTOM_RIGHT,
-            icon: "🏝️",
-          });
-          setTimeout(() => {
+          const name = await fetchUserName(loginData.userID);
+          if (name) {
+            onClose();
+            toast.success(`Prêt.e pour le voyage ${name}?`, {
+              hideProgressBar: true,
+              position: toast.POSITION.BOTTOM_RIGHT,
+              icon: "🏝️",
+            });
+  
+
+            await sleep(2000);
             window.location.reload();
-          }, 1000);
+          }
         }
-        console.log(loginData.userID)
       }
     } catch (error: any) {
       toast.error("Oups il y a une erreur", {
@@ -65,6 +67,16 @@ const LoginModal = ({ isOpen, onClose }: ModalProps) => {
       });
     }
   };
+  
+  const fetchUserName = async (userID: number) => {
+    const nameResponse = await apiService.User.get(userID);
+    return nameResponse.username;
+  };
+  
+  const sleep = (ms: number) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+  
 
   if (!isOpen) return null;
   return (
