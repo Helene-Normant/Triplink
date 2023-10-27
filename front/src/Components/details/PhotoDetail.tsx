@@ -70,7 +70,7 @@ const PhotoDetail = () => {
   }
 
   return (
-  <div className="travel-photo-container">
+<div className="travel-photo-container">
   <h3 className="travel-country">
   {photos.country?.nameFr} < IoLocationSharp />
   </h3>

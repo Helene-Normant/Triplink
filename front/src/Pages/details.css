@@ -25,6 +25,18 @@
     height: 488px;
 }
 
+@media (max-width: 64em) {
+    .card-details-container {
+      margin-top: 20px;
+      flex-direction: column;
+      align-items: center;
+     }
+
+     .line-details {
+       display: none;
+    }
+  }
+
 @media (max-width: 48em) { 
     .card-details-container {
         margin-top: 20px;
