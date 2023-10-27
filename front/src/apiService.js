@@ -1,6 +1,4 @@
 const API_ROOT = process.env.REACT_APP_API_URL + '/api/';
-let apiToken = localStorage.getItem("apiToken");
-
 
 const requestResult = (response) => {
   return (
@@ -10,13 +8,31 @@ const requestResult = (response) => {
 
 const headers = new Headers({
   "content-type": "application/json",
-  // "Authorization": `bearer ${apiToken ? apiToken : ""}`
 })
 
-const headersToken = new Headers({
-  "content-type": "application/json",
-  "Authorization": `Bearer ${apiToken ? apiToken : ""}`
-})
+const requestsSecure = {
+
+  getSecure: async (endpoint) => {
+    const getApiToken = async () => {
+      return new Promise((resolve) => {
+        const token = localStorage.getItem("apiToken");
+        resolve(token);
+      });
+    };
+
+    const token = await getApiToken();
+
+    const headersToken = new Headers({
+      "content-type": "application/json",
+      "Authorization": `Bearer ${token ? token : ""}`
+    });
+
+    return fetch(`${API_ROOT}${endpoint}`, {
+      method: "GET",
+      headers: headersToken,
+    }).then((response) => requestResult(response));
+  },
+};
 
 const requests = {
   get: async (endpoint) =>
@@ -24,12 +40,6 @@ const requests = {
       method: "GET",
       headers,
     }).then((response) => requestResult(response)),
-  getSecure: async (endpoint) => {
-    return fetch(`${API_ROOT}${endpoint}`, {
-      method: "GET",
-      headers: headersToken,
-    }).then((response) => requestResult(response))
-  },
   post: async (endpoint, body = null) =>
     await fetch(`${API_ROOT}${endpoint}`, {
       method: "POST",
@@ -65,7 +75,7 @@ const Logout = {
 }
 
 const User = {
-  get: async (id) => await requests.getSecure(`users/${id}`),
+  get: async (id) => await requestsSecure.getSecure(`users/${id}`),
   post: async (body) => await requests.post("users", body),
   getAll: async () => await requests.get("users"),
 }
