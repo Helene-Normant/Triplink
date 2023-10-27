@@ -245,6 +245,16 @@ background:hsl(0 0% 90%);
 background:transparent;
 }
 
+/* For tablet */
+@media (max-width: 48em) { 
+    .search-bar {
+        width: 20em;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    } 
+}
+
+/* For mobile */
 @media screen and (max-width : 26.875em) {
     .select {
         display: block;
@@ -278,7 +288,6 @@ background:transparent;
 
     .line-search-bar {
       display: none;
-     }
-     
-    
+     }    
 }
+

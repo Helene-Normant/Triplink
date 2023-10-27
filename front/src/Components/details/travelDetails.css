@@ -111,10 +111,9 @@ line-height: 48px;
     position: absolute;
     top: 3.2rem;
     width: 12.25rem;
-    right: -12.5rem;
+    right: 12.5rem;
     height: 8rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: 0.4s;
     opacity: 0;
   }
   
@@ -150,6 +149,14 @@ line-height: 48px;
   .contact-cat-fav:hover {
     background-color: var(--color-bg);
   }
+
+  @media (max-width: 48em) { 
+    .info-travel-container{
+      margin-top: 5em;
+      margin-bottom: 5em;
+  }
+
+}
 
   @media (max-width : 26.875em) {
     .info-travel-container{

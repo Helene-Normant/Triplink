@@ -111,7 +111,7 @@ const Inscription = () => {
           <div className='container-bottom'>
             <div className="buttons-inscription">
               <Button onClick={handleClick} className="light" children="Annuler" role="annule" type="button" />
-              <hr className="line-buttons" />
+              <hr className="line-buttons-inscription" />
               <Button className="dark" children="S'inscrire" role="inscrit" type="submit" />
             </div>
             <Link to='/'><img className="logo-triplink-inscription" src={logo} alt={"Logo Triplink"} /></Link>

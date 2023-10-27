@@ -73,7 +73,7 @@ const MapComponent = () => {
         <Marker key={index} position={[step.latitude, step.longitude]}>
           <Popup className='popup'>
             <div className='container-popup'>
-              <h1 className='main-title'>{step.title}</h1>
+              <h1 className='main-title-map'>{step.title}</h1>
               <p>{step.description}</p>
               <span className='plus'>
                 <h2 className="titlePlus">Les <b>+ :</b></h2>
