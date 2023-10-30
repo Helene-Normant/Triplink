@@ -5,9 +5,7 @@ import Inscription from './pages/inscription/inscription';
 import { ToastContainer } from 'react-toastify';
 import Details from './pages/details/details';
 
-
-
-function App() {
+const App = () => {
   return (
     <div className='App'>
       <React.StrictMode>
