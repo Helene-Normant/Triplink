@@ -1,8 +1,8 @@
 import React from "react";
-import "./profilModal.css";
+import "./profil-modal.css";
 
 import profil from '../../../assets/profil.png';
-import Button from "../../button/Button";
+import Button from "../../button/button";
 
 const ProfilModal = ({ open, onClose }) => {
   if (!open) return null;

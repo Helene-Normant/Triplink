@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import './travelDetails.css';
+import './travel-details.css';
 import { FaEuroSign } from "react-icons/fa";
-import apiService from "../../apiService.js";
+import apiService from "../../api-service.js";
 import { useParams } from "react-router-dom";
-import Loading from "../loading/Loading";
+import Loading from "../../components/loading/loading";
 import hello from "../../assets/wave-hand.svg";
 import { FaCameraRetro, FaCar, FaLeaf, FaBook, FaHamburger, FaSuitcase, FaHandHoldingHeart } from "react-icons/fa";
 import { GiBackpack } from "react-icons/gi";
 import { BsSunglasses } from "react-icons/bs";
-
-
 
 type User = {
   picture: string,
@@ -39,7 +37,7 @@ type Publication = {
   budget: number;
 }
 
-const TravelDetail = () => {
+const TravelDetails = () => {
   const { id } = useParams();
   const [menuOpen, setMenuOpen] = useState(false);
   const [details, setDetails] = useState<Publication | null>();
@@ -100,34 +98,34 @@ const TravelDetail = () => {
           <div className="info-detail-travel">
             <div className="info-price">
               {[...Array(details.budget)].map((index) => (
-                 <FaEuroSign key={index} />
+                <FaEuroSign key={index} />
               ))}
             </div>
             <div className="info-type">
-            {(() => {
-            switch (details.travelType.categoryFr) {
-               case 'Touristique':
-                return <FaCameraRetro/>;
-               case 'Road Trip':
-                return <FaCar/>;
-               case 'Aventure':
-                return <GiBackpack/>;
-               case 'Nature':
-                return <FaLeaf/>;
-               case 'Culturel':
-                 return <FaBook/>;
-               case 'Culinaire':
-                 return <FaHamburger/>;
-               case 'Détente':
-                 return <BsSunglasses/>;
-               case 'Voyages daffaires':
-                 return <FaSuitcase/>;
-               case 'Humanitaire':
-                 return <FaHandHoldingHeart/>;
-             default:
-              return 'Autre';
-            }
-           })()}
+              {(() => {
+                switch (details.travelType.categoryFr) {
+                  case 'Touristique':
+                    return <FaCameraRetro />;
+                  case 'Road Trip':
+                    return <FaCar />;
+                  case 'Aventure':
+                    return <GiBackpack />;
+                  case 'Nature':
+                    return <FaLeaf />;
+                  case 'Culturel':
+                    return <FaBook />;
+                  case 'Culinaire':
+                    return <FaHamburger />;
+                  case 'Détente':
+                    return <BsSunglasses />;
+                  case 'Voyages daffaires':
+                    return <FaSuitcase />;
+                  case 'Humanitaire':
+                    return <FaHandHoldingHeart />;
+                  default:
+                    return 'Autre';
+                }
+              })()}
             </div>
             <div className="info-tribu">
               <h1>{details.travelPartner.partnerFR}</h1>
@@ -164,11 +162,11 @@ const TravelDetail = () => {
         </div>
         <div className="info-contact">
           <div className="info-hello">
-          <img src={hello} alt="rencontre" />
+            <img src={hello} alt="rencontre" />
           </div>
           <div className="info-contact-me">
             <h1>
-             Partant.e pour de nouvelles aventures
+              Partant.e pour de nouvelles aventures
             </h1>
           </div>
         </div>
@@ -177,4 +175,4 @@ const TravelDetail = () => {
   )
 }
 
-export default TravelDetail;
+export default TravelDetails;

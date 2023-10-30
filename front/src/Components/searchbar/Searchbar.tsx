@@ -2,11 +2,11 @@ import React, { useRef } from "react";
 import Select, { SingleValue } from 'react-select';
 import "./searchbar.css";
 import { useState, useEffect } from "react";
-import apiService from "../../apiService.js";
-import Loading from "../loading/Loading";
+import apiService from "../../api-service.js";
+import Loading from "../loading/loading";
 import { AiOutlineSearch } from "react-icons/ai";
-import { Country } from "../cards/Cards";
-import { TravelType } from '../details/TravelDetail';
+import { Country } from "../cards/cards";
+import { TravelType } from '../../pages/details/travel-details';
 
 
 type SearchbarProps = {
@@ -117,7 +117,7 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
   }>) => {
     if (newValue !== null) {
       tempCountryValue.current = {
-        id: newValue.value, 
+        id: newValue.value,
         nameFr: newValue.label,
         nameEn: newValue.label,
       }
@@ -134,7 +134,7 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
 
     if (newValue !== null) {
       tempCategoryValue.current = {
-        id: newValue.value, 
+        id: newValue.value,
         categoryFr: newValue.label,
         categoryEn: newValue.label,
       }

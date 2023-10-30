@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import Input from "../../Components/input/Input";
+import Input from "../../components/input/input";
 import "./inscription.css";
-import logo from "../../assets/Triplink_min.png";
-import Button from '../../Components/button/Button';
-import apiService from "../../apiService.js";
+import logo from "../../assets/triplink_min.png";
+import Button from '../../components/button/button';
+import apiService from "../../api-service.js";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import useIsMobile from "../../Hooks/useIsMobile";
+import useIsMobile from "../../hooks/use-is-mobile";
 
 
 
@@ -96,16 +96,16 @@ const Inscription = () => {
             <Input onChange={handleUserChange} value={user.userBirth} name="userBirth" className="input input--small" type="date" placeholder="26/12/2022" size="small" />
           </div>
           <div>
-            <Input onChange={handleUserChange} value={user.email} name="email" className={`input ${isMobile ? 'input--small' : 'input--large'}`}  type="text" placeholder="Adresse email" size="small" required />
+            <Input onChange={handleUserChange} value={user.email} name="email" className={`input ${isMobile ? 'input--small' : 'input--large'}`} type="text" placeholder="Adresse email" size="small" required />
           </div>
           <div>
-            <Input onChange={handleUserChange} value={user.password} name="password" className={`input ${isMobile ? 'input--small' : 'input--large'}`}  type="password" placeholder="Mot de passe" size="small" required />
+            <Input onChange={handleUserChange} value={user.password} name="password" className={`input ${isMobile ? 'input--small' : 'input--large'}`} type="password" placeholder="Mot de passe" size="small" required />
           </div>
           <div>
             <Input onChange={handleUserChange} value={user.userConfirm} name="userConfirm" className={`input ${isMobile ? 'input--small' : 'input--large'}`} type="password" placeholder="Confirmation de mot de passe" size="small" required />
           </div>
           <div className='conditions-container'>
-            <input className='check-inscription' type="checkbox" required/>
+            <input className='check-inscription' type="checkbox" required />
             <h3 className="conditions">J’ai lu et j’accepte les conditions générales d’utilisation</h3>
           </div>
           <div className='container-bottom'>

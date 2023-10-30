@@ -5,8 +5,8 @@
 }
 
 .link-return {
-   display: flex;
-   gap: 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .return-details {
@@ -29,10 +29,10 @@
     .card-details-container {
         margin-top: 20px;
         display: block;
-     }
+    }
 
-     .line-details {
-       display: none;
+    .line-details {
+        display: none;
     }
 }
 
@@ -41,9 +41,9 @@
     .card-details-container {
         margin-top: 20px;
         display: block;
-     }
+    }
 
-     .line-details {
-       display: none;
+    .line-details {
+        display: none;
     }
     }

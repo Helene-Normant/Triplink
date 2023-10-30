@@ -1,12 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../../../button/Button";
-import Modal from "../../../modal/LoginModal";
-import logo from "../../../../assets/Triplink_min.png";
+import Button from "../../../button/button";
+import logo from "../../../../assets/triplink_min.png";
+import LoginModal from "../../../login-modal/login-modal";
 
-
-const HeaderLogon = () => {
+const HeaderLogin = () => {
   const [openModal, setOpenModal] = useState(false);
 
   openModal ? document.body.style.overflow = "hidden" : document.body.style.overflow = "auto";
@@ -35,7 +34,7 @@ const HeaderLogon = () => {
           role="login"
           type="button"
         />
-        <Modal isOpen={openModal} onClose={() => setOpenModal(false)} />
+        <LoginModal isOpen={openModal} onClose={() => setOpenModal(false)} />
         <hr className="line-buttons" />
         <Button onClick={handleClick} className="dark" children="S'inscrire" role="inscription" type="button" />
       </div>
@@ -43,4 +42,4 @@ const HeaderLogon = () => {
   )
 }
 
-export default HeaderLogon;
+export default HeaderLogin;

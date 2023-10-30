@@ -1,13 +1,13 @@
 import React from "react";
 import './home.css';
-import Cards, { Country } from '../Components/cards/Cards';
-import Searchbar from '../Components/searchbar/Searchbar';
+import Cards, { Country } from '../../components/cards/cards';
+import Searchbar from '../../components/searchbar/searchbar';
 
-import Footer from '../Components/footer/Footer';
-import Modal from '../Components/modal/LoginModal';
-import Header from '../Components/header/Header';
+import Footer from '../../components/footer/footer';
+import Modal from '../../components/login-modal/login-modal';
+import Header from '../../components/header/header';
 import { useState } from "react";
-import { TravelType } from '../Components/details/TravelDetail';
+import { TravelType } from '../details/travel-details';
 
 
 const Home = () => {

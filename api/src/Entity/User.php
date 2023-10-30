@@ -33,7 +33,6 @@ use ApiPlatform\Metadata\Put;
     ],
     normalizationContext: ['groups' => ['user:read']],
     denormalizationContext: ['groups' => ['user:create', 'user:update']],
-
 )]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[UniqueEntity(fields: ['username'], message: 'It looks like another traveler took your username.')]

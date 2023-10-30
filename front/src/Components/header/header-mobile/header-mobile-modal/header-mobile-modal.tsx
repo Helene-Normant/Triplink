@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Button from "../../../button/Button";
+import Button from "../../../button/button";
 import { Link, useNavigate } from "react-router-dom";
-import "./headerMobileModal.css";
-import Modal from "../../../modal/LoginModal";
-import logo from '../../../../assets/Triplink_min.png'
+import "./header-mobile-modal.css";
+import Modal from "../../../login-modal/login-modal";
+import logo from '../../../../assets/triplink_min.png'
 
 
 type HeaderMobileModalProps = {
@@ -53,7 +53,7 @@ const HeaderMobileModal = ({ open, onClose }: HeaderMobileModalProps) => {
           <div className="line-modal">
             <hr className="line" />
           </div>
-          <Button onClick={handleClick} className="dark" children="S'inscrire" role="inscription" type="button"/>
+          <Button onClick={handleClick} className="dark" children="S'inscrire" role="inscription" type="button" />
         </div>
       </div>
     </>

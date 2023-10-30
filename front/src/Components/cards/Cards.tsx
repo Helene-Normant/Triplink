@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import "./cards.css";
-import apiService from "../../apiService.js";
-import Card from "../card/Card";
-import Loading from "../loading/Loading";
+import apiService from "../../api-service.js";
+import Card from "../card/card";
+import Loading from "../loading/loading";
 import { ImCross } from "react-icons/im";
-import { TravelType } from '../details/TravelDetail';
+import { TravelType } from '../../pages/details/travel-details';
 
 type Traveler = {
   id: number;

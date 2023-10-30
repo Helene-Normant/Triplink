@@ -1,11 +1,10 @@
 import React from "react";
-import "./headerMobileLogin.css";
-import logo from "../../../../assets/Triplink_min.png";
-import IconProfil from "../../../../assets/Profil_icon.png";
+import "./header-mobile-login.css";
+import logo from "../../../../assets/triplink_min.png";
+import IconProfil from "../../../../assets/profil_icon.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import HeaderMobileModal from "../header-mobile-modal/HeaderMobileModal";
-
+import HeaderMobileModal from "../header-mobile-modal/header-mobile-modal";
 
 const HeaderMobileLogin = () => {
   const [isOpen, setIsOpen] = useState(false);

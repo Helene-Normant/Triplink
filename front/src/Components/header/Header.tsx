@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import HeaderMobile from "./header-mobile/HeaderMobile";
-import HeaderDesktop from "./header-desktop/HeaderDesktop";
-import useIsMobile from "../../Hooks/useIsMobile";
-
+import HeaderMobile from "./header-mobile/header-mobile";
+import useIsMobile from "../../hooks/use-is-mobile";
+import HeaderDesktop from "./header-desktop/header-desktop";
 
 const Header = () => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);

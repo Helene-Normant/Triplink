@@ -1,7 +1,7 @@
 import React from "react";
-import "./headerDesktop.css";
-import HeaderLogout from "./header-desktop-states/HeaderLogout";
-import HeaderLogon from "./header-desktop-states/HeaderLogon";
+import "./header-desktop.css";
+import HeaderLogout from "./header-desktop-states/header-logout";
+import HeaderLogin from "./header-desktop-states/header-login";
 
 type HeaderProps = {
   isUserLoggedIn: boolean;
@@ -15,7 +15,7 @@ const HeaderDesktop = ({ isUserLoggedIn, checkLocalStorage, logout }: HeaderProp
     isUserLoggedIn ? (
       <HeaderLogout logout={logout} />
     ) : (
-      <HeaderLogon />
+      <HeaderLogin />
     )
   );
 }

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "./login-modal.css";
 import { Link } from "react-router-dom";
 import { IoCloseCircleOutline } from "react-icons/io5";
-import Input from "../input/Input";
-import Button from '../button/Button';
-import apiService from "../../apiService";
+import Input from "../input/input";
+import Button from '../button/button';
+import apiService from "../../api-service";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import useIsMobile from "../../Hooks/useIsMobile";
+import useIsMobile from "../../hooks/use-is-mobile";
 
 
 type ModalProps = {
@@ -37,11 +37,11 @@ const LoginModal = ({ isOpen, onClose }: ModalProps) => {
     try {
       if (user.email && user.password) {
         const loginData = await apiService.Login.post({ "email": user.email, "password": user.password });
-  
+
         if (loginData.token) {
           localStorage.setItem("apiToken", loginData.token);
         }
-  
+
         if (loginData.userID) {
           localStorage.setItem("userID", loginData.userID);
           const name = await fetchUserName(loginData.userID);
@@ -52,7 +52,7 @@ const LoginModal = ({ isOpen, onClose }: ModalProps) => {
               position: toast.POSITION.BOTTOM_RIGHT,
               icon: "🏝️",
             });
-  
+
 
             await sleep(2000);
             window.location.reload();
@@ -67,16 +67,16 @@ const LoginModal = ({ isOpen, onClose }: ModalProps) => {
       });
     }
   };
-  
+
   const fetchUserName = async (userID: number) => {
     const nameResponse = await apiService.User.get(userID);
     return nameResponse.username;
   };
-  
+
   const sleep = (ms: number) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
-  
+
 
   if (!isOpen) return null;
   return (
@@ -93,10 +93,10 @@ const LoginModal = ({ isOpen, onClose }: ModalProps) => {
             <h2>Bienvenue sur Triplink</h2>
             <h3 className="subtitle-modal">J'ai un compte</h3>
             <div className='login'>
-              <Input  className={`input ${isMobile ? 'input--medium' : 'input--large'}`} onChange={handleChange} type="text" value={user.email} name="email" placeholder="Adresse email" size="medium" required />
+              <Input className={`input ${isMobile ? 'input--medium' : 'input--large'}`} onChange={handleChange} type="text" value={user.email} name="email" placeholder="Adresse email" size="medium" required />
             </div>
             <div className='login'>
-              <Input  className={`input ${isMobile ? 'input--medium' : 'input--large'}`} onChange={handleChange} type="password" value={user.password} name="password" placeholder="Mot de passe" size="medium" required />
+              <Input className={`input ${isMobile ? 'input--medium' : 'input--large'}`} onChange={handleChange} type="password" value={user.password} name="password" placeholder="Mot de passe" size="medium" required />
             </div>
             <h3 className="lien-modal1">mot de passe oublié</h3>
           </div>

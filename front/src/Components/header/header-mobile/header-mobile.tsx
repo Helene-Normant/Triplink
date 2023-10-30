@@ -1,6 +1,6 @@
 import React from "react";
-import HeaderMobileLogin from "./header-mobile-states/HeaderMobileLogin";
-import HeaderMobileLogout from "./header-mobile-states/HeaderMobileLogout";
+import HeaderMobileLogin from "./header-mobile-states/header-mobile-login";
+import HeaderMobileLogout from "./header-mobile-states/header-mobile-logout";
 
 type HeaderMobileProps = {
   isUserLoggedIn: boolean;

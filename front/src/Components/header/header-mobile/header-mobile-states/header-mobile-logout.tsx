@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../../../assets/Triplink_min.png";
-import "./headerMobileLogout.css";
+import logo from "../../../../assets/triplink_min.png";
+import "./header-mobile-logout.css";
 import profil from "../../../../assets/profil.png";
 
 type LogoutMobileProps = {

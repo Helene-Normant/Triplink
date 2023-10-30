@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import apiService from "../../apiService.js";
+import apiService from "../../api-service.js";
 import { useParams } from "react-router-dom";
-import Loading from "../loading/Loading";
-import './travelPhoto.css';
+import Loading from "../../components/loading/loading";
+import './photo-details.css';
 import { FaCircleArrowLeft, FaCircleArrowRight } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
 
-import { Country } from '../cards/Cards';
+import { Country } from '../../components/cards/cards.js';
 
 
 type User = {
@@ -25,7 +25,7 @@ type Publication = {
   country: Country;
 }
 
-const PhotoDetail = () => {
+const PhotoDetails = () => {
   const { id } = useParams();
   const [photos, setPhotos] = useState<Publication | null>();
   const [loading, setLoading] = useState(false);
@@ -70,16 +70,16 @@ const PhotoDetail = () => {
   }
 
   return (
-  <div className="travel-photo-container">
-  <h3 className="travel-country">
-  {photos.country?.nameFr} < IoLocationSharp />
-  </h3>
-<div className="travel-photo">
-  <button className="next-button" onClick={prevImage}><FaCircleArrowLeft/></button>
-   <img className="travel-photos" src={photos.picture?.split(',')[currentImage]} alt="photos voyage" />
-  <button className="next-button" onClick={nextImage}><FaCircleArrowRight/></button>
-</div>
-</div>
+    <div className="travel-photo-container">
+      <h3 className="travel-country">
+        {photos.country?.nameFr} < IoLocationSharp />
+      </h3>
+      <div className="travel-photo">
+        <button className="next-button" onClick={prevImage}><FaCircleArrowLeft /></button>
+        <img className="travel-photos" src={photos.picture?.split(',')[currentImage]} alt="photos voyage" />
+        <button className="next-button" onClick={nextImage}><FaCircleArrowRight /></button>
+      </div>
+    </div>
   )
 }
-export default PhotoDetail;
+export default PhotoDetails;

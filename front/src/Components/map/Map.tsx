@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import './map.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { IoHome } from "react-icons/io5";
-import apiService from "../../apiService";
+import apiService from "../../api-service";
 
 type TravelStep = {
   id: number;
@@ -45,24 +45,24 @@ const MapComponent = () => {
   const { id } = useParams();
 
   const handlePublication = async () => {
-  const publication = await apiService.Publications.get(id); 
-  setPingPublication(publication)
+    const publication = await apiService.Publications.get(id);
+    setPingPublication(publication)
   }
 
   useEffect(() => {
     handlePublication();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!pingPublication) {
-    return null; 
+    return null;
   }
 
   const [firstStepLatitude, firstStepLongitude] = [
     pingPublication.stepTravel[0].latitude,
     pingPublication.stepTravel[0].longitude,
   ];
- 
+
   return (
     <MapContainer className="map" center={[firstStepLatitude, firstStepLongitude]} zoom={13} scrollWheelZoom={false}>
       <TileLayer
@@ -84,7 +84,7 @@ const MapComponent = () => {
                 <p className="textLess">{step.less}</p>
               </span>
               <span className='address'>
-                <IoHome className='svgAddress'/>
+                <IoHome className='svgAddress' />
                 <p className="textAddress">{step.address}</p>
               </span>
             </div>

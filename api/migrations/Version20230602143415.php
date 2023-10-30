@@ -32,11 +32,10 @@ final class Version20230602143415 extends AbstractMigration
                         ("Voyages d\'affaires","Business trip"),
                         ("Humanitaire","Humanitarian")');
         $this->addSql('INSERT INTO traveler_partner (partner_fr, partner_en) VALUES 
-                         ("En famille","Family Trip"),
-                         ("En solo","Solo travel"),
-                         ("Entre amis","With friends"),
-                         ("En groupe","Group Travel")');
-
+                        ("En famille","Family Trip"),
+                        ("En solo","Solo travel"),
+                        ("Entre amis","With friends"),
+                        ("En groupe","Group Travel")');
     }
 
     public function down(Schema $schema): void
