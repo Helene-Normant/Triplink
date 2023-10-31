@@ -1,0 +1,99 @@
+.map{
+    height: 46.875em !important;
+    width: 100%;
+    margin-top: 3.125em;
+    margin-bottom: 4em;
+    z-index: 1;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background-color: #FFFBF6 !important;
+}
+
+.container-popup {
+    width:18.75em;
+    height: auto;
+    bottom: 1.688em;
+}
+
+.main-title-map {
+    color: #000000;
+    font-weight: 500;
+}
+
+.leaflet-popup-content p {
+    margin: 0.7em 0;
+    text-align: justify;
+}
+
+.plus, .less {
+   display: flex;
+   align-items: baseline;
+   gap: 1em;
+   height: 2.5em;
+   margin-bottom: 4.5em;
+}
+
+.address {
+    display: flex;
+    gap: 2em;
+    height: 4em;
+    margin-top: 4em;
+}
+
+.titlePlus, .titleLess {
+    font-weight: 300;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 1.2em;
+    color: var(--color-font-medium);
+}
+
+.textPlus, .textLess, .textAddress {
+    flex: 1;
+    margin: 0 !important;
+}
+
+.svgAddress {
+    height: 2.3em;
+    width: 2.3em;
+}
+
+@media screen and (max-width : 24.437em) {
+    .popup{
+         width:14.063em !important;
+     }
+
+     p {
+         font-size : 9px;
+     }
+ }
+
+@media screen and (max-width : 26.875em) {
+    .map{
+        height: 34.375em !important;
+        width: auto;
+    }
+
+   .popup{
+        width: 15.625em;
+    }
+
+    .container-popup {
+        width: 13.125em;
+        padding: 1em;
+    }
+
+
+.leaflet-popup-content {
+    margin: 0px;
+    padding: 0px;
+}
+
+    p {
+        font-size : 11px;
+    }
+
+    .main-title {
+        font-size: 2em;
+    }
+}

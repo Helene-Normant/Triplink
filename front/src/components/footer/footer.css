@@ -1,0 +1,37 @@
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg);
+    border-top: 0.75px solid var(--color-bg-btn-light);
+    position: fixed;
+    width: 100%;
+    height: 2.3em;
+    bottom: 0;
+    left: 0;
+    color: var(--color-font-dark); 
+    z-index: 2;
+}
+
+.footer-items{
+    display: flex;
+    margin-left: 4.375em;
+}
+
+.line-footer {
+    border: 0.75px solid var(--color-bg-btn-light);
+    margin: 0.188em 1.313em 0 1.313em;
+    height: 1.163em;
+}
+
+/* For mobile */
+@media screen and (max-width : 26.875em) {
+ .footer-mobile {
+    font-size: 0.563em;
+ }
+
+ .footer-container {
+    width: auto;
+    
+}
+}

@@ -1,0 +1,28 @@
+  .container-header-mobile {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo-header-mobile {
+    text-align: center;
+  }
+
+  .logo-triplink-mobile {
+    width: 6rem;
+  }
+
+  .main-title-modal {
+    font-size: 2.5em;
+    text-align: center;
+    font-family: 'Solitreo', cursive;
+    color: var(--color-bg-btn-dark);
+  }
+  
+.profil-icon {
+  position: absolute;
+  display: block;
+  top: 1rem;
+  right: 1.875rem;
+  width: 1.875em;
+  height: 1.875em;
+}

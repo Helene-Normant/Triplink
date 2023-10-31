@@ -1,0 +1,54 @@
+.travel-photo-container {
+margin-top: 1.563em;
+}
+
+.travel-photo {
+    display: flex;
+    overflow: hidden;
+  }
+  
+.travel-photo img {
+    width: 38.563em;
+    height: 26.625em;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+
+.travel-photos {
+    object-fit: cover;
+}
+
+.next-button {
+    background-color: var(--color-bg);
+    font-size: 20px;
+    color: var(--color-bg-btn-light);
+    cursor: pointer;
+    padding: 1.5px;
+}
+
+.travel-country {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 1.25em;
+}
+
+@media (max-width : 26.875em) {
+.travel-photo-container{
+    margin-top: 1em;
+    height: 27.375em;
+    width: auto;
+    margin-bottom: 4em;
+}
+
+.travel-photo img {
+  height: 27.375em;
+  width: 15em;
+  }
+
+}
+
+
+  
+
+

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Solitreo&display=swap');
+
+.container-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo-header {
+  width: 19.875em;
+}
+
+.logo-triplink {
+  width: 8rem;
+  cursor: pointer;
+}
+
+.main-title {
+  text-align: center;
+  font-family: 'Solitreo', cursive;
+  font-size: 3em;
+  color: var(--color-bg-btn-dark);
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.line-buttons {
+  margin-top: 1.25em;
+  width: 3em;
+  height: 0;
+  left: 75.563em;
+  border: 0.75px solid var(--color-font-medium);
+  transform: rotate(90deg);
+}
+
+/* For tablet */
+@media (max-width: 48em) { 
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .line-buttons {
+    border: none;
+  }
+
+  .main-title {
+    text-align: center;
+    font-family: 'Solitreo', cursive;
+    font-size: 2.5em;
+    color: var(--color-bg-btn-dark);
+    cursor: pointer;
+  }
+
+  .logo-triplink {
+    width: 6rem;
+    cursor: pointer;
+  }
+
+  .logo-header {
+    width: 9.875em;
+  }
+
+}   
