@@ -4,11 +4,10 @@ import Cards, { Country } from '../../components/cards/cards';
 import Searchbar from '../../components/searchbar/searchbar';
 
 import Footer from '../../components/footer/footer';
-import Modal from '../../components/login-modal/login-modal';
+import LoginModal from '../../components/login-modal/login-modal';
 import Header from '../../components/header/header';
 import { useState } from "react";
 import { TravelType } from '../details/travel-details';
-
 
 const Home = () => {
   const [destination, setDestination] = useState<Country>();
@@ -18,7 +17,7 @@ const Home = () => {
   return (
     <>
       <section className='container-home'>
-        <Modal isOpen={false} onClose={() => { }} /> {/* à changer */}
+        <LoginModal isOpen={false} onClose={() => { }} /> {/* à changer */}
         <Header />
         <Searchbar
           setDestination={setDestination}

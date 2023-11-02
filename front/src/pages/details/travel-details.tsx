@@ -146,7 +146,6 @@ const TravelDetails = () => {
             </div>
           </div>
         </div>
-
         <div className="info-detail-description">
           <div className="info-description">
             <h3>

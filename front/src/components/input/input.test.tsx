@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import Input from './input';
 
-describe('<Input />', () => {
+describe('Input', () => {
   it('should render a small input with the given placeholder', () => {
     render(<Input className="small" type="text" placeholder="Small Input" size="small" value="" name="inputName" onChange={() => { }} />);
 

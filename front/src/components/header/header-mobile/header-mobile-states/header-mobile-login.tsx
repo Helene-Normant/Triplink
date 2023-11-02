@@ -18,7 +18,7 @@ const HeaderMobileLogin = () => {
       <div className="logo-profil">
         <img className="profil-icon" src={IconProfil} alt={"Profil Icon"} onClick={openModal} />
       </div>
-      <HeaderMobileModal open={isOpen} onClose={() => setIsOpen(false)} />
+      <HeaderMobileModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <div className="logo-header-mobile">
         <Link to="/">
           <img className="logo-triplink-mobile" src={logo} alt={"Logo Triplink"} />

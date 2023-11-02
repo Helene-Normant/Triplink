@@ -2,26 +2,26 @@ import React, { useState, useEffect } from "react";
 import Button from "../../../button/button";
 import { Link, useNavigate } from "react-router-dom";
 import "./header-mobile-modal.css";
-import Modal from "../../../login-modal/login-modal";
+import LoginModal from "../../../login-modal/login-modal";
 import logo from '../../../../assets/triplink_min.png'
 
 
 type HeaderMobileModalProps = {
-  open: boolean;
+  isOpen: boolean;
   onClose: () => void;
 };
 
-const HeaderMobileModal = ({ open, onClose }: HeaderMobileModalProps) => {
+const HeaderMobileModal = ({ isOpen, onClose }: HeaderMobileModalProps) => {
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const body = document.body;
-    if (open) {
+    if (isOpen) {
       body.classList.add('is-modal-open')
     } else {
       body.classList.remove('is-modal-open')
     }
-  }, [open])
+  }, [isOpen])
 
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const HeaderMobileModal = ({ open, onClose }: HeaderMobileModalProps) => {
     navigate('/inscription');
   }
 
-  if (!open) return null;
+  if (!isOpen) return null;
 
   return (
     <>
@@ -49,7 +49,7 @@ const HeaderMobileModal = ({ open, onClose }: HeaderMobileModalProps) => {
             type='button'
             role="login"
           />
-          <Modal isOpen={openModal} onClose={() => setOpenModal(false)} />
+          <LoginModal isOpen={openModal} onClose={() => setOpenModal(false)} />
           <div className="line-modal">
             <hr className="line" />
           </div>

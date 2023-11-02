@@ -10,14 +10,9 @@ test('renders Inscription component', () => {
     </MemoryRouter>
   );
 
-  // Customize these queries based on your HTML structure
-  const pageTitle = screen.getByText('Triplink');
-  const cancelButton = screen.getByRole('annule');
-  const registerButton = screen.getByRole('inscrit');
-
-  expect(pageTitle).toBeInTheDocument();
-  expect(cancelButton).toBeInTheDocument();
-  expect(registerButton).toBeInTheDocument();
+  expect(screen.getByText('Triplink')).toBeInTheDocument();
+  expect(screen.getByRole('annule')).toBeInTheDocument();
+  expect(screen.getByRole('inscrit')).toBeInTheDocument();
 });
 
 test('cancel button should navigate to home', () => {
@@ -27,7 +22,6 @@ test('cancel button should navigate to home', () => {
     </MemoryRouter>
   );
 
-  const cancelButton = getByRole('annule');
-  fireEvent.click(cancelButton);
+  fireEvent.click(screen.getByRole('annule'));
   expect(history.location.pathname).toBe('/');
 });

@@ -90,8 +90,8 @@ const Cards = ({ destination, category, profil }: CardsProps) => {
   }
 
   return (
-    <section className="card-wrapper" id="travels">
-      <div className="container_travel-cards">
+    <section className="card-wrapper" id="travels" >
+      <div className="container_travel-cards" data-testid="cards-component">
         {!displayCards.length &&
           <div className="no-result-container">
             <div className="no-result-message">

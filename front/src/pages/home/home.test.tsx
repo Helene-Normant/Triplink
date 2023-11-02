@@ -1,28 +1,70 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Home from './home';
+import { BrowserRouter } from 'react-router-dom';
+import apiService from '../../api-service';
 
-describe('Home Component', () => {
+describe('Home', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders without errors', () => {
-    render(<Home />);
-    // Assert that the component renders without errors
+    render(
+    <BrowserRouter>
+      <Home />
+    </BrowserRouter>);
   });
 
-  it('displays the searchbar', () => {
-    render(<Home />);
-    const searchbarElement = screen.getByTestId('searchbar-component');
-    expect(searchbarElement).toBeInTheDocument();
+  it('displays the searchbar', async () => {
+    const getCountriesSpy = jest.spyOn(apiService.Countries, 'getAll');
+    getCountriesSpy.mockResolvedValue([]);
+
+    const getCategoriesSpy = jest.spyOn(apiService.Categories, 'getAll');
+    getCategoriesSpy.mockResolvedValue([]);
+
+    const getUsersSpy = jest.spyOn(apiService.User, 'getAll');
+    getUsersSpy.mockResolvedValue([]);
+
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('searchbar-component')).toBeInTheDocument()
+    })
   });
 
-  it('displays the cards', () => {
-    render(<Home />);
-    const cardsElement = screen.getByTestId('cards-component');
-    expect(cardsElement).toBeInTheDocument();
+  it('displays the cards', async () => {
+    const getAllSpy = jest.spyOn(apiService.Publications, 'getAll');
+    getAllSpy.mockResolvedValue([]);
+
+    const getCountriesSpy = jest.spyOn(apiService.Countries, 'getAll');
+    getCountriesSpy.mockResolvedValue([]);
+
+    const getCategoriesSpy = jest.spyOn(apiService.Categories, 'getAll');
+    getCategoriesSpy.mockResolvedValue([]);
+
+    const getUsersSpy = jest.spyOn(apiService.User, 'getAll');
+    getUsersSpy.mockResolvedValue([]);
+
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('cards-component')).toBeInTheDocument()
+    })
   });
 
   it('displays the footer', () => {
-    render(<Home />);
-    const footerElement = screen.getByTestId('footer-component');
-    expect(footerElement).toBeInTheDocument();
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>);
+
+    expect(screen.getByTestId('footer-component')).toBeInTheDocument();
   });
 });

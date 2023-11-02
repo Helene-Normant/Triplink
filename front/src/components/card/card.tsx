@@ -65,7 +65,7 @@ const Card = ({ id, country, picture, title, travelerPicture }: CardProps) => {
               alt="profil"
               onClick={handleCLick}
             />
-            <ProfilModal open={openModalProfil} onClose={() => setOpenModalProfil(false)} />
+            <ProfilModal isOpen={openModalProfil} onClose={() => setOpenModalProfil(false)} />
             <hr className="line-profil" />
             <h3>commentaire</h3>
           </div>

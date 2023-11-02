@@ -1,12 +1,12 @@
 import React from "react";
 import Header from '../../components/header/header';
-import TravelDetail from "./travel-details";
-import PhotoDetail from "./photo-details";
+import TravelDetails from "./travel-details";
+import PhotoDetails from "./photo-details";
 import Footer from "../../components/footer/footer";
 import './details.css'
 import { BsArrowReturnLeft } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import MapComponent from "../../components/map/map";
+import Map from "../../components/map/map";
 
 const Details = () => {
   return (
@@ -23,11 +23,11 @@ const Details = () => {
         </Link>
       </div>
       <div className="card-details-container">
-        <PhotoDetail />
+        <PhotoDetails />
         <hr className="line-details"></hr>
-        <TravelDetail />
+        <TravelDetails />
       </div>
-      <MapComponent />
+      <Map />
       <Footer />
     </>
   )

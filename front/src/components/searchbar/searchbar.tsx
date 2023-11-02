@@ -58,8 +58,8 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
   const fetchCategories = async () => {
     try {
       setLoading(true);
-      const countriesData = await apiService.Categories.getAll();
-      setCategoriesDatas(countriesData);
+      const categoriesData = await apiService.Categories.getAll();
+      setCategoriesDatas(categoriesData);
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -71,8 +71,8 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
   const fetchProfils = async () => {
     try {
       setLoading(true);
-      const countriesData = await apiService.User.getAll();
-      setProfilsDatas(countriesData);
+      const usersData = await apiService.User.getAll();
+      setProfilsDatas(usersData);
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -156,7 +156,7 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
 
   return (
     <>
-      <form className="form-search" onSubmit={handleSearch}>
+      <form className="form-search" onSubmit={handleSearch} data-testid="searchbar-component" >
         <div className='select'>
           <div className="search-bar search-bar-radius-left">
             <Select

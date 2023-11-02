@@ -4,11 +4,16 @@ import "./profil-modal.css";
 import profil from '../../../assets/profil.png';
 import Button from "../../button/button";
 
-const ProfilModal = ({ open, onClose }) => {
-  if (!open) return null;
+type ProfilModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const ProfilModal = ({ isOpen, onClose }: ProfilModalProps) => {
+  if (!isOpen) return null;
   return (
-    <div className="modal-profil-container" onClick={onClose}>
-      <div className="modal-title-profil">
+    <div className="modal-profil-container" onClick={onClose} data-testid="modal-profil-container">
+      <div className="modal-title-profil" data-testid="modal-title-profil">
         <img className="img-modal-profil" src={profil} alt="profil" />
         <h2 className="title-profil">Name</h2>
       </div>
@@ -21,7 +26,7 @@ const ProfilModal = ({ open, onClose }) => {
         <h3>25</h3>
       </div>
       <div className="modal-profil-button">
-        <Button className="dark-small" children="Suivre" role="follow" />
+        <Button className="dark-small" children="Suivre" role="button" type="button"/> 
       </div>
     </div>
   );

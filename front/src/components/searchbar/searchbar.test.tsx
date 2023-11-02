@@ -2,38 +2,28 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Searchbar from './searchbar';
 
-test('renders Searchbar component', () => {
-  render(<Searchbar setDestination={() => { }} setCategory={() => { }} setProfil={() => { }} />);
+describe('Searchbar', () => {
+  it('renders Searchbar component', () => {
+    render(<Searchbar setDestination={() => { }} setCategory={() => { }} setProfil={() => { }} />);
 
-  // You can customize these queries based on your actual HTML structure
-  const destinationSelect = screen.getByText('Destinations');
-  const categorySelect = screen.getByText('Catégories');
-  const profilSelect = screen.getByText('Profil');
-  const searchButton = screen.getByRole('search');
+    expect(screen.getByText('Destinations')).toBeInTheDocument();
+    expect(screen.getByText('Catégories')).toBeInTheDocument();
+    expect(screen.getByText('Profil')).toBeInTheDocument();
+    expect(screen.getByRole('search')).toBeInTheDocument();
+  });
 
-  expect(destinationSelect).toBeInTheDocument();
-  expect(categorySelect).toBeInTheDocument();
-  expect(profilSelect).toBeInTheDocument();
-  expect(searchButton).toBeInTheDocument();
+  it('calls setDestination, setCategory and setProfile when the search button is clicked', () => {
+    const setDestination = jest.fn();
+    const setCategory = jest.fn();
+    const setProfil = jest.fn();
+
+    render(<Searchbar setDestination={setDestination} setCategory={setCategory} setProfil={setProfil} />);
+
+    fireEvent.click(screen.getByRole('search'));
+
+    expect(setDestination).toHaveBeenCalled();
+    expect(setCategory).toHaveBeenCalled();
+    expect(setProfil).toHaveBeenCalled();
+  });
 });
 
-test('search button should call setDestination, setCategory, and setProfil on click', () => {
-  const setDestination = jest.fn();
-  const setCategory = jest.fn();
-  const setProfil = jest.fn();
-
-  render(<Searchbar setDestination={setDestination} setCategory={setCategory} setProfil={setProfil} />);
-
-  // Customize these queries based on your HTML structure
-  const searchButton = screen.getByRole('search');
-
-  const destinationSelect = screen.getByText('Destinations');
-  const categorySelect = screen.getByText('Catégories');
-  const profilSelect = screen.getByText('Profil');
-
-  fireEvent.click(searchButton);
-
-  expect(setDestination).toHaveBeenCalled();
-  expect(setCategory).toHaveBeenCalled();
-  expect(setProfil).toHaveBeenCalled();
-});

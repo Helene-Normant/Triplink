@@ -25,7 +25,7 @@ const renderComponent = (props = cardProps) => {
   )
 }
 
-describe('<Card />', () => {
+describe('Card', () => {
   it('should render a Card with the correct content', () => {
     renderComponent();
 
@@ -38,41 +38,7 @@ describe('<Card />', () => {
   it('should open the ProfilModal when traveler picture is clicked', () => {
     renderComponent();
 
-    const travelerPictureElement = screen.getByAltText('profil');
-    fireEvent.click(travelerPictureElement);
-
-    const modalElement = screen.getByText('Publications');
-    expect(modalElement).toBeInTheDocument();
+    fireEvent.click(screen.getByAltText('profil'));
+    expect(screen.getByText('Publications')).toBeInTheDocument();
   });
-
-  // it('should redirect to details page when clicked and user is authenticated', async () => {
-  //   localStorage.setItem('apiToken', 'token value');
-  //   renderComponent();
-
-  //   const detailsLink = screen.getByRole('link', { name: /détails/i });
-  //   fireEvent.click(detailsLink);
-
-  //   // Attendez que l'élément sur la page de détails soit présent
-  //   const detailsPageHeader = await screen.findByText('Détails du voyage');
-  //   expect(detailsPageHeader).toBeInTheDocument();
-
-  //   await waitFor(() => {
-  //     expect(screen.getByRole('link', { name: /détails/i })).toBeInTheDocument();
-  //   })
-  // fireEvent.click(detailsLink);
-
-  // Ajoutez ici les assertions pour vérifier la redirection vers la page de détails
-  // });
-
-  // it('should redirect to inscription page when clicked and user is not authenticated', () => {
-  //   // Mocking localStorage to simulate unauthenticated user
-  //   Storage.prototype.getItem = jest.fn(() => null);
-
-  //   render(<Card {...cardProps} />);
-
-  //   const inscriptionLink = screen.getByRole('link', { name: /inscription/i });
-  //   fireEvent.click(inscriptionLink);
-
-  //   // Ajoutez ici les assertions pour vérifier la redirection vers la page d'inscription
-  // });
 });

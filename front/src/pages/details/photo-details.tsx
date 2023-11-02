@@ -8,7 +8,6 @@ import { IoLocationSharp } from "react-icons/io5";
 
 import { Country } from '../../components/cards/cards.js';
 
-
 type User = {
   picture: string,
   username: string,

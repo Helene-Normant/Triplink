@@ -4,16 +4,15 @@ import Cards from './cards';
 import apiService from '../../api-service';
 import { BrowserRouter } from 'react-router-dom';
 
-describe('<Cards />', () => {
+describe('Cards', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('should render loading component while data is being fetched', () => {
     render(<Cards />);
-    // Le composant loading a un data-testid = 'loading', afin de pouvoir être testé
-    const loadingComponent = screen.getByTestId('loading');
-    expect(loadingComponent).toBeInTheDocument();
+    // Le composant Loading a un data-testid = 'loading', afin de pouvoir être testé
+    expect(screen.getByTestId('loading')).toBeInTheDocument();
   });
 
   it('should render "PAS DE RESULTATS" when no cards match the filters', async () => {
@@ -22,7 +21,7 @@ describe('<Cards />', () => {
     const getAllSpy = jest.spyOn(apiService.Publications, 'getAll');
     // On utilise ensuite la méthode mockResolvedValue de jest pour simuler le résultat de la fonction
     getAllSpy.mockResolvedValue([]);
-    render(<Cards destination={{ id: 1, nameFr: 'Irak', nameEn: 'Irak' }} />);
+    render(<Cards destination={{ id: 1, nameFr: 'Iraq', nameEn: 'Iraq' }} />);
 
     await waitFor(() => {
       expect(screen.getByText('PAS DE RESULTATS')).toBeInTheDocument();

@@ -9,13 +9,10 @@ import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import useIsMobile from "../../hooks/use-is-mobile";
 
-
-
 const initialUser = { userName: "", userSurname: "", userPseudo: "", userBirth: "", email: "", password: "", userConfirm: "" };
 const Inscription = () => {
   const [user, setUser] = useState(initialUser);
   const isMobile = useIsMobile();
-
 
   const navigate = useNavigate();
   const handleClick = () => {

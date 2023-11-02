@@ -2,46 +2,35 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import ProfilModal from './profil-modal';
 
-describe('<ProfilModal />', () => {
+describe('ProfilModal', () => {
   it('should not render when "open" is false', () => {
-    render(<ProfilModal open={false} onClose={() => { }} />);
+    render(<ProfilModal isOpen={false} onClose={() => { }} />);
 
-    const modalContainer = screen.queryByTestId('modal-profil-container');
-    expect(modalContainer).toBeNull();
+    expect(screen.queryByTestId('modal-profil-container')).toBeNull();
   });
 
   it('should render when "open" is true', () => {
-    render(<ProfilModal open={true} onClose={() => { }} />);
+    render(<ProfilModal isOpen={true} onClose={() => { }} />);
 
-    const modalContainer = screen.getByTestId('modal-profil-container');
-    expect(modalContainer).toBeInTheDocument();
+    expect(screen.getByTestId('modal-profil-container')).toBeInTheDocument();
   });
 
   it('should call "onClose" when clicked outside the modal', () => {
     const mockOnClose = jest.fn();
-    render(<ProfilModal open={true} onClose={mockOnClose} />);
+    render(<ProfilModal isOpen={true} onClose={mockOnClose} />);
 
-    const modalContainer = screen.getByTestId('modal-profil-container');
-    fireEvent.click(modalContainer);
-
+    fireEvent.click(screen.getByTestId('modal-profil-container'));
     expect(mockOnClose).toHaveBeenCalled();
   });
 
   it('should render the profile data and follow button', () => {
-    render(<ProfilModal open={true} onClose={() => { }} />);
+    render(<ProfilModal isOpen={true} onClose={() => { }} />);
 
-    const modalTitle = screen.getByTestId('modal-title-profil');
-    const profileImage = screen.getByAltText('profil');
-    const profileName = screen.getByText('Name');
-    const publications = screen.getByText('Publications');
-    const followers = screen.getByText('Followers');
-    const followButton = screen.getByRole('button', { name: /Suivre/i });
-
-    expect(modalTitle).toBeInTheDocument();
-    expect(profileImage).toBeInTheDocument();
-    expect(profileName).toBeInTheDocument();
-    expect(publications).toBeInTheDocument();
-    expect(followers).toBeInTheDocument();
-    expect(followButton).toBeInTheDocument();
+    expect(screen.getByTestId('modal-title-profil')).toBeInTheDocument();
+    expect(screen.getByAltText('profil')).toBeInTheDocument();
+    expect(screen.getByText('Name')).toBeInTheDocument();
+    expect(screen.getByText('Publications')).toBeInTheDocument();
+    expect(screen.getByText('Followers')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Suivre/i })).toBeInTheDocument();
   });
 });

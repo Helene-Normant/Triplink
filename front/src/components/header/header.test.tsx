@@ -15,19 +15,24 @@ jest.mock('../../Hooks/useIsMobile', () => ({
   default: jest.fn(),
 }));
 
-describe("<Header />", () => {
-  it("should render the header logo", () => {
+describe('Header', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should render the header logo', () => {
     render(
       <Router>
         <Header />
       </Router>
     );
+
     const logo = screen.getByRole("img");
-    expect(logo).toHaveAttribute("src", "Triplink_min.png");
+    expect(logo).toHaveAttribute("src", "triplink_min.png");
     expect(logo).toHaveAttribute("alt", "Logo Triplink");
   });
 
-  it("should render the header title", () => {
+  it('should render the header title', () => {
     render(
       <Router>
         <Header />
@@ -36,13 +41,14 @@ describe("<Header />", () => {
     expect(screen.getByText("Triplink")).toBeInTheDocument();
   });
 
-  it("should render button named Se connecter and click on it", async () => {
+  it('should render button named "Se connecter" and click on it', async () => {
     const user = userEvent.setup();
     render(
       <Router>
         <Header />
       </Router>
     );
+
     expect(screen.getByText("Se connecter")).toBeInTheDocument();
     await user.click(screen.getByRole("login"));
     await waitFor(() => {
@@ -71,11 +77,8 @@ describe("<Header />", () => {
 
     render(<Header />);
 
-    const headerDesktopElement = screen.getByTestId('header-desktop');
-    const headerMobileElement = screen.queryByTestId('header-mobile');
-
-    expect(headerDesktopElement).toBeInTheDocument();
-    expect(headerMobileElement).toBeNull();
+    expect(screen.getByTestId('header-desktop')).toBeInTheDocument();
+    expect(screen.queryByTestId('header-mobile')).toBeNull();
   });
 
   it('should render HeaderMobile when user is logged in and in mobile view', () => {
@@ -83,11 +86,8 @@ describe("<Header />", () => {
 
     render(<Header />);
 
-    const headerDesktopElement = screen.queryByTestId('header-desktop');
-    const headerMobileElement = screen.getByTestId('header-mobile');
-
-    expect(headerMobileElement).toBeInTheDocument();
-    expect(headerDesktopElement).toBeNull();
+    expect(screen.getByTestId('header-desktop')).toBeInTheDocument();
+    expect(screen.queryByTestId('header-mobile')).toBeNull();
   });
 
   it('should render HeaderMobile when user is not logged in and in mobile view', () => {
@@ -95,11 +95,8 @@ describe("<Header />", () => {
 
     render(<Header />);
 
-    const headerDesktopElement = screen.queryByTestId('header-desktop');
-    const headerMobileElement = screen.getByTestId('header-mobile');
-
-    expect(headerMobileElement).toBeInTheDocument();
-    expect(headerDesktopElement).toBeNull();
+    expect(screen.getByTestId('header-desktop')).toBeInTheDocument();
+    expect(screen.queryByTestId('header-mobile')).toBeNull();
   });
 
   it('should call logout when user clicks logout button', () => {
@@ -108,9 +105,7 @@ describe("<Header />", () => {
 
     render(<Header />);
 
-    const logoutButton = screen.getByText('Logout');
-    fireEvent.click(logoutButton);
-
+    fireEvent.click(screen.getByText('Logout'));
     expect(mockLogout).toHaveBeenCalled();
   });
 });

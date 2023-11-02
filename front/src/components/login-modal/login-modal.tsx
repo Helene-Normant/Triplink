@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import useIsMobile from "../../hooks/use-is-mobile";
 
-
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -53,7 +52,6 @@ const LoginModal = ({ isOpen, onClose }: ModalProps) => {
               icon: "🏝️",
             });
 
-
             await sleep(2000);
             window.location.reload();
           }
@@ -77,8 +75,8 @@ const LoginModal = ({ isOpen, onClose }: ModalProps) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
-
   if (!isOpen) return null;
+  
   return (
     <div className="overlay">
       <div className="modal-container">
