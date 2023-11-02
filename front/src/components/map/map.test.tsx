@@ -30,11 +30,30 @@ describe('Map', () => {
   it('should render the map with markers when data is loaded', async () => {
     const getAllSpy = jest.spyOn(apiService.Publications, 'getAll');
       const mockPublication = {
-      // Ajoutez des exemples de données de publication simulées avec des étapes de voyage
-      stepTravel: [
-        // Ajoutez ici des données d'étapes de voyage simulées
-      ],
+        stepTravel: [
+          {
+            id: 1,
+            title: "Titre de l'étape 1",
+            description: "Description de l'étape 1",
+            address: "Adresse de l'étape 1",
+            latitude: 48.8588443,
+            longitude: 2.2943506,
+            plus: "Avantages de l'étape 1",
+            less: "Inconvénients de l'étape 1",
+          },
+          {
+            id: 2,
+            title: "Titre de l'étape 2",
+            description: "Description de l'étape 2",
+            address: "Adresse de l'étape 2",
+            latitude: 48.8588443,
+            longitude: 2.2943506,
+            plus: "Avantages de l'étape 2",
+            less: "Inconvénients de l'étape 2",
+          },
+        ],
     };
+    
     getAllSpy.mockResolvedValue([mockPublication]);
     
     render(
