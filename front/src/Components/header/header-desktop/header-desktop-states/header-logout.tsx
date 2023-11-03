@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../../../assets/Triplink_min.png";
-import "./headerMobileLogout.css";
+import logo from "../../../../assets/triplink_min.png";
+import "./header-logout.css";
 import profil from "../../../../assets/profil.png";
 
-type LogoutMobileProps = {
+type LogoutProps = {
   logout: () => void;
 };
 
-const HeaderMobileLogout = ({ logout }: LogoutMobileProps) => {
+const HeaderLogout = ({ logout }: LogoutProps) => {
+
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -16,18 +17,18 @@ const HeaderMobileLogout = ({ logout }: LogoutMobileProps) => {
   };
 
   return (
-    <div className="container-header-mobile" data-testid="header-mobile-logout">
-      <div className="logo-header-mobile">
+    <div className="container-header" data-testid="header-logout">
+      <div className="logo-header-menu">
         <Link to="/">
-          <img className="logo-triplink-mobile" src={logo} alt={"Logo Triplink"} />
+          <img className="logo-triplink" src={logo} alt={"Logo Triplink"} />
         </Link>
       </div>
       <Link to="/">
-        <h1 className="main-title-mobile">Triplink</h1>
+        <h1 className="main-title">Triplink</h1>
       </Link>
-      <div className={`profil-icon ${menuOpen ? 'open' : ''}`}>
-        <div onClick={toggleMenu}>
-          <img className="log-mobile-icon" src={profil} alt={"Profil Icon"} />
+      <div className={`header-menu ${menuOpen ? 'open' : ''}`}>
+        <div className="menu-icon" onClick={toggleMenu}>
+          <img className="log-icon" src={profil} alt={"Profil Icon"} />
         </div>
         <ul className={`menu-items ${menuOpen ? 'open' : ''}`}>
           <li className="menu-cat top"> <h3>Mon compte</h3></li>
@@ -47,4 +48,4 @@ const HeaderMobileLogout = ({ logout }: LogoutMobileProps) => {
   );
 }
 
-export default HeaderMobileLogout;
+export default HeaderLogout;

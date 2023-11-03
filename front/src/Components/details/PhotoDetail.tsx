@@ -45,7 +45,6 @@ const PhotoDetail = () => {
       const photosData = await apiService.Publications.get(id);
       setPhotos(photosData);
       setLoading(false);
-      console.log(photosData);
     } catch (err) {
       console.log(err);
     } finally {
@@ -70,16 +69,17 @@ const PhotoDetail = () => {
   }
 
   return (
-<div className="travel-photo-container">
-  <h3 className="travel-country">
-  {photos.country?.nameFr} < IoLocationSharp />
-  </h3>
-<div className="travel-photo">
-  <button className="next-button" onClick={prevImage}><FaCircleArrowLeft/></button>
-   <img className="travel-photos" src={photos.picture?.split(',')[currentImage]} alt="photos voyage" />
-  <button className="next-button" onClick={nextImage}><FaCircleArrowRight/></button>
-</div>
-</div>
+    <div className="travel-photo-container" data-testid="photo-details">
+      <h3 className="travel-country">
+        {photos.country?.nameFr} < IoLocationSharp />
+      </h3>
+      <div className="travel-photo">
+        <button className="next-button" onClick={prevImage} aria-label="Previous"><FaCircleArrowLeft name="Previous" /></button>
+        <img className="travel-photos" src={photos.picture?.split(',')[currentImage]} alt="photos voyage" />
+        <button className="next-button" onClick={nextImage} aria-label="Next"><FaCircleArrowRight name="Next" /></button>
+      </div>
+    </div>
   )
 }
+
 export default PhotoDetail;
