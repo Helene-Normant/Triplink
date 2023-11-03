@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import apiService from "../../api-service.js";
 import { useParams } from "react-router-dom";
-import Loading from "../../components/loading/loading";
+import Loading from "../../components/loading/loading.js";
 import './photo-details.css';
 import { FaCircleArrowLeft, FaCircleArrowRight } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
