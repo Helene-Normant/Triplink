@@ -73,7 +73,7 @@ final class PublicationFactory extends ModelFactory
         return [
             'country' => $randomCountry,
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
-            'description' => self::faker()->paragraph(1),
+            'description' => self::faker()->text(200),
             'picture' => self::faker()->randomElement($listPictures),
             'title' => self::faker()->sentence(2),
             'travelType' => $randomCategory,
