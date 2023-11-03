@@ -42,8 +42,7 @@ services:
     volumes:
       - "./.docker/mysql/storage:/var/lib/mysql"
     ports:
-      - "3306:3306"
-
+      - "3300:3300"
 
  # ========================
   # Front-React
@@ -53,7 +52,7 @@ services:
     volumes: ["./front:/usr/src/app"]
     working_dir: /usr/src/app
     ports:
-      - "3000:3000"
+      - "3100:3100"
     depends_on:
       - php
     environment:
