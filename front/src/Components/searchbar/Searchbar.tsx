@@ -89,7 +89,7 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
 
   const countryOptions =
     countriesDatas.map((data: CountryOption) => {
-      return { value: data.id, label: data.nameEn };
+      return { value: data.id, label: data.nameFr};
       // return { value: data.id, label: data.nameFr };
     })
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/Triplink_min.png";
 import "./headerMobileLogout.css";
-import profil from "../../../../assets/profil.png";
 
 type LogoutMobileProps = {
   logout: () => void;
@@ -27,7 +26,7 @@ const HeaderMobileLogout = ({ logout }: LogoutMobileProps) => {
       </Link>
       <div className={`profil-icon ${menuOpen ? 'open' : ''}`}>
         <div onClick={toggleMenu}>
-          <img className="log-mobile-icon" src={profil} alt={"Profil Icon"} />
+          <img className="log-mobile-icon" src={"https://source.unsplash.com/random/900%C3%97700/?selfie"} alt={"Profil Icon"} />
         </div>
         <ul className={`menu-items ${menuOpen ? 'open' : ''}`}>
           <li className="menu-cat top"> <h3>Mon compte</h3></li>

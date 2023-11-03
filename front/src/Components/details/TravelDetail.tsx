@@ -99,10 +99,10 @@ const TravelDetail = () => {
         <div className="info-contact-travel">
           <div className="info-detail-travel">
             <div className="info-price">
-              {[...Array(details.budget)].map((index) => (
-                 <FaEuroSign key={index} />
+              {[...Array(details.budget)].map((_, index) => (
+                <FaEuroSign key={index} />
               ))}
-            </div>
+             </div>
             <div className="info-type">
             {(() => {
             switch (details.travelType.categoryFr) {

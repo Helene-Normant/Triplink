@@ -5,6 +5,7 @@
 
 .logo-header-mobile {
   text-align: center;
+  object-fit: cover;
 }
 
 .logo-triplink-mobile {

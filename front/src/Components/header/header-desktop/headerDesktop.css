@@ -9,6 +9,7 @@
 
 .logo-header {
   width: 19.875em;
+  object-fit: cover;
 }
 
 .logo-triplink {
