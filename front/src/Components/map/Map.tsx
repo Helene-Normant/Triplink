@@ -40,10 +40,10 @@ type Publication = {
 };
 
 
-const MapComponent = () => {
+const Map = () => {
   const [pingPublication, setPingPublication] = useState<Publication | null>(null);
   const { id } = useParams();
-
+  
   const handlePublication = async () => {
   const publication = await apiService.Publications.get(id); 
   setPingPublication(publication)
@@ -51,7 +51,8 @@ const MapComponent = () => {
 
   useEffect(() => {
     handlePublication();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!pingPublication) {
@@ -64,7 +65,7 @@ const MapComponent = () => {
   ];
  
   return (
-    <MapContainer className="map" center={[firstStepLatitude, firstStepLongitude]} zoom={13} scrollWheelZoom={false}>
+    <MapContainer className="map" center={[firstStepLatitude, firstStepLongitude]} zoom={13} scrollWheelZoom={false} data-testid='map-container'>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -95,4 +96,4 @@ const MapComponent = () => {
   );
 }
 
-export default MapComponent;
+export default Map;
