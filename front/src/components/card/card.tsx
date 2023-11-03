@@ -15,7 +15,6 @@ type CardProps = {
 
 const Card = ({ id, country, picture, title, travelerPicture }: CardProps) => {
   let token = localStorage.getItem('apiToken');
-  console.log('TOKEN ??', token);
 
   const [openModalProfil, setOpenModalProfil] = useState(false);
 
