@@ -38,6 +38,18 @@
   transform: rotate(90deg);
 }
 
+@media (max-width: 64em) {
+  .logo-header {
+    width: 7.875em;
+  }
+
+  .logo-triplink {
+    width: 7rem;
+    cursor: pointer;
+  }
+}
+
+
 /* For tablet */
 @media (max-width: 48em) { 
   .buttons {

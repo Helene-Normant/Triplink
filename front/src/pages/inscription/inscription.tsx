@@ -30,6 +30,31 @@ const Inscription = () => {
   const signUp = async (event: any) => {
     event.preventDefault();
 
+  const birthDate = new Date(user.userBirth);
+  const today = new Date();
+  const age = today.getFullYear() - birthDate.getFullYear();
+
+  if (age < 18) {
+    toast.error("Vous devez avoir au moins 18 ans pour t'inscrire", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+      icon: "😓",
+    });
+    return;
+  }
+
+
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+    if (!passwordRegex.test(user.password)) {
+    toast.error("Le mot de passe doit contenir au moins 8 caractères avec une combinaison de chiffres et de lettres", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+      icon: "😓",
+    });
+    return;
+  }
+
     if (user.password !== user.userConfirm) {
       toast.error("Oups, les mots de passe ne sont pas identiques", {
         hideProgressBar: true,
@@ -90,7 +115,7 @@ const Inscription = () => {
           </div>
           <div className='second-line'>
             <Input onChange={handleUserChange} value={user.userPseudo} name="userPseudo" className="input input--small" type="text" placeholder="Pseudo" size="small" required />
-            <Input onChange={handleUserChange} value={user.userBirth} name="userBirth" className="input input--small" type="date" placeholder="26/12/2022" size="small" />
+            <Input onChange={handleUserChange} value={user.userBirth} name="userBirth" className="input input--small" type="date" placeholder="26/12/2022" size="small" required />
           </div>
           <div>
             <Input onChange={handleUserChange} value={user.email} name="email" className={`input ${isMobile ? 'input--small' : 'input--large'}`} type="text" placeholder="Adresse email" size="small" required />
