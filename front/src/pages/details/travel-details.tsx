@@ -3,11 +3,11 @@ import './travel-details.css';
 import { FaEuroSign } from "react-icons/fa";
 import apiService from "../../api-service.js";
 import { useParams } from "react-router-dom";
-import Loading from "../../components/loading/loading";
 import hello from "../../assets/wave-hand.svg";
 import { FaCameraRetro, FaCar, FaLeaf, FaBook, FaHamburger, FaSuitcase, FaHandHoldingHeart } from "react-icons/fa";
 import { GiBackpack } from "react-icons/gi";
 import { BsSunglasses } from "react-icons/bs";
+import Loading from "../../components/loading/loading";
 
 type User = {
   picture: string,

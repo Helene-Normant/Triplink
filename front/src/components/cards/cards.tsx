@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import "./cards.css";
 import apiService from "../../api-service.js";
 import Card from "../card/card";
-import Loading from "../loading/loading";
 import { ImCross } from "react-icons/im";
 import { TravelType } from '../../pages/details/travel-details';
+import Loading from "../loading/loading";
 
 type Traveler = {
   id: number;
