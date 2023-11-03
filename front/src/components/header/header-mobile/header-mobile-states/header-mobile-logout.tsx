@@ -16,7 +16,7 @@ const HeaderMobileLogout = ({ logout }: LogoutMobileProps) => {
   };
 
   return (
-    <div className="container-header-mobile">
+    <div className="container-header-mobile" data-testid="header-mobile-logout">
       <div className="logo-header-mobile">
         <Link to="/">
           <img className="logo-triplink-mobile" src={logo} alt={"Logo Triplink"} />

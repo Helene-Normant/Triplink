@@ -9,11 +9,7 @@ import userEvent from "@testing-library/user-event";
 import Header from "./header";
 import Inscription from "../../pages/inscription/inscription";
 import React from "react";
-
-jest.mock('../../Hooks/useIsMobile', () => ({
-  __esModule: true,
-  default: jest.fn(),
-}));
+import * as hook from '../../hooks/use-is-mobile';
 
 describe('Header', () => {
   beforeEach(() => {
@@ -73,40 +69,57 @@ describe('Header', () => {
   });
 
   it('should render HeaderDesktop when user is logged in and not in mobile view', () => {
-    require('../../Hooks/useIsMobile').default.mockReturnValue(false);
+    const spyIsMobileHook = jest.spyOn(hook, 'default');
+    spyIsMobileHook.mockReturnValue(false);
 
-    render(<Header />);
+    const mockLocalStorage = jest.spyOn(Storage.prototype, 'getItem');
+    mockLocalStorage.mockReturnValue('logged in token');
 
-    expect(screen.getByTestId('header-desktop')).toBeInTheDocument();
-    expect(screen.queryByTestId('header-mobile')).toBeNull();
+    render(<Router><Header /></Router>);
+
+    expect(screen.getByTestId('header-logout')).toBeInTheDocument();
+    expect(screen.queryByTestId('header-mobile-logout')).toBeNull();
   });
 
   it('should render HeaderMobile when user is logged in and in mobile view', () => {
-    require('../../Hooks/useIsMobile').default.mockReturnValue(true);
+    const spyIsMobileHook = jest.spyOn(hook, 'default');
+    spyIsMobileHook.mockReturnValue(true);
 
-    render(<Header />);
+    const mockLocalStorage = jest.spyOn(Storage.prototype, 'getItem');
+    mockLocalStorage.mockReturnValue('logged in token');
 
-    expect(screen.getByTestId('header-desktop')).toBeInTheDocument();
-    expect(screen.queryByTestId('header-mobile')).toBeNull();
+    render(<Router><Header /></Router>);
+
+    expect(screen.queryByTestId('header-logout')).toBeNull();
+    expect(screen.getByTestId('header-mobile-logout')).toBeInTheDocument();
   });
 
-  it('should render HeaderMobile when user is not logged in and in mobile view', () => {
-    require('../../Hooks/useIsMobile').default.mockReturnValue(true);
+  it('should render HeaderMobile-login when user is not logged in and in mobile view', () => {
+    const spyIsMobileHook = jest.spyOn(hook, 'default');
+    spyIsMobileHook.mockReturnValue(true);
 
-    render(<Header />);
+    const mockLocalStorage = jest.spyOn(Storage.prototype, 'getItem');
+    mockLocalStorage.mockReturnValue(null);
 
-    expect(screen.getByTestId('header-desktop')).toBeInTheDocument();
-    expect(screen.queryByTestId('header-mobile')).toBeNull();
+    render(<Router><Header /></Router>);
+
+    expect(screen.queryByTestId('header-login')).toBeNull();
+    expect(screen.getByTestId('header-mobile-login')).toBeInTheDocument();
   });
 
   it('should call logout when user clicks logout button', () => {
-    const mockLogout = jest.fn();
-    require('../../Hooks/useIsMobile').default.mockReturnValue(false);
+    const spyIsMobileHook = jest.spyOn(hook, 'default');
+    spyIsMobileHook.mockReturnValue(true);
 
-    render(<Header />);
+    const mockLocalStorage = jest.spyOn(Storage.prototype, 'getItem');
+    mockLocalStorage.mockReturnValue('loged in token');
 
-    fireEvent.click(screen.getByText('Logout'));
-    expect(mockLogout).toHaveBeenCalled();
+    const mockClearStorage = jest.spyOn(Storage.prototype, 'clear');
+
+    render(<Router><Header /></Router>);
+
+    fireEvent.click(screen.getByText('Se déconnecter'));
+    expect(mockClearStorage).toHaveBeenCalled();
   });
 });
 

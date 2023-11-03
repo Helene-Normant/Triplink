@@ -1,67 +1,70 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter, Route } from 'react-router-dom';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import TravelDetails from './travel-details';
 import apiService from '../../api-service';
+
+const mockPublication = {
+  createdAt: "2023-10-26T10:00:00Z",
+  travelPartner: {
+    id: 1,
+    partnerFR: "Partenaire de voyage FR",
+    partnerEN: "Travel Partner EN",
+  },
+  description: "Description de la publication",
+  travelType: {
+    id: 1,
+    categoryFr: "Aventure",
+    categoryEn: "Adventure",
+  },
+  bagTips: "Conseils pour le sac",
+  id: "1",
+  traveler: {
+    picture: "lien_de_l'image",
+    username: "Nom de l'utilisateur",
+  },
+  budget: 3,
+};
+
+const renderComponent = ({ publication = mockPublication } = {}) => {
+  const getAllSpy = jest.spyOn(apiService.Publications, 'get');
+  getAllSpy.mockResolvedValue(publication);
+
+  return render(
+    <MemoryRouter initialEntries={['/travel/1']}>
+      <Routes>
+        <Route path="/travel/:id" element={<TravelDetails />} />
+      </Routes>
+    </MemoryRouter>
+  );
+}
 
 describe('TravelDetails', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('should render loading component while data is being fetched', () => {
-    render(
-      <MemoryRouter initialEntries={['/travel/1']}>
-        <Route path="/travel/:id">
-          <TravelDetails />
-        </Route>
-      </MemoryRouter>
-    );
+  it('should render nothing when details are null', () => {
+    renderComponent({ publication: undefined });
 
-    expect(screen.getByTestId('loading')).toBeInTheDocument();
+    expect(screen.queryByTestId('traveler-details')).not.toBeInTheDocument();
   });
 
   it('should toggle the menu when the menu button is clicked', async () => {
-    const mockPublication = {
-      createdAt: "2023-10-26T10:00:00Z",
-      travelPartner: {
-        id: 1,
-        partnerFR: "Partenaire de voyage FR",
-        partnerEN: "Travel Partner EN",
-      },
-      description: "Description de la publication",
-      travelType: {
-        id: 1,
-        categoryFr: "Aventure",
-        categoryEn: "Adventure",
-      },
-      bagTips: "Conseils pour le sac",
-      id: "1",
-      traveler: {
-        picture: "lien_de_l'image",
-        username: "Nom de l'utilisateur",
-      },
-      budget: 3,
-    };
+    renderComponent();
 
-    const getAllSpy = jest.spyOn(apiService.Publications, 'get');
-    getAllSpy.mockResolvedValue([mockPublication]);
-
-    render(
-      <MemoryRouter initialEntries={['/travel/1']}>
-        <Route path="/travel/:id">
-          <TravelDetails />
-        </Route>
-      </MemoryRouter>
-    );
+    await waitFor(() => {
+      expect(screen.getByTestId('traveler-details')).toBeInTheDocument();
+    })
 
     // Vérifiez que le menu est initialement fermé
-    expect(screen.getByText('Suivre')).not.toBeVisible();
-    expect(screen.getByText('Contacter')).not.toBeVisible();
-    expect(screen.getByText('Favoris')).not.toBeVisible();
+    const menu = screen.getByTestId('contact-items');
+    expect(menu).toHaveClass('contact-items');
+    expect(menu).not.toHaveClass('open');
 
     // Cliquez sur le bouton du menu
-    fireEvent.click(screen.getByRole('button', { name: 'Toggle Menu' }));
+    fireEvent.click(screen.getByRole('button', { name: '. . .' }));
+    expect(menu).toHaveClass('contact-items open');
 
     // Vérifiez que le menu est maintenant ouvert
     expect(screen.getByText('Suivre')).toBeVisible();

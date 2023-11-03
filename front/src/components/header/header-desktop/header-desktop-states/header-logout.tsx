@@ -10,7 +10,6 @@ type LogoutProps = {
 
 const HeaderLogout = ({ logout }: LogoutProps) => {
 
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -18,7 +17,7 @@ const HeaderLogout = ({ logout }: LogoutProps) => {
   };
 
   return (
-    <div className="container-header">
+    <div className="container-header" data-testid="header-logout">
       <div className="logo-header-menu">
         <Link to="/">
           <img className="logo-triplink" src={logo} alt={"Logo Triplink"} />
@@ -47,7 +46,6 @@ const HeaderLogout = ({ logout }: LogoutProps) => {
       </div>
     </div>
   );
-
 }
 
 export default HeaderLogout;

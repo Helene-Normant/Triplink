@@ -1,43 +1,50 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter, Route } from 'react-router-dom';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import PhotoDetails from './photo-details';
 import apiService from '../../api-service';
+
+const publicationFixture = {
+  id: 1,
+  title: 'Title',
+  description: 'description',
+  country: { id: 1, nameFr: 'France' },
+  budget: 1200,
+  bagTips: 'bagTips',
+  picture: 'image1.jpg,image2.jpg,image3.jpg',
+}
+
+const spyOnPublications = jest.spyOn(apiService.Publications, 'get');
+
+const renderPhotoDetails = ({ publications = publicationFixture } = {}) => {
+  spyOnPublications.mockResolvedValue(publications);
+
+  return render(
+    <MemoryRouter initialEntries={['/photo/1']}>
+      <Routes>
+        <Route path="/photo/:id" element={<PhotoDetails />} />
+      </Routes>
+    </MemoryRouter>
+  );
+}
 
 describe('PhotoDetails', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it('should render loading component while data is being fetched', () => {
-    render(
-      <MemoryRouter initialEntries={['/photo/1']}>
-        <Route path="/photo/:id">
-          <PhotoDetails />
-        </Route>
-      </MemoryRouter>
-    );
+  it('should render nothing when there is no photos', () => {
+    renderPhotoDetails({ publications: undefined });
 
-    expect(screen.getByTestId('loading')).toBeInTheDocument();
+    expect(screen.queryByTestId('photo-details')).toBeNull();
   });
 
-  it('should navigate to next and previous images when buttons are clicked', async () => {
-    const mockPublication = {
-      id: '1',
-      country: { id: 1, nameFr: 'France' },
-      picture: 'image1.jpg,image2.jpg,image3.jpg',
-    };
+  it('should navigate to next and previous images when buttons are clicked', async () => {    
+    renderPhotoDetails({ publications: publicationFixture })
 
-    const getAllSpy = jest.spyOn(apiService.Publications, 'get');
-    getAllSpy.mockResolvedValue([mockPublication]);
-    
-    render(
-      <MemoryRouter initialEntries={['/photo/1']}>
-        <Route path="/photo/:id">
-          <PhotoDetails />
-        </Route>
-      </MemoryRouter>
-    );
+    await waitFor(() => {
+      expect(screen.getByTestId('photo-details')).toBeInTheDocument();
+    })
 
     // Vérifiez que la première image est affichée initialement
     await expect(screen.getByAltText('photos voyage')).toHaveAttribute('src', 'image1.jpg');
