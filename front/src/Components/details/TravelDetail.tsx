@@ -84,7 +84,7 @@ const TravelDetail = () => {
   }
 
   return (
-    <section className="detail-wrapper">
+    <section className="detail-wrapper" data-testid='traveler-details'>
       <div className="info-travel-container">
         <div className="info-publication">
           <div className="info-details-profil">
@@ -95,7 +95,6 @@ const TravelDetail = () => {
             </div>
           </div>
         </div>
-
         <div className="info-contact-travel">
           <div className="info-detail-travel">
             <div className="info-price">
@@ -135,10 +134,10 @@ const TravelDetail = () => {
           </div>
           <div className="info-contact-details">
             <div className={`header-contact ${menuOpen ? 'open' : ''}`}>
-              <div className="contact-icon" onClick={toggleMenu}>
+              <div role="button" className="contact-icon" onClick={toggleMenu}>
                 <h3 className="info-dropdown"> . . .</h3>
               </div>
-              <ul className={`contact-items ${menuOpen ? 'open' : ''}`}>
+              <ul className={`contact-items ${menuOpen ? 'open' : ''}`} data-testid="contact-items">
                 <li className="contact-cat top"> <h1>Suivre</h1></li>
                 <li className="contact-cat"><h1>Contacter</h1></li>
                 <li className="contact-cat-fav">

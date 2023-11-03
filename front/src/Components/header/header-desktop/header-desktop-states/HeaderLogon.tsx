@@ -18,7 +18,7 @@ const HeaderLogon = () => {
   }
 
   return (
-    <div className="container-header">
+    <div className="container-header" data-testid="header-login">
       <div className="logo-header">
         <Link to="/">
           <img className="logo-triplink" src={logo} alt={"Logo Triplink"} />
