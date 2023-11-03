@@ -30,7 +30,7 @@ describe('Input', () => {
 
   it('should handle input change', () => {
     let inputValue = '';
-    const handleChange = (event) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       inputValue = event.target.value;
     };
 

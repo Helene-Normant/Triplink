@@ -9,7 +9,7 @@ type InputProps = {
   size: 'small' | 'medium' | 'large';
   value: string;
   required?: boolean;
-  onChange: (event: any) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Input = ({ className, type, placeholder, size, value, name, required, onChange }: InputProps) => {

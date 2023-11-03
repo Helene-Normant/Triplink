@@ -39,11 +39,10 @@ type Publication = {
   stepTravel: TravelStep[];
 };
 
-
 const Map = () => {
   const [pingPublication, setPingPublication] = useState<Publication | null>(null);
   const { id } = useParams();
-
+  
   const handlePublication = async () => {
     const publication = await apiService.Publications.get(id);
     setPingPublication(publication)
@@ -51,6 +50,7 @@ const Map = () => {
 
   useEffect(() => {
     handlePublication();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -64,34 +64,36 @@ const Map = () => {
   ];
 
   return (
-    <MapContainer className="map" center={[firstStepLatitude, firstStepLongitude]} zoom={13} scrollWheelZoom={false} data-testid='map-container'>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {pingPublication && pingPublication.stepTravel.map((step, index) => (
-        <Marker key={index} position={[step.latitude, step.longitude]}>
-          <Popup className='popup'>
-            <div className='container-popup'>
-              <h1 className='main-title-map'>{step.title}</h1>
-              <p>{step.description}</p>
-              <span className='plus'>
-                <h2 className="titlePlus">Les <b>+ :</b></h2>
-                <p className="textPlus">{step.plus}</p>
-              </span>
-              <span className='less'>
-                <h2 className="titleLess">Les <b>-  :</b></h2>
-                <p className="textLess">{step.less}</p>
-              </span>
-              <span className='address'>
-                <IoHome className='svgAddress' />
-                <p className="textAddress">{step.address}</p>
-              </span>
-            </div>
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+    <div data-testid='map-container'>
+      <MapContainer className="map" center={[firstStepLatitude, firstStepLongitude]} zoom={13} scrollWheelZoom={false}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {pingPublication && pingPublication.stepTravel.map((step, index) => (
+          <Marker key={index} position={[step.latitude, step.longitude]}>
+            <Popup className='popup'>
+              <div className='container-popup'>
+                <h1 className='main-title-map'>{step.title}</h1>
+                <p>{step.description}</p>
+                <span className='plus'>
+                  <h2 className="titlePlus">Les <b>+ :</b></h2>
+                  <p className="textPlus">{step.plus}</p>
+                </span>
+                <span className='less'>
+                  <h2 className="titleLess">Les <b>-  :</b></h2>
+                  <p className="textLess">{step.less}</p>
+                </span>
+                <span className='address'>
+                  <IoHome className='svgAddress' />
+                  <p className="textAddress">{step.address}</p>
+                </span>
+              </div>
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </div>
   );
 }
 
