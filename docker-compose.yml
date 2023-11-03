@@ -57,7 +57,8 @@ services:
       - php
     environment:
       - WATCHPACK_POLLING=true
-      - REACT_APP_API_URL=http://localhost:3200
+      # - REACT_APP_API_URL=http://localhost:3200
+      - REACT_APP_API_URL=http://188.165.238.74:3200/
       - HOST=0.0.0.0
       - BROWSER=none
     command: sh -c "yarn install && yarn run start"
