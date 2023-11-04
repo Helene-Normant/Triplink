@@ -7,7 +7,7 @@ import {
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import Header from "./Header";
-import Inscription from "../../Pages/inscription/Inscription";
+import Inscription from "../../pages/inscription/Inscription";
 import React from "react";
 import * as hook from '../../Hooks/useIsMobile';
 
@@ -24,7 +24,7 @@ describe('Header', () => {
     );
 
     const logo = screen.getByRole("img");
-    expect(logo).toHaveAttribute("src", "triplink_min.png");
+    expect(logo).toHaveAttribute("src", "Triplink_min.png");
     expect(logo).toHaveAttribute("alt", "Logo Triplink");
   });
 
@@ -122,4 +122,3 @@ describe('Header', () => {
     expect(mockClearStorage).toHaveBeenCalled();
   });
 });
-
