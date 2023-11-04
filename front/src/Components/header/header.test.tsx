@@ -24,7 +24,7 @@ describe('Header', () => {
     );
 
     const logo = screen.getByRole("img");
-    expect(logo).toHaveAttribute("src", "triplink_min.png");
+    expect(logo).toHaveAttribute("src", "Triplink_min.png");
     expect(logo).toHaveAttribute("alt", "Logo Triplink");
   });
 
@@ -122,4 +122,3 @@ describe('Header', () => {
     expect(mockClearStorage).toHaveBeenCalled();
   });
 });
-

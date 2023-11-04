@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import TravelDetails from '../../Components/details/TravelDetail';
+import TravelDetail from '../../Components/details/TravelDetail';
 import apiService from '../../apiService';
 
 const mockPublication = {
@@ -33,7 +33,7 @@ const renderComponent = ({ publication = mockPublication } = {}) => {
   return render(
     <MemoryRouter initialEntries={['/travel/1']}>
       <Routes>
-        <Route path="/travel/:id" element={<TravelDetails />} />
+        <Route path="/travel/:id" element={<TravelDetail />} />
       </Routes>
     </MemoryRouter>
   );

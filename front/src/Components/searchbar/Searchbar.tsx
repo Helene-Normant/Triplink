@@ -156,7 +156,7 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
 
   return (
     <>
-      <form className="form-search" onSubmit={handleSearch}>
+      <form className="form-search" onSubmit={handleSearch} data-testid="searchbar-component">
         <div className='select'>
           <div className="search-bar search-bar-radius-left">
             <Select

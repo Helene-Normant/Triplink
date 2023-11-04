@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import PhotoDetails from '../../Components/details/PhotoDetail';
+import PhotoDetail from '../../Components/details/PhotoDetail';
 import apiService from '../../apiService';
 
 const publicationFixture = {
@@ -22,7 +22,7 @@ const renderPhotoDetails = ({ publications = publicationFixture } = {}) => {
   return render(
     <MemoryRouter initialEntries={['/photo/1']}>
       <Routes>
-        <Route path="/photo/:id" element={<PhotoDetails />} />
+        <Route path="/photo/:id" element={<PhotoDetail />} />
       </Routes>
     </MemoryRouter>
   );

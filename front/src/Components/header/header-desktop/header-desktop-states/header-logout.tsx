@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../../assets/triplink_min.png";
-import "./header-logout.css";
+import "./headerLogout.css";
 import profil from "../../../../assets/profil.png";
 
 type LogoutProps = {
