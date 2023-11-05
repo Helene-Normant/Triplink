@@ -7,7 +7,7 @@ import {
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import Header from "./Header";
-import Inscription from "../../pages/inscription/Inscription";
+import Inscription from "../../Pages/inscription/Inscription";
 import React from "react";
 import * as hook from '../../Hooks/useIsMobile';
 
