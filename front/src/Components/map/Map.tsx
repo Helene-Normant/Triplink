@@ -59,8 +59,8 @@ const MapComponent = () => {
   }
 
   const [firstStepLatitude, firstStepLongitude] = [
-    pingPublication.stepTravel[0].latitude,
-    pingPublication.stepTravel[0].longitude,
+  pingPublication?.stepTravel[0]?.latitude || 0, // Remplacez 0 par une valeur par défaut si les coordonnées sont indéfinies
+  pingPublication?.stepTravel[0]?.longitude || 0,
   ];
  
   return (
@@ -70,22 +70,22 @@ const MapComponent = () => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {pingPublication && pingPublication.stepTravel.map((step, index) => (
-        <Marker key={index} position={[step.latitude, step.longitude]}>
+        <Marker key={index} position={[step?.latitude, step?.longitude]}>
           <Popup className='popup'>
             <div className='container-popup'>
-              <h1 className='main-title-map'>{step.title}</h1>
+              <h1 className='main-title-map'>{step?.title}</h1>
               <p>{step.description}</p>
               <span className='plus'>
                 <h2 className="titlePlus">Les <b>+ :</b></h2>
-                <p className="textPlus">{step.plus}</p>
+                <p className="textPlus">{step?.plus}</p>
               </span>
               <span className='less'>
                 <h2 className="titleLess">Les <b>-  :</b></h2>
-                <p className="textLess">{step.less}</p>
+                <p className="textLess">{step?.less}</p>
               </span>
               <span className='address'>
                 <IoHome className='svgAddress'/>
-                <p className="textAddress">{step.address}</p>
+                <p className="textAddress">{step?.address}</p>
               </span>
             </div>
           </Popup>

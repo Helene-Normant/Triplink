@@ -45,7 +45,6 @@ const PhotoDetail = () => {
       const photosData = await apiService.Publications.get(id);
       setPhotos(photosData);
       setLoading(false);
-      console.log(photosData);
     } catch (err) {
       console.log(err);
     } finally {
