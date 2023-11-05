@@ -65,7 +65,8 @@ const Map = () => {
   ];
  
   return (
-    <MapContainer className="map" center={[firstStepLatitude, firstStepLongitude]} zoom={13} scrollWheelZoom={false} data-testid='map-container'>
+    <div data-testid="map-container">
+    <MapContainer className="map" center={[firstStepLatitude, firstStepLongitude]} zoom={13} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -93,6 +94,7 @@ const Map = () => {
         </Marker>
       ))}
     </MapContainer>
+    </div>
   );
 }
 
