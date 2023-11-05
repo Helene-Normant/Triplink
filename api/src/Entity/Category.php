@@ -12,75 +12,75 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
-#[ApiResource (
-    operations: [
-        new Get(),
-        new GetCollection(),
-    ],
-    normalizationContext: [
-        'groups' => ['category:read'],
-    ]
+#[ApiResource(
+  operations: [
+    new Get(),
+    new GetCollection(),
+  ],
+  normalizationContext: [
+    'groups' => ['category:read'],
+  ]
 )]
 class Category
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    #[Groups(['category:read','publication:read'])]
-    private ?int $id;
+  #[ORM\Id]
+  #[ORM\GeneratedValue]
+  #[ORM\Column]
+  #[Groups(['category:read', 'publication:read'])]
+  private ?int $id;
 
-    #[ORM\Column(length: 255)]
-    #[Groups(['category:read','publication:read'])]
-    private ?string $categoryFr;
+  #[ORM\Column(length: 255)]
+  #[Groups(['category:read', 'publication:read'])]
+  private ?string $categoryFr;
 
-    #[ORM\Column(length: 255)]
-    #[Groups(['category:read','publication:read'])]
-    private ?string $categoryEn;
+  #[ORM\Column(length: 255)]
+  #[Groups(['category:read', 'publication:read'])]
+  private ?string $categoryEn;
 
-    #[ORM\OneToMany(mappedBy: 'travelType', targetEntity: Publication::class)]
-    private Collection $publications;
+  #[ORM\OneToMany(mappedBy: 'travelType', targetEntity: Publication::class)]
+  private Collection $publications;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+  public function getId(): ?int
+  {
+    return $this->id;
+  }
 
-    public function getCategoryFr(): ?string
-    {
-        return $this->categoryFr;
-    }
+  public function getCategoryFr(): ?string
+  {
+    return $this->categoryFr;
+  }
 
-    public function setCategoryFr(string $categoryFr): self
-    {
-        $this->categoryFr = $categoryFr;
+  public function setCategoryFr(string $categoryFr): self
+  {
+    $this->categoryFr = $categoryFr;
 
-        return $this;
-    }
+    return $this;
+  }
 
-    public function getCategoryEn(): ?string
-    {
-        return $this->categoryEn;
-    }
+  public function getCategoryEn(): ?string
+  {
+    return $this->categoryEn;
+  }
 
-    public function setCategoryEn(string $categoryEn): self
-    {
-        $this->categoryEn = $categoryEn;
+  public function setCategoryEn(string $categoryEn): self
+  {
+    $this->categoryEn = $categoryEn;
 
-        return $this;
-    }
+    return $this;
+  }
 
-       /**
-     * @return Collection<int, Publication>
-     */
-    public function getPublications(): Collection
-    {
-        return $this->publications;
-    }
+  /**
+   * @return Collection<int, Publication>
+   */
+  public function getPublications(): Collection
+  {
+    return $this->publications;
+  }
 
-    public function setPublication(?Publication $publications): self
-    {
-        $this->publications = $publications;
+  public function setPublication(?Publication $publications): self
+  {
+    $this->publications = $publications;
 
-        return $this;
-    }
+    return $this;
+  }
 }
