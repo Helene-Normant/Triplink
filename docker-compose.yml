@@ -3,7 +3,6 @@ networks:
   triplink:
     driver: bridge
 
-
 services:
 
 # ========================
@@ -21,18 +20,16 @@ services:
     volumes: ["./api:/var/www/web:cached"]
     networks: ["triplink"]
 
-
   php:
     container_name: php_triplink
     build: ./.docker/php
     restart: on-failure
     volumes: ["./api:/var/www/web:cached"]
     networks: ["triplink"]
-   
 
- # ========================
+# ========================
   # MySQL
-  # ========================
+# ========================
   mysql:
     image: mysql:5.7
     container_name: mysql_triplink
@@ -44,9 +41,9 @@ services:
     ports:
       - "3300:3300"
 
- # ========================
+# ========================
   # Front-React
-  # ========================
+# ========================
   react:
     image: node:14-buster-slim
     volumes: ["./front:/usr/src/app"]
