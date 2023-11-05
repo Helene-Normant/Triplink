@@ -111,42 +111,51 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
     setProfil(tempProfilValue.current);
   }
 
-  const handleDestinationChange = (newValue: SingleValue<{
-    value: number;
-    label: string;
-  }>) => {
-    if (newValue !== null) {
-      tempCountryValue.current = {
-        id: newValue.value, 
-        nameFr: newValue.label,
-        nameEn: newValue.label,
-      }
+ const handleDestinationChange = (newValue: SingleValue<{
+  value: number;
+  label: string;
+}>) => {
+  if (newValue !== null) {
+    tempCountryValue.current = {
+      id: newValue.value, 
+      nameFr: newValue.label,
+      nameEn: newValue.label,
     }
-    // tempCountryValue.current = newValue?.label;
-    // tempCountryValue.current = newValue?.id;
+  } else {
+    tempCountryValue.current = undefined; // Réinitialiser si la sélection est retirée
+    setDestination(undefined); // Réinitialiser la valeur dans le composant parent
   }
-
+ }
+  
   const handleCategoryChange = (newValue: SingleValue<{
-    value: number;
-    label: string;
-  }>) => {
-    // tempCategoryValue.current = newValue?.label;
-
-    if (newValue !== null) {
-      tempCategoryValue.current = {
-        id: newValue.value, 
-        categoryFr: newValue.label,
-        categoryEn: newValue.label,
-      }
+  value: number;
+  label: string;
+}>) => {
+  if (newValue !== null) {
+    tempCategoryValue.current = {
+      id: newValue.value, 
+      categoryFr: newValue.label,
+      categoryEn: newValue.label,
     }
+  } else {
+    tempCategoryValue.current = undefined; // Réinitialiser si la sélection est retirée
+    setCategory(undefined); // Réinitialiser la valeur dans le composant parent
   }
+}
 
   const handleProfilChange = (newValue: SingleValue<{
-    value: string;
-    label: string;
-  }>) => {
-    tempProfilValue.current = newValue?.label;
+  value: string;
+  label: string;
+}>) => {
+  tempProfilValue.current = newValue?.label;
+
+  if (newValue !== null) {
+    tempProfilValue.current = newValue.label;
+  } else {
+    tempProfilValue.current = undefined; // Réinitialiser si la sélection est retirée
+    setProfil(undefined); // Réinitialiser la valeur dans le composant parent
   }
+}
 
   if (loading) {
     return <div>
