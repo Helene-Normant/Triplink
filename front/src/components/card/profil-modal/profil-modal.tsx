@@ -1,7 +1,6 @@
 import React from "react";
 import "./profil-modal.css";
 
-import profil from '../../../assets/profil.png';
 import Button from "../../button/button";
 
 type ProfilModalProps = {
@@ -14,7 +13,7 @@ const ProfilModal = ({ isOpen, onClose }: ProfilModalProps) => {
   return (
     <div className="modal-profil-container" onClick={onClose} data-testid="modal-profil-container">
       <div className="modal-title-profil" data-testid="modal-title-profil">
-        <img className="img-modal-profil" src={profil} alt="profil" />
+        <img className="img-modal-profil" src={"https://source.unsplash.com/random/900%C3%97700/?selfie"} alt="profil" />
         <h2 className="title-profil">Name</h2>
       </div>
       <div className="modal-data-title-profil">

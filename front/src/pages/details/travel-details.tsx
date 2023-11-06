@@ -96,7 +96,7 @@ const TravelDetails = () => {
         <div className="info-contact-travel">
           <div className="info-detail-travel">
             <div className="info-price">
-              {[...Array(details.budget)].map((index) => (
+              {[...Array(details.budget)].map((_, index) => (
                 <FaEuroSign key={index} />
               ))}
             </div>

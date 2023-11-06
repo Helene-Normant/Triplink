@@ -88,20 +88,13 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
   }, []);
 
   const countryOptions =
-    countriesDatas.map((data: CountryOption) => {
-      return { value: data.id, label: data.nameEn };
-      // return { value: data.id, label: data.nameFr };
-    })
+    countriesDatas.map((data: CountryOption) => ({ value: data.id, label: data.nameFr}));
 
   const categoryOptions =
-    categoriesDatas.map((data: CategoryOption) => {
-      return { value: data.id, label: data.categoryFr };
-    })
+    categoriesDatas.map((data: CategoryOption) => ({ value: data.id, label: data.categoryFr }));
 
   const profilOptions =
-    profilsDatas.map((data: ProfilOption) => {
-      return { value: data.username, label: data.username };
-    })
+    profilsDatas.map((data: ProfilOption) => ({ value: data.username, label: data.username }));
 
   const handleSearch = (event: any) => {
     event.preventDefault();
@@ -121,11 +114,13 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
         nameFr: newValue.label,
         nameEn: newValue.label,
       }
-    }
-    // tempCountryValue.current = newValue?.label;
-    // tempCountryValue.current = newValue?.id;
+    } else {
+    tempCountryValue.current = undefined; // Réinitialiser si la sélection est retirée
+    setDestination(undefined); // Réinitialiser la valeur dans le composant parent
   }
+}
 
+  
   const handleCategoryChange = (newValue: SingleValue<{
     value: number;
     label: string;
@@ -138,15 +133,25 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
         categoryFr: newValue.label,
         categoryEn: newValue.label,
       }
-    }
+    } else {
+    tempCategoryValue.current = undefined; // Réinitialiser si la sélection est retirée
+    setCategory(undefined); // Réinitialiser la valeur dans le composant parent
   }
+}
 
   const handleProfilChange = (newValue: SingleValue<{
-    value: string;
-    label: string;
-  }>) => {
-    tempProfilValue.current = newValue?.label;
+  value: string;
+  label: string;
+}>) => {
+  tempProfilValue.current = newValue?.label;
+
+  if (newValue !== null) {
+    tempProfilValue.current = newValue.label;
+  } else {
+    tempProfilValue.current = undefined; // Réinitialiser si la sélection est retirée
+    setProfil(undefined); // Réinitialiser la valeur dans le composant parent
   }
+}
 
   if (loading) {
     return <div>
@@ -211,7 +216,6 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
               isClearable={true}
             />
           </div >
-
         </div >
         <div>
           <button className="search-button" role="search" type="submit">
@@ -219,7 +223,6 @@ const Searchbar = ({ setDestination, setCategory, setProfil }: SearchbarProps) =
           </button>
         </div>
       </form >
-
     </>
   );
 }

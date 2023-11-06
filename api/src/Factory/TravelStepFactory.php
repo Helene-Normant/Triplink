@@ -53,8 +53,8 @@ final class TravelStepFactory extends ModelFactory
             'address' => self::faker()->address,
             'latitude' => self::faker()->latitude,
             'longitude' => self::faker()->longitude,
-            'plus' => self::faker()->text,
-            'less' => self::faker()->text,
+            'plus' => self::faker()->text(20),
+            'less' => self::faker()->text(20),
             'publicationRelated' => PublicationFactory::new(),
         ];
     }

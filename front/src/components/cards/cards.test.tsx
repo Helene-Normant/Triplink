@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import Cards from './cards';
 import apiService from '../../api-service';
 import { BrowserRouter } from 'react-router-dom';
+import Cards from './cards';
 
 describe('Cards', () => {
   beforeEach(() => {
