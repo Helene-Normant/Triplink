@@ -9,13 +9,11 @@ import HeaderMobileModal from "../header-mobile-modal/HeaderMobileModal";
 
 const HeaderMobileLogin = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const openModal = () => {
     setIsOpen(!isOpen);
   }
-
   return (
-    <div className="container-header-mobile">
+    <div className="container-header-mobile" data-testid="header-mobile-login">
       <div className="logo-profil">
         <img className="profil-icon" src={IconProfil} alt={"Profil Icon"} onClick={openModal} />
       </div>
@@ -31,5 +29,4 @@ const HeaderMobileLogin = () => {
     </div >
   );
 };
-
 export default HeaderMobileLogin;

@@ -1,9 +1,9 @@
 import React from "react";
 import {BrowserRouter, Route, Routes } from 'react-router-dom';
-import  Home  from './Pages/Home';
+import Home from './Pages/Home';
 import Inscription from './Pages/inscription/Inscription';
 import { ToastContainer } from 'react-toastify';
-import Details from './Pages/Details';
+import Details from "./Pages/details/Details";
 
 
 

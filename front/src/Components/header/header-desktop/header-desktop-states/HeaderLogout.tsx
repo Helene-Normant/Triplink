@@ -17,7 +17,7 @@ const HeaderLogout = ({ logout } : LogoutProps) => {
   };
 
   return (
-    <div className="container-header">
+    <div className="container-header" data-testid="header-logout">
     <div className="logo-header-menu">
       <Link to="/">
      <img className="logo-triplink" src={logo} alt={"Logo Triplink"} />

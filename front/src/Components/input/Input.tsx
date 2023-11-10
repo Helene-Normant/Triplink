@@ -2,14 +2,14 @@ import React from 'react';
 import './input.css';
 
 type InputProps = {
-  className: 'small' | 'medium' | 'large' | 'input input--small' | 'input input--medium' |'input input--large';
-  type: 'text' | 'checkbox' | 'date' | 'email' | 'password' ;
+  className: 'small' | 'medium' | 'large' | 'input input--small' | 'input input--medium' | 'input input--large';
+  type: 'text' | 'checkbox' | 'date' | 'email' | 'password';
   name: string;
   placeholder: string;
   size: 'small' | 'medium' | 'large';
   value: string;
-  required?: boolean; 
-  onChange: (event: any) => void;
+  required?: boolean;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Input = ({ className, type, placeholder, size, value, name, required, onChange }: InputProps) => {
@@ -19,7 +19,7 @@ const Input = ({ className, type, placeholder, size, value, name, required, onCh
   } else if (size === 'medium') {
     inputClass += ' input--medium';
   }
-   else if (size === 'large') {
+  else if (size === 'large') {
     inputClass += ' input--large';
   }
   if (className) {
