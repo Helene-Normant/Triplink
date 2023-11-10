@@ -26,7 +26,7 @@
   "scripts": {
     "start": "PORT=3100 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!your-module-name)/\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.6",
-    "@types/react-select": "^5.0.1"
+    "@types/react-select": "^5.0.1",
+    "jest-localstorage-mock": "^2.4.26"
   }
 }

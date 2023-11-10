@@ -23,319 +23,318 @@ use ApiPlatform\Metadata\Put;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ApiResource(
-    operations: [
-        new GetCollection(),
-        new Post(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'user:create']], security: 'is_granted("PUBLIC_ACCESS")'),
-        new Get(security:'is_granted("ROLE_USER")'),
-        new Put(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
-        new Patch(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
-        new Delete(security: 'is_granted("ROLE_USER") or object.owner == user'),
-    ],
-    normalizationContext: ['groups' => ['user:read']],
-    denormalizationContext: ['groups' => ['user:create', 'user:update']],
-
+  operations: [
+    new GetCollection(),
+    new Post(processor: UserPasswordHasher::class, validationContext: ['groups' => ['Default', 'user:create']], security: 'is_granted("PUBLIC_ACCESS")'),
+    new Get(security: 'is_granted("ROLE_USER")'),
+    new Put(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
+    new Patch(processor: UserPasswordHasher::class, security: 'is_granted("ROLE_USER") or object.owner == user'),
+    new Delete(security: 'is_granted("ROLE_USER") or object.owner == user'),
+  ],
+  normalizationContext: ['groups' => ['user:read']],
+  denormalizationContext: ['groups' => ['user:create', 'user:update']],
 )]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[UniqueEntity(fields: ['username'], message: 'It looks like another traveler took your username.')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    #[Groups(['user:read', 'publication:read', 'publication:write'])]
-    private ?int $id = null;
+  #[ORM\Id]
+  #[ORM\GeneratedValue]
+  #[ORM\Column(type: 'integer')]
+  #[Groups(['user:read', 'publication:read', 'publication:write'])]
+  private ?int $id = null;
 
-    #[ORM\Column(length: 180, unique: true)]
-    #[Groups(['user:read', 'user:create', 'user:update'])]
-    #[Assert\NotBlank]
-    #[Assert\Email]
-    private ?string $email = null;
+  #[ORM\Column(length: 180, unique: true)]
+  #[Groups(['user:read', 'user:create', 'user:update'])]
+  #[Assert\NotBlank]
+  #[Assert\Email]
+  private ?string $email = null;
 
-    #[ORM\Column]
-    private array $roles = [];
+  #[ORM\Column]
+  private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     */
-    #[ORM\Column]
-    private ?string $password = null;
+  /**
+   * @var string The hashed password
+   */
+  #[ORM\Column]
+  private ?string $password = null;
 
-    #[Assert\NotBlank(groups: ['user:create'])]
-    #[Groups(['user:create', 'user:update'])]
-    private ?string $plainPassword = null;
+  #[Assert\NotBlank(groups: ['user:create'])]
+  #[Groups(['user:create', 'user:update'])]
+  private ?string $plainPassword = null;
 
-    #[ORM\Column(length: 255, unique: true)]
-    #[Groups(['user:read', 'user:create', 'user:update', 'publication:read'])]
-    #[Assert\NotBlank]
-    private ?string $username = null;
+  #[ORM\Column(length: 255, unique: true)]
+  #[Groups(['user:read', 'user:create', 'user:update', 'publication:read'])]
+  #[Assert\NotBlank]
+  private ?string $username = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['user:read', 'user:create', 'user:update'])]
-    private ?string $firstName = null;
+  #[ORM\Column(length: 255, nullable: true)]
+  #[Groups(['user:read', 'user:create', 'user:update'])]
+  private ?string $firstName = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['user:read', 'user:create', 'user:update'])]
-    private ?string $lastName = null;
+  #[ORM\Column(length: 255, nullable: true)]
+  #[Groups(['user:read', 'user:create', 'user:update'])]
+  private ?string $lastName = null;
 
-    #[ORM\Column(length: 500, nullable: true)]
-    #[Groups(['user:read', 'user:create', 'user:update', 'publication:read'])]
-    private ?string $picture = null;
+  #[ORM\Column(length: 500, nullable: true)]
+  #[Groups(['user:read', 'user:create', 'user:update', 'publication:read'])]
+  private ?string $picture = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['user:read', 'user:create', 'user:update'])]
-    private ?string $description = null;
+  #[ORM\Column(length: 255, nullable: true)]
+  #[Groups(['user:read', 'user:create', 'user:update'])]
+  private ?string $description = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    #[Groups(['user:read', 'user:create', 'user:update'])]
-    private ?\DateTimeInterface $birthday = null;
+  #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+  #[Groups(['user:read', 'user:create', 'user:update'])]
+  private ?\DateTimeInterface $birthday = null;
 
-    #[ORM\Column]
-    #[Groups(['user:read'])]
-    private ?\DateTimeImmutable $createdAt = null;
+  #[ORM\Column]
+  #[Groups(['user:read'])]
+  private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'traveler', targetEntity: Publication::class)]
-    #[Groups(['user:read'])] 
-    private Collection $publications;
+  #[ORM\OneToMany(mappedBy: 'traveler', targetEntity: Publication::class)]
+  #[Groups(['user:read'])]
+  private Collection $publications;
 
-    #[ORM\ManyToMany(inversedBy: 'userWhoLiked', targetEntity: Publication::class)]
-    #[ORM\JoinTable(name:'likes')]
-    #[ORM\JoinColumn(name:'userId', referencedColumnName:'id')]
-    #[ORM\InverseJoinColumn(name:'publicationId', referencedColumnName:'id')]
-    #[Groups(['user:read'])] 
-    private Collection $likedPublications;
+  #[ORM\ManyToMany(inversedBy: 'userWhoLiked', targetEntity: Publication::class)]
+  #[ORM\JoinTable(name: 'likes')]
+  #[ORM\JoinColumn(name: 'userId', referencedColumnName: 'id')]
+  #[ORM\InverseJoinColumn(name: 'publicationId', referencedColumnName: 'id')]
+  #[Groups(['user:read'])]
+  private Collection $likedPublications;
 
-    public function __construct()
-    {
-        $this->createdAt = new \DateTimeImmutable();
-        $this->roles = ['ROLE_USER'];
-        $this->publications = new ArrayCollection();
-        $this->likedPublications = new ArrayCollection();
-    }
-    
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+  public function __construct()
+  {
+    $this->createdAt = new \DateTimeImmutable();
+    $this->roles = ['ROLE_USER'];
+    $this->publications = new ArrayCollection();
+    $this->likedPublications = new ArrayCollection();
+  }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
+  public function getId(): ?int
+  {
+    return $this->id;
+  }
 
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
+  public function getEmail(): ?string
+  {
+    return $this->email;
+  }
 
-        return $this;
-    }
+  public function setEmail(string $email): self
+  {
+    $this->email = $email;
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->email;
-    }
+    return $this;
+  }
 
-    /**
-     * @see UserInterface
-     */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+  /**
+   * A visual identifier that represents this user.
+   *
+   * @see UserInterface
+   */
+  public function getUserIdentifier(): string
+  {
+    return (string) $this->email;
+  }
 
-        return array_unique($roles);
-    }
+  /**
+   * @see UserInterface
+   */
+  public function getRoles(): array
+  {
+    $roles = $this->roles;
+    // guarantee every user at least has ROLE_USER
+    $roles[] = 'ROLE_USER';
 
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
+    return array_unique($roles);
+  }
 
-        return $this;
-    }
+  public function setRoles(array $roles): self
+  {
+    $this->roles = $roles;
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
+    return $this;
+  }
 
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
+  /**
+   * @see PasswordAuthenticatedUserInterface
+   */
+  public function getPassword(): string
+  {
+    return $this->password;
+  }
 
-        return $this;
-    }
+  public function setPassword(string $password): self
+  {
+    $this->password = $password;
 
-    public function getPlainPassword(): ?string
-    {
-        return $this->plainPassword;
-    }
+    return $this;
+  }
 
-    public function setPlainPassword(?string $plainPassword): self
-    {
-        $this->plainPassword = $plainPassword;
+  public function getPlainPassword(): ?string
+  {
+    return $this->plainPassword;
+  }
 
-        return $this;
-    }
+  public function setPlainPassword(?string $plainPassword): self
+  {
+    $this->plainPassword = $plainPassword;
 
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        $this->plainPassword = null;
-    }
+    return $this;
+  }
 
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
+  /**
+   * @see UserInterface
+   */
+  public function eraseCredentials()
+  {
+    // If you store any temporary, sensitive data on the user, clear it here
+    $this->plainPassword = null;
+  }
 
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
+  public function getUsername(): ?string
+  {
+    return $this->username;
+  }
 
-        return $this;
-    }
+  public function setUsername(string $username): self
+  {
+    $this->username = $username;
 
-    public function getFirstName(): ?string
-    {
-        return $this->firstName;
-    }
+    return $this;
+  }
 
-    public function setFirstName(?string $firstName): self
-    {
-        $this->firstName = $firstName;
+  public function getFirstName(): ?string
+  {
+    return $this->firstName;
+  }
 
-        return $this;
-    }
+  public function setFirstName(?string $firstName): self
+  {
+    $this->firstName = $firstName;
 
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
+    return $this;
+  }
 
-    public function setLastName(?string $lastName): self
-    {
-        $this->lastName = $lastName;
+  public function getLastName(): ?string
+  {
+    return $this->lastName;
+  }
 
-        return $this;
-    }
+  public function setLastName(?string $lastName): self
+  {
+    $this->lastName = $lastName;
 
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
+    return $this;
+  }
 
-    public function setPicture(?string $picture): self
-    {
-        $this->picture = $picture;
+  public function getPicture(): ?string
+  {
+    return $this->picture;
+  }
 
-        return $this;
-    }
+  public function setPicture(?string $picture): self
+  {
+    $this->picture = $picture;
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
+    return $this;
+  }
 
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
+  public function getDescription(): ?string
+  {
+    return $this->description;
+  }
 
-        return $this;
-    }
+  public function setDescription(?string $description): self
+  {
+    $this->description = $description;
 
-    public function getBirthday(): ?\DateTimeInterface
-    {
-        return $this->birthday;
-    }
+    return $this;
+  }
 
-    public function setBirthday(?\DateTimeInterface $birthday): self
-    {
-        $this->birthday = $birthday;
+  public function getBirthday(): ?\DateTimeInterface
+  {
+    return $this->birthday;
+  }
 
-        return $this;
-    }
+  public function setBirthday(?\DateTimeInterface $birthday): self
+  {
+    $this->birthday = $birthday;
 
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
+    return $this;
+  }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    {
-        $this->createdAt = $createdAt;
+  public function getCreatedAt(): ?\DateTimeImmutable
+  {
+    return $this->createdAt;
+  }
 
-        return $this;
-    }
+  public function setCreatedAt(\DateTimeImmutable $createdAt): self
+  {
+    $this->createdAt = $createdAt;
 
-    /**
-     * @return Collection<int, Publication>
-     */
-    public function getPublications(): Collection
-    {
-        return $this->publications;
-    }
+    return $this;
+  }
 
-    public function addPublication(Publication $publication): self
-    {
-        if (!$this->publications->contains($publication)) {
-            $this->publications->add($publication);
-            $publication->setTraveler($this);
-        }
+  /**
+   * @return Collection<int, Publication>
+   */
+  public function getPublications(): Collection
+  {
+    return $this->publications;
+  }
 
-        return $this;
+  public function addPublication(Publication $publication): self
+  {
+    if (!$this->publications->contains($publication)) {
+      $this->publications->add($publication);
+      $publication->setTraveler($this);
     }
 
-    public function removePublication(Publication $publication): self
-    {
-        if ($this->publications->removeElement($publication)) {
-            // set the owning side to null (unless already changed)
-            if ($publication->getTraveler() === $this) {
-                $publication->setTraveler(null);
-            }
-        }
+    return $this;
+  }
 
-        return $this;
+  public function removePublication(Publication $publication): self
+  {
+    if ($this->publications->removeElement($publication)) {
+      // set the owning side to null (unless already changed)
+      if ($publication->getTraveler() === $this) {
+        $publication->setTraveler(null);
+      }
     }
 
-    public function getLikedPublications(): Collection
-    {
-        return $this->likedPublications;
+    return $this;
+  }
+
+  public function getLikedPublications(): Collection
+  {
+    return $this->likedPublications;
+  }
+
+  public function setLikedPublications(Collection $likedPublications): self
+  {
+    $this->likedPublications = $likedPublications;
+
+    return $this;
+  }
+
+  public function addLikedPublication(Publication $publication): self
+  {
+    if (!$this->likedPublications->contains($publication)) {
+      $this->likedPublications[] = $publication;
+      $publication->addUserWhoLiked($this);
     }
 
-    public function setLikedPublications(Collection $likedPublications): self
-    {
-        $this->likedPublications = $likedPublications;
+    return $this;
+  }
 
-        return $this;
+  public function removeLikedPublication(Publication $publication): self
+  {
+    if ($this->likedPublications->removeElement($publication)) {
+      $publication->removeUserWhoLiked($this);
     }
 
-    public function addLikedPublication(Publication $publication): self
-    {
-       if(!$this->likedPublications->contains($publication)) {
-        $this->likedPublications[] = $publication;
-        $publication->addUserWhoLiked($this);
-       }
-
-       return $this;
-    }
-
-    public function removeLikedPublication(Publication $publication): self
-    {
-        if($this->likedPublications->removeElement($publication)) {
-            $publication->removeUserWhoLiked($this);
-    }
-
-        return $this;
-    }
+    return $this;
+  }
 }
