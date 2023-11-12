@@ -38,7 +38,7 @@ const Inscription = () => {
   const age = today.getFullYear() - birthDate.getFullYear();
 
   if (age < 18) {
-    toast.error("Vous devez avoir au moins 18 ans pour t'inscrire", {
+    toast.error("Vous devez avoir au moins 18 ans pour vous inscrire", {
       hideProgressBar: true,
       position: toast.POSITION.BOTTOM_LEFT,
       icon: "😓",
